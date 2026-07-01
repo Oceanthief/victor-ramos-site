@@ -1,0 +1,96 @@
+/* ============================================================
+   site.js — header, footer e comportamentos compartilhados.
+   Fonte única: editar aqui atualiza todas as páginas.
+   Páginas definem <body data-page="blog" data-root="../">.
+   ============================================================ */
+(function () {
+  const root = document.body.dataset.root || '';
+  const page = document.body.dataset.page || '';
+
+  const NAV_LINKS = [
+    { id: 'blog',     label: 'Blog',     href: 'blog.html' },
+    { id: 'about',    label: 'About',    href: 'about.html' },
+    { id: 'cv',       label: 'CV',       href: 'cv.html' },
+    { id: 'projetos', label: 'Projetos', href: 'projetos.html' },
+    { id: 'estante',  label: 'Estante',  href: 'estante.html' },
+  ];
+
+  const ICONS = {
+    github: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.338c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.021C22 6.484 17.522 2 12 2z"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+    kaggle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/></svg>',
+  };
+
+  const SOCIAL = {
+    github: 'https://github.com/Oceanthief',
+    linkedin: 'https://www.linkedin.com/in/victor-ramos-alves-de-matos-1b3007116/',
+    kaggle: 'https://www.kaggle.com/ramostherunning',
+    email: 'victorramosdematos@hotmail.com',
+  };
+
+  /* ---------- Header ---------- */
+  const navLinksHtml = NAV_LINKS.map(function (l) {
+    const active = l.id === page ? ' active' : '';
+    const current = l.id === page ? ' aria-current="page"' : '';
+    return '<a href="' + root + l.href + '" class="nav-link' + active + '"' + current + '>' + l.label + '</a>';
+  }).join('<span class="nav-sep">·</span>');
+
+  const header =
+    '<header class="site-header">' +
+      '<div class="wrap header-inner">' +
+        '<a href="' + root + 'index.html" class="site-name">Victor Ramos</a>' +
+        '<button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>' +
+        '</button>' +
+        '<nav class="nav" id="mainNav" aria-label="Navegação principal">' +
+          navLinksHtml +
+          '<span class="nav-sep">·</span>' +
+          '<a href="' + SOCIAL.github + '" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener">' + ICONS.github + '</a>' +
+          '<a href="' + SOCIAL.linkedin + '" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener">' + ICONS.linkedin + '</a>' +
+          '<a href="' + SOCIAL.kaggle + '" class="nav-icon" aria-label="Kaggle" target="_blank" rel="noopener">' + ICONS.kaggle + '</a>' +
+          '<button class="theme-toggle" id="themeToggle" aria-label="Alternar modo escuro">' +
+            '<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' +
+            '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' +
+          '</button>' +
+        '</nav>' +
+      '</div>' +
+    '</header>';
+
+  /* ---------- Footer ---------- */
+  const footer =
+    '<footer class="site-footer">' +
+      '<div class="wrap footer-inner">' +
+        '<span class="footer-copy">© ' + new Date().getFullYear() + ' Victor Ramos Alves de Matos</span>' +
+        '<div class="footer-links">' +
+          '<a href="' + SOCIAL.github + '" target="_blank" rel="noopener">GitHub</a>' +
+          '<a href="' + SOCIAL.linkedin + '" target="_blank" rel="noopener">LinkedIn</a>' +
+          '<a href="' + SOCIAL.kaggle + '" target="_blank" rel="noopener">Kaggle</a>' +
+          '<a href="mailto:' + SOCIAL.email + '">E-mail</a>' +
+        '</div>' +
+      '</div>' +
+    '</footer>';
+
+  document.body.insertAdjacentHTML('afterbegin', header);
+  document.body.insertAdjacentHTML('beforeend', footer);
+
+  /* ---------- Comportamentos ---------- */
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('mainNav');
+  toggle.addEventListener('click', function () {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  document.addEventListener('click', function (e) {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const themeBtn = document.getElementById('themeToggle');
+  themeBtn.addEventListener('click', function () {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();

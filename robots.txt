@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oceanthief.github.io/victor-ramos-site/sitemap.xml
