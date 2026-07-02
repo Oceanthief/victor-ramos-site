@@ -330,6 +330,7 @@ a.project-card:hover { border-color: var(--accent); box-shadow: 0 2px 14px rgba(
 .project-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; }
 .project-year  { font-size: var(--fs-xs); color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 .project-desc  { font-size: var(--fs-md); color: var(--muted); line-height: 1.65; margin-bottom: 0.75rem; }
+.project-desc p + p { margin-top: 0.6rem; }
 .project-meta  { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
 .badge { font-size: 0.72rem; padding: 2px 9px; border-radius: 20px; font-weight: 500; }
