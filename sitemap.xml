@@ -1,10 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/</loc><priority>1.0</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/blog.html</loc><priority>0.9</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/about.html</loc><priority>0.8</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/cv.html</loc><priority>0.8</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/projetos.html</loc><priority>0.8</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/estante.html</loc><priority>0.6</priority></url>
-  <url><loc>https://oceanthief.github.io/victor-ramos-site/posts/automatizando-contabilidade-com-python.html</loc><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/"/>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/projetos.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/football-intel.html"/>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/chicago-marathon-analytics.html"/>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/experiencia.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/cv.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/cv.html"/>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/about.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/about.html"/>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/blog.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/posts/automatizando-contabilidade-com-python.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/estante.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/en/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/en/projetos/football-intel.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/en/projetos/chicago-marathon-analytics.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/en/about.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://oceanthief.github.io/victor-ramos-site/en/cv.html</loc>
+    <lastmod>2026-08-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
