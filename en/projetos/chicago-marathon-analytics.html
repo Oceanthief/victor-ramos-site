@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chicago Marathon Analytics — Case study · Victor Ramos</title>
+<meta name="description" content="End-to-end analytics pipeline over 931,958 records and 25 Chicago Marathon editions: ingestion, star-schema dimensional modelling, identity resolution, SQL analysis and Power BI."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/chicago-marathon-analytics.html"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/chicago-marathon-analytics.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Chicago Marathon Analytics — Case study"/>
+<meta property="og:description" content="931,958 records, 25 editions, dimensional modelling and 17 validated SQL analyses."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/en/projetos/chicago-marathon-analytics.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Chicago Marathon Analytics — Case study"/>
+<meta name="twitter:description" content="931,958 records, 25 editions, dimensional modelling and 17 validated SQL analyses."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="en" data-root="../">
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="../index.html#trabalho">Work</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Chicago Marathon Analytics</span>
+    </nav>
+
+    <header class="page-hero">
+      <p class="page-kicker">Project 01 — Case study</p>
+      <h1 class="page-title">Chicago Marathon Analytics</h1>
+      <p class="page-lede">
+        An end-to-end analytics pipeline turning 25 years of raw Chicago Marathon results
+        into a queryable dimensional model — with athlete identity resolution,
+        country-code normalisation and 17 validated analyses.
+      </p>
+
+      <div class="btn-row" style="margin-top:2rem;">
+        <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn btn--primary" target="_blank" rel="noopener">
+          Public dataset on Kaggle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <a href="#pipeline" class="btn">See the architecture</a>
+      </div>
+    </header>
+
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-key">Role</p>
+        <p class="case-meta-val">Solo project — raw data to dashboard</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Period</p>
+        <p class="case-meta-val">Data from 2000 to 2025</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Volume</p>
+        <p class="case-meta-val">931,958 finisher records</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Stack</p>
+        <p class="case-meta-val">Python · pandas · SQL · Power BI</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE PROBLEM -->
+  <section class="section section--flush">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — The problem</p>
+        <h2 class="section-title">Public data is not usable data</h2>
+      </div>
+      <div class="prose">
+        <p>
+          Chicago Marathon results are published edition by edition, on separate pages,
+          with formatting that shifts over the years. There is plenty of data available and
+          almost no analysis possible: you cannot answer <em>"did the elite field get
+          faster over the last decade?"</em> without first building the base that supports
+          the question.
+        </p>
+        <p>
+          The goal was not a pretty chart. It was the opposite of what portfolios usually
+          show: <strong>spending the time where the work actually is</strong> — ingestion,
+          standardisation, identity resolution and modelling — so that the analysis layer
+          became trivial and, above all, trustworthy.
+        </p>
+        <p>
+          As a success criterion, I decided the final dataset should stand on its own and
+          that anyone should be able to redo the analyses from it — which is why it was
+          published as an open resource under the ODbL licence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE DATA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — The data</p>
+        <h2 class="section-title">Source, volume and what was broken</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          The consolidated base holds <strong>931,958 finisher records</strong> across
+          <strong>25 editions between 2000 and 2025</strong> — there was no race in 2020,
+          cancelled due to the pandemic. I joined it with a
+          <strong>race-day weather table</strong>, since start-line temperature, humidity
+          and wind explain much of the variation in finish times between editions.
+        </p>
+      </div>
+
+      <div class="data-table-wrap" style="margin-top:2rem;">
+        <table class="data-table">
+          <caption class="visually-hidden">Source data structure and issues</caption>
+          <thead>
+            <tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Issue found</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">Name</td><td>free text</td><td>Inconsistent casing; the same athlete spelled differently across editions</td></tr>
+            <tr><td class="strong">Country</td><td>3-letter code</td><td>ISO 3166 and IOC standards mixed for the same country</td></tr>
+            <tr><td class="strong">Gender</td><td>M / F</td><td>Bib numbers reused across genders within one edition</td></tr>
+            <tr><td class="strong">Division</td><td>age band</td><td>Band naming varying between years</td></tr>
+            <tr><td class="strong">Half Time</td><td>time</td><td>Missing in part of the records, elite athletes included</td></tr>
+            <tr><td class="strong">Finish Time</td><td>time</td><td>Stored as text, mixed formats, requiring fault-tolerant conversion</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2rem;">
+        <p>
+          None of these problems is exotic. They are exactly the ones that show up in
+          accounting reconciliation: <strong>the same entity described differently by
+          different systems</strong>. Only the scale differs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — The pipeline</p>
+        <h2 class="section-title">End-to-end architecture</h2>
+        <p class="section-sub">
+          Every stage is re-runnable and leaves a verifiable artefact — nothing depends on
+          a manual step remembered from memory.
+        </p>
+      </div>
+
+      <div class="pipeline reveal" role="img" aria-label="Pipeline flow: raw data, ingestion, cleaning, transformation, dimensional model, SQL analysis and Power BI">
+        <div class="pipeline-stage"><p class="pipeline-num">01</p><p class="pipeline-name">Raw data</p><p class="pipeline-detail">Results per edition</p></div>
+        <div class="pipeline-stage"><p class="pipeline-num">02</p><p class="pipeline-name">Ingestion</p><p class="pipeline-detail">Bulk load<br/>Staging table</p></div>
+        <div class="pipeline-stage"><p class="pipeline-num">03</p><p class="pipeline-name">Cleaning</p><p class="pipeline-detail">Types, nulls<br/>Tolerant casting</p></div>
+        <div class="pipeline-stage"><p class="pipeline-num">04</p><p class="pipeline-name">Transformation</p><p class="pipeline-detail">Identity<br/>ISO/IOC normalisation</p></div>
+        <div class="pipeline-stage pipeline-stage--accent"><p class="pipeline-num">05</p><p class="pipeline-name">Dimensional model</p><p class="pipeline-detail">Star schema<br/>1 fact · 5 dimensions</p></div>
+        <div class="pipeline-stage"><p class="pipeline-num">06</p><p class="pipeline-name">SQL analysis</p><p class="pipeline-detail">17 analyses<br/>CTEs · window functions</p></div>
+        <div class="pipeline-stage"><p class="pipeline-num">07</p><p class="pipeline-name">Visualisation</p><p class="pipeline-detail">matplotlib<br/>Power BI</p></div>
+      </div>
+
+      <h3 style="margin-top:3rem;font-size:var(--fs-lg);font-weight:600;letter-spacing:-0.02em;">The dimensional model</h3>
+      <p class="section-sub" style="margin-bottom:1.5rem;">
+        One fact table at the grain of <em>one athlete in one edition</em>, surrounded by
+        five conformed dimensions.
+      </p>
+
+      <figure class="schema-figure reveal">
+        <svg viewBox="0 0 700 390" role="img" aria-label="Star schema diagram: fato_resultado fact table connected to dim_atleta, dim_edicao, dim_pais, dim_divisao and dim_clima">
+          <g class="schema-line" stroke-width="1.5" stroke-dasharray="4 4">
+            <line x1="350" y1="195" x2="115" y2="70"/>
+            <line x1="350" y1="195" x2="330" y2="60"/>
+            <line x1="350" y1="195" x2="585" y2="70"/>
+            <line x1="350" y1="195" x2="115" y2="322"/>
+            <line x1="350" y1="195" x2="585" y2="322"/>
+          </g>
+          <g>
+            <rect class="schema-dim" x="40"  y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="56" y="60">dim_athlete</text>
+            <text class="schema-sub"   x="56" y="78">athlete_key (MD5)</text>
+            <text class="schema-sub"   x="56" y="93">name · gender</text>
+            <rect class="schema-dim" x="255" y="24"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="271" y="50">dim_edition</text>
+            <text class="schema-sub"   x="271" y="68">year · date</text>
+            <text class="schema-sub"   x="271" y="83">participant count</text>
+            <rect class="schema-dim" x="510" y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="526" y="60">dim_country</text>
+            <text class="schema-sub"   x="526" y="78">ISO / IOC code</text>
+            <text class="schema-sub"   x="526" y="93">name · continent</text>
+            <rect class="schema-dim" x="40"  y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="56" y="312">dim_division</text>
+            <text class="schema-sub"   x="56" y="330">age band</text>
+            <text class="schema-sub"   x="56" y="345">gender</text>
+            <rect class="schema-dim" x="510" y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="526" y="312">dim_weather</text>
+            <text class="schema-sub"   x="526" y="330">start temp · RH</text>
+            <text class="schema-sub"   x="526" y="345">wind · conditions</text>
+          </g>
+          <rect class="schema-fact" x="262" y="150" width="176" height="92" rx="8" stroke-width="2"/>
+          <text class="schema-title" x="280" y="176" style="font-weight:500;">fact_result</text>
+          <text class="schema-sub"   x="280" y="196">5 foreign keys</text>
+          <text class="schema-sub"   x="280" y="212">half_time_sec</text>
+          <text class="schema-sub"   x="280" y="228">full_time_sec · rank</text>
+        </svg>
+        <figcaption style="margin-top:1rem;font-size:var(--fs-xs);color:var(--ink-3);">
+          Fact grain: one row per athlete per edition. Times stored as integer seconds so
+          aggregation loses no precision.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ENGINEERING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Engineering</p>
+        <h2 class="section-title">The four decisions holding the model up</h2>
+      </div>
+
+      <div class="prose">
+        <h3>1. Deterministic MD5 key for athlete identity</h3>
+        <p>
+          There is no stable athlete identifier across editions: bib numbers change every
+          year and names vary in casing and accents. An incremental <code>IDENTITY</code>
+          would break traceability on every reload.
+        </p>
+        <p>
+          The fix was a <strong>deterministic MD5 hash key</strong> derived from the
+          athlete's normalised attributes. The same input always yields the same key, which
+          makes the pipeline <em>idempotent</em>: a full reprocess produces identical keys,
+          and partial reloads never duplicate the dimension.
+        </p>
+
+        <h3>2. Country code standardisation (ISO / IOC)</h3>
+        <p>
+          The source mixes ISO 3166 and IOC codes, which conflict: Germany is
+          <code>DEU</code> in ISO and <code>GER</code> in IOC; Switzerland is
+          <code>CHE</code> versus <code>SUI</code>. Without normalisation the same country
+          appears as two rows in any nationality aggregation — and every "who dominates the
+          top" analysis would be wrong from the start.
+        </p>
+
+        <h3>3. Bib-number collision across genders</h3>
+        <p>
+          In some editions the same bib number appears in both the men's and women's races.
+          Treating the bib as a natural key would merge two different athletes into one.
+          Including gender in the resolution key removed the collision.
+        </p>
+
+        <h3>4. Fault-tolerant time conversion</h3>
+        <p>
+          Times arrive as text in mixed formats, and some records lack the half-marathon
+          split. Strict casting would abort the whole load over a handful of rows. I chose
+          tolerant conversion — an invalid row becomes null and is isolated rather than
+          killing the process — and stored times as <strong>integer seconds</strong>, which
+          allows mean, standard deviation and differences without the pitfalls of
+          aggregating temporal types.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2.5rem;">
+        <div class="code-head">
+          <span>SQL · tolerant conversion and Z-score normalisation</span>
+          <span>T-SQL</span>
+        </div>
+<pre><code><span class="c">-- Performance relative to its own edition: normalising by the year's</span>
+<span class="c">-- standard deviation makes hot and cold years comparable.</span>
+<span class="k">WITH</span> stats_year <span class="k">AS</span> (
+    <span class="k">SELECT</span> Ano,
+           <span class="k">AVG</span>(<span class="k">CAST</span>(TempoFullSegundos <span class="k">AS FLOAT</span>)) <span class="k">AS</span> MeanSec,
+           <span class="k">STDEV</span>(<span class="k">CAST</span>(TempoFullSegundos <span class="k">AS FLOAT</span>)) <span class="k">AS</span> StdSec
+    <span class="k">FROM</span>   chicago.v_chicago_tempos
+    <span class="k">WHERE</span>  TempoFullSegundos <span class="k">IS NOT NULL</span>
+    <span class="k">GROUP BY</span> Ano
+)
+<span class="k">SELECT</span> t.Ano, t.Nome, t.Pais,
+       (t.TempoFullSegundos - s.MeanSec) / <span class="k">NULLIF</span>(s.StdSec, 0) <span class="k">AS</span> ZScore
+<span class="k">FROM</span>   chicago.v_chicago_tempos t
+<span class="k">JOIN</span>   stats_year s <span class="k">ON</span> t.Ano = s.Ano
+<span class="k">ORDER BY</span> ZScore <span class="k">ASC</span>;   <span class="c">-- lowest Z = most exceptional performances</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSIS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Analysis</p>
+        <h2 class="section-title">The questions the model can now answer</h2>
+        <p class="section-sub">
+          17 validated analyses, written in SQL with CTEs and window functions over the
+          dimensional model.
+        </p>
+      </div>
+
+      <div class="prose">
+        <ul>
+          <li>Did the elite field get faster? (Top 10 average per edition)</li>
+          <li>How many runners break time milestones — sub-2:10, sub-3:00, sub-4:00 — each year?</li>
+          <li>What is the average finish gap between genders, and how has it evolved?</li>
+          <li>Which countries place the most athletes on the podium and in each edition's Top 100?</li>
+          <li>What is the probability of going sub-3:00 by age band and gender?</li>
+          <li>How does race-day weather relate to the edition's average finish time?</li>
+          <li>Who runs a <em>negative split</em> — a faster second half than first?</li>
+          <li>How have Brazilian participation and performance evolved?</li>
+          <li>Which athletes ran every edition in the window?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">06 — Results</p>
+        <h2 class="section-title">What the data showed</h2>
+        <p class="section-sub">
+          Figures computed over the model's 2010–2025 slice (15 editions; no race in 2020).
+        </p>
+      </div>
+
+      <div class="findings reveal">
+        <div class="finding">
+          <p class="finding-value">−4m39s</p>
+          <p class="finding-text">The <strong>Top 10 average</strong> fell from 2:09:47 (2010) to <strong>2:05:08</strong> (2025) — the front of the race got measurably faster.</p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">5.8×</p>
+          <p class="finding-text"><strong>Sub-3:00</strong> finishers jumped from 707 (2010) to <strong>4,067</strong> (2025). It is not only the elite: the whole competitive band grew.</p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">7.6×</p>
+          <p class="finding-text"><strong>Brazilian</strong> participation went from 233 to <strong>1,776</strong> runners per edition, with the average time dropping from 4:20:38 to 4:02:17.</p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">39 / 45</p>
+          <p class="finding-text">Of the podium places in the window, <strong>Kenya (28) and Ethiopia (11)</strong> take 39 of 45 — a concentration stable across 15 editions.</p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">66.6%</p>
+          <p class="finding-text">Two-thirds of participants finish <strong>above 4 hours</strong>, and only <strong>0.24%</strong> go under 2:30. The distribution is strongly skewed.</p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">2:21:51</p>
+          <p class="finding-text">Best Brazilian mark in the window — <strong>Leonardo Santana de Olinda</strong>, 2025, beating his own 2023 result (2:23:47).</p>
+        </div>
+      </div>
+
+      <div class="data-table-wrap" style="margin-top:2.5rem;">
+        <table class="data-table">
+          <caption class="visually-hidden">Runners under time milestones per edition</caption>
+          <thead>
+            <tr><th scope="col">Edition</th><th scope="col">Sub-2:10</th><th scope="col">Sub-2:30</th><th scope="col">Sub-3:00</th><th scope="col">Sub-4:00</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">2010</td><td class="num">6</td><td class="num">72</td><td class="num">707</td><td class="num">8,293</td></tr>
+            <tr><td class="strong">2015</td><td class="num">2</td><td class="num">79</td><td class="num">940</td><td class="num">11,127</td></tr>
+            <tr><td class="strong">2019</td><td class="num">8</td><td class="num">140</td><td class="num">1,989</td><td class="num">16,559</td></tr>
+            <tr><td class="strong">2022</td><td class="num">14</td><td class="num">134</td><td class="num">2,069</td><td class="num">14,716</td></tr>
+            <tr><td class="strong">2025</td><td class="num">17</td><td class="num">196</td><td class="num">4,067</td><td class="num">23,287</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1rem;font-size:var(--fs-xs);color:var(--ink-3);">
+        Five of the 15 analysed editions shown for readability. Source: project model.
+      </p>
+    </div>
+  </section>
+
+  <!-- VISUALISATION -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">07 — Visualisation</p>
+        <h2 class="section-title">From query to dashboard</h2>
+        <p class="section-sub">
+          matplotlib for exploration during analysis; final delivery in Power BI, loading
+          the dimensional model directly with DAX measures.
+        </p>
+      </div>
+
+      <figure class="project-visual reveal">
+        <figcaption class="pipeline-detail" style="margin-bottom:1.25rem;">
+          FINISH TIME DISTRIBUTION — 621,727 RECORDS WITH A VALID TIME (2010–2025)
+        </figcaption>
+        <svg viewBox="0 0 700 300" role="img" aria-label="66.62% of runners finish above 4 hours; 18.88% between 3:30 and 4:00; 10.68% between 3:00 and 3:30; 3.59% between 2:30 and 3:00; 0.24% under 2:30" style="width:100%;height:auto;">
+          <g font-family="var(--mono)" font-size="10">
+            <text x="0" y="38" fill="var(--ink-2)">&gt;= 4h</text>
+            <rect x="92" y="24" width="466" height="22" rx="3" fill="var(--accent)"/>
+            <text x="568" y="39" fill="var(--ink)">66.62%</text>
+            <text x="640" y="39" fill="var(--ink-3)">414,180</text>
+
+            <text x="0" y="88" fill="var(--ink-2)">3h30–4h</text>
+            <rect x="92" y="74" width="132" height="22" rx="3" fill="var(--accent)" fill-opacity="0.72"/>
+            <text x="234" y="89" fill="var(--ink)">18.88%</text>
+            <text x="640" y="89" fill="var(--ink-3)">117,378</text>
+
+            <text x="0" y="138" fill="var(--ink-2)">3h–3h30</text>
+            <rect x="92" y="124" width="75" height="22" rx="3" fill="var(--accent)" fill-opacity="0.55"/>
+            <text x="177" y="139" fill="var(--ink)">10.68%</text>
+            <text x="640" y="139" fill="var(--ink-3)">66,384</text>
+
+            <text x="0" y="188" fill="var(--ink-2)">2h30–3h</text>
+            <rect x="92" y="174" width="25" height="22" rx="3" fill="var(--accent)" fill-opacity="0.4"/>
+            <text x="127" y="189" fill="var(--ink)">3.59%</text>
+            <text x="640" y="189" fill="var(--ink-3)">22,305</text>
+
+            <text x="0" y="238" fill="var(--ink-2)">&lt; 2h30</text>
+            <rect x="92" y="224" width="4" height="22" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+            <text x="106" y="239" fill="var(--ink)">0.24%</text>
+            <text x="640" y="239" fill="var(--ink-3)">1,480</text>
+
+            <line x1="92" y1="266" x2="660" y2="266" stroke="var(--line)"/>
+            <text x="92" y="284" fill="var(--ink-3)">0%</text>
+            <text x="330" y="284" fill="var(--ink-3)">35%</text>
+            <text x="558" y="284" fill="var(--ink-3)">70%</text>
+          </g>
+        </svg>
+        <figcaption>
+          The long tail is the finding: the popular marathon is dominated by the 4h+ band,
+          which changes entirely which average is worth reporting.
+        </figcaption>
+      </figure>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          This distribution only surfaces after modelling — and it prevents the most common
+          reading error: quoting the overall mean as if it described the typical runner.
+          With the distribution in view, the median and percentiles become the honest measures.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPO -->
+  <section class="section">
+    <div class="wrap">
+      <div class="repo-bar reveal">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">Published dataset</p>
+          <p class="repo-bar-sub">
+            <em>Chicago Marathon 2000–2025</em> — 931,958 finishers, cleaned and documented.
+            ODbL licence, open for use and reproduction.
+          </p>
+        </div>
+        <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn btn--accent" target="_blank" rel="noopener">
+          Open on Kaggle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">08 — Lessons learned</p>
+        <h2 class="section-title">What I would do differently</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          <strong>Modelling before analysing saves more time than it seems.</strong> My first
+          queries ran straight against the raw table, and every new question meant repeating
+          the same cleaning. After the star schema, analyses that took an afternoon took
+          minutes — and, more importantly, started agreeing with each other.
+        </p>
+        <p>
+          <strong>Deterministic keys are an architecture decision, not a detail.</strong>
+          Swapping the incremental identifier for a reproducible hash is what made the
+          pipeline safe to re-run. It is the same principle as a chart of accounts: the
+          identifier must mean the same thing on every reload.
+        </p>
+        <p>
+          <strong>Data quality is a domain problem, not a code problem.</strong> Noticing that
+          ISO and IOC coexisted in the country column did not come from an automated test —
+          it came from checking a total that did not add up. That is exactly the reflex
+          accounting reconciliation trains: distrust the number that looks right.
+        </p>
+        <p>
+          <strong>What I would change:</strong> write data-quality tests from the first load —
+          record counts per edition, accepted value domains for country and gender, plausible
+          time ranges — instead of discovering the problems during analysis. I would also
+          version the normalisation rules as configuration data rather than embedding them in
+          the transformation.
+        </p>
+      </div>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="../index.html#trabalho" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Back to work
+        </a>
+        <a href="../index.html#contato" class="btn">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="../../js/site.js"></script>
+</body>
+</html>
