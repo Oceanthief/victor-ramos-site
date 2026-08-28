@@ -1,95 +1,636 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <script>!function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}();</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Contador e analista de dados em Juiz de Fora, Brasil. Escrevo sobre contabilidade, finanças corporativas e análise de dados com Python e Power BI."/>
-  <link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Victor Ramos — Contador e Analista de Dados"/>
-  <meta property="og:description" content="Contador e analista de dados em Juiz de Fora, Brasil. Escrevo sobre contabilidade, finanças corporativas e análise de dados com Python e Power BI."/>
-  <meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/"/>
-  <meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
-  <meta property="og:locale" content="pt_BR"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Victor Ramos — Contador e Analista de Dados"/>
-  <meta name="twitter:description" content="Contador e analista de dados em Juiz de Fora, Brasil. Escrevo sobre contabilidade, finanças corporativas e análise de dados com Python e Power BI."/>
-  <meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
-  <meta name="author" content="Victor Ramos Alves de Matos"/>
-  <title>Victor Ramos — Contador e Analista de Dados</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>V</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Victor Ramos — Data &amp; Business Analytics</title>
+<meta name="description" content="Profissional de Data &amp; Business Analytics que combina finanças, contabilidade e tecnologia através de SQL, Python, Power BI e engenharia de dados. Juiz de Fora, MG."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/"/>
+<link rel="alternate" hreflang="x-default" href="https://oceanthief.github.io/victor-ramos-site/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Victor Ramos — Data &amp; Business Analytics"/>
+<meta property="og:description" content="Combino conhecimento de negócios com dados e tecnologia para transformar informações complexas em soluções analíticas. SQL · Python · Power BI · Data Engineering."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:locale:alternate" content="en_US"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Victor Ramos — Data &amp; Business Analytics"/>
+<meta name="twitter:description" content="Negócios × Dados × Tecnologia. SQL · Python · Power BI · Data Engineering."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
-<body data-page="home">
+<body data-page="home" data-lang="pt">
 
-<!-- ───── HEADER (minimal na homepage) ───── -->
+<main id="conteudo">
 
-<!-- ───── CONTEÚDO PRINCIPAL — layout centralizado como no site de referência ───── -->
-<main>
-  <div class="home-centered">
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-layout">
 
-    <!-- Foto circular grande -->
-    <div class="home-photo">
-      <img src="fotos/foto.jpg" alt="Victor Ramos" id="heroImg" width="160" height="160"
-           onerror="this.style.display='none';document.getElementById('heroFallback').style.display='block'">
-      <svg viewBox="0 0 24 24" fill="currentColor" id="heroFallback" style="display:none">
-        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-      </svg>
+        <div>
+          <p class="hero-eyebrow">
+            <span class="dot-live" aria-hidden="true"></span>
+            Juiz de Fora, MG · Brasil
+          </p>
+
+          <h1 class="hero-name">Victor Ramos</h1>
+          <p class="hero-role">Data &amp; Business Analytics</p>
+
+          <p class="hero-lede">
+            Combino <strong>conhecimento de negócios</strong> com dados e tecnologia
+            para transformar informações complexas em soluções analíticas.
+          </p>
+
+          <p class="hero-stack">
+            <span>SQL</span><span class="sep" aria-hidden="true">·</span>
+            <span>Python</span><span class="sep" aria-hidden="true">·</span>
+            <span>Power BI</span><span class="sep" aria-hidden="true">·</span>
+            <span>Data Engineering</span>
+          </p>
+
+          <ul class="hero-credentials">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z"/></svg>
+              Formação em Finanças e Contabilidade
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+              CRC-MG 136287/O
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+              Graduando em Ciência da Computação
+            </li>
+          </ul>
+
+          <div class="btn-row">
+            <a href="#trabalho" class="btn btn--primary">
+              Explorar projetos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="cv.html" class="btn">Ver currículo</a>
+            <a href="https://github.com/Oceanthief" class="btn btn--ghost" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/victor-ramos-alves-de-matos-1b3007116/" class="btn btn--ghost" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal" data-reveal-delay="120">
+          <div class="hero-card-photo">
+            <img src="fotos/foto.jpg" alt="Retrato de Victor Ramos" width="400" height="500"/>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-card-row">
+              <span class="hero-card-key">Foco</span>
+              <span class="hero-card-val">Analytics &amp; BI</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-key">Domínio</span>
+              <span class="hero-card-val">Finanças &amp; Contabilidade</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-key">Registro</span>
+              <span class="hero-card-val">CRC-MG 136287/O</span>
+            </div>
+            <div class="hero-card-row">
+              <span class="hero-card-key">Estudando</span>
+              <span class="hero-card-val">Ciência da Computação</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
     </div>
+  </section>
 
-    <!-- Nome completo -->
-    <h1 class="home-name">Victor Ramos Alves de Matos</h1>
-
-    <!-- Bio curta (em inglês — lang="en" para leitores de tela) -->
-    <p class="home-bio" lang="en">
-      I'm an accountant and data analyst based in Juiz de Fora, Brazil. I write about
-      accounting, corporate finance, and data analysis — mostly through Python automations
-      and Power BI visualizations.
-    </p>
-
-    <!-- Links rápidos de navegação (estilo referência) -->
-    <div class="home-quick-nav">
-      <a href="blog.html">Leia o blog</a>
-      <span class="dot">·</span>
-      <a href="projetos.html">Projetos</a>
-      <span class="dot">·</span>
-      <a href="cv.html">Currículo</a>
-      <span class="dot">·</span>
-      <a href="estante.html">Estante</a>
-      <span class="dot">·</span>
-      <a href="about.html">Sobre mim</a>
+  <!-- ═══════════════ PROVA ═══════════════ -->
+  <section class="wrap" aria-label="Números do trabalho">
+    <div class="proof">
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="931958" data-count-formatted="931.958">931.958</span></div>
+        <p class="proof-label">
+          Registros de corredores tratados e analisados
+          <span class="proof-note">Dataset público · Kaggle</span>
+        </p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="7512" data-count-formatted="7.512">7.512</span></div>
+        <p class="proof-label">
+          Partidas auditadas em inteligência esportiva
+          <span class="proof-note">13 competições · Football Intel</span>
+        </p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="8" data-count-formatted="8">8</span><span class="unit">anos</span></div>
+        <p class="proof-label">
+          Em contabilidade, finanças e rotinas corporativas
+          <span class="proof-note">Desde 2018</span>
+        </p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="7" data-count-formatted="7">7</span></div>
+        <p class="proof-label">
+          Sistemas ERP operados em produção
+          <span class="proof-note">SAP · Oracle · AlterData · Questor · Domínio · Prosoft · Superlógica</span>
+        </p>
+      </div>
     </div>
+  </section>
 
-    <!-- Divisor -->
-    <hr class="home-divider"/>
+  <!-- ═══════════════ PROJETO EM DESTAQUE ═══════════════ -->
+  <section class="section" id="trabalho">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — Projetos selecionados</p>
+        <h2 class="section-title">Do dado bruto à decisão</h2>
+        <p class="section-sub">
+          Dois pipelines analíticos completos: ingestão, tratamento, modelagem, análise
+          estatística e produto final — construídos, documentados e auditados.
+        </p>
+      </div>
 
-    <!-- Botões sociais -->
-    <div class="home-social">
-      <a href="https://www.linkedin.com/in/victor-ramos-alves-de-matos-1b3007116/" class="social-btn primary" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com/Oceanthief" class="social-btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.338c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.021C22 6.484 17.522 2 12 2z"/>
-        </svg>
-        GitHub
-      </a>
-      <a href="https://www.kaggle.com/ramostherunning" class="social-btn" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.334z"/>
-        </svg>
-        Kaggle
-      </a>
+      <!-- ───── PROJETO 01 — FOOTBALL INTEL ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 01 · EM ANDAMENTO</p>
+          <h3 class="project-name">
+            <a href="projetos/football-intel.html">Football Intel</a>
+          </h3>
+          <p class="project-tagline">
+            Plataforma de inteligência esportiva sobre 7.512 partidas: pipeline em Python
+            que audita a base, motor estatístico próprio no navegador e um dashboard de
+            17 telas que roda offline, sem uma única dependência externa.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value">7.512</div>
+              <div class="project-metric-label">Partidas</div>
+            </div>
+            <div>
+              <div class="project-metric-value">34.830</div>
+              <div class="project-metric-label">Eventos de cartão</div>
+            </div>
+            <div>
+              <div class="project-metric-value">17</div>
+              <div class="project-metric-label">Telas</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">pandas</span>
+            <span class="chip chip--accent">JavaScript</span>
+            <span class="chip">Estatística aplicada</span>
+            <span class="chip">ETL</span>
+            <span class="chip">SVG</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;">
+            <span class="status-tag status-tag--live">Em desenvolvimento ativo</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="projetos/football-intel.html" class="btn btn--primary">
+              Ver estudo de caso
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <!-- DEMO AO VIVO: ver instruções em projetos/football-intel.html
+            <a href="demos/football-intel.html" class="btn" target="_blank" rel="noopener">Abrir o dashboard</a>
+            -->
+          </div>
+        </div>
+
+        <figure class="shot">
+          <img src="imagens/football-intel/home.png" loading="lazy" width="1400" height="1000"
+               alt="Tela inicial do Football Intel, com filtros por competição e árbitro, cartões de indicadores e o insight de maior relevância no recorte."/>
+          <figcaption>Football Intel — tela de decisão rápida</figcaption>
+        </figure>
+      </article>
+
+      <!-- ───── PROJETO 02 — CHICAGO MARATHON ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 02</p>
+          <h3 class="project-name">
+            <a href="projetos/chicago-marathon-analytics.html">Chicago Marathon Analytics</a>
+          </h3>
+          <p class="project-tagline">
+            25 anos de resultados da Maratona de Chicago transformados em um modelo
+            dimensional consultável — com resolução de identidade de atletas,
+            normalização de países e 17 análises validadas.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value">931.958</div>
+              <div class="project-metric-label">Registros</div>
+            </div>
+            <div>
+              <div class="project-metric-value">25</div>
+              <div class="project-metric-label">Edições</div>
+            </div>
+            <div>
+              <div class="project-metric-value">1 + 5</div>
+              <div class="project-metric-label">Fato + Dimensões</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">SQL</span>
+            <span class="chip chip--accent">Power BI</span>
+            <span class="chip">pandas</span>
+            <span class="chip">Modelagem dimensional</span>
+            <span class="chip">ETL</span>
+          </div>
+
+          <div class="btn-row">
+            <a href="projetos/chicago-marathon-analytics.html" class="btn btn--primary">
+              Ver estudo de caso
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn" target="_blank" rel="noopener">Dataset público</a>
+          </div>
+        </div>
+
+        <figure class="project-visual">
+          <figcaption class="pipeline-detail" style="margin-bottom:1rem;">
+            PROFUNDIDADE DA ELITE — MÉDIA DO TOP 10 POR ANO (2010–2025)
+          </figcaption>
+          <svg viewBox="0 0 640 230" role="img" aria-labelledby="eliteTitle eliteDesc" style="width:100%;height:auto;">
+            <title id="eliteTitle">Média de tempo do Top 10 por edição, de 2010 a 2025</title>
+            <desc id="eliteDesc">A média do Top 10 caiu de 2h09min47s em 2010 para 2h05min08s em 2025, indicando um campo de elite mais rápido ao longo do período.</desc>
+
+            <!-- grade -->
+            <g stroke="var(--line)" stroke-width="1">
+              <line x1="56" y1="30"  x2="620" y2="30"/>
+              <line x1="56" y1="72"  x2="620" y2="72"/>
+              <line x1="56" y1="115" x2="620" y2="115"/>
+              <line x1="56" y1="157" x2="620" y2="157"/>
+              <line x1="56" y1="200" x2="620" y2="200"/>
+            </g>
+            <g fill="var(--ink-3)" font-family="var(--mono)" font-size="9" text-anchor="end">
+              <text x="48" y="33">2h14</text>
+              <text x="48" y="118">2h09</text>
+              <text x="48" y="203">2h05</text>
+            </g>
+
+            <!-- área -->
+            <path fill="var(--accent)" fill-opacity="0.10" stroke="none"
+                  d="M56,104.5 L96,95.7 L137,160.1 L177,125.8 L217,132.3 L257,75.3 L298,41.6 L338,77.9 L378,155.5 L419,137.7 L459,84.7 L499,149.6 L539,165.4 L580,159.5 L620,183.6 L620,200 L56,200 Z"/>
+            <!-- linha -->
+            <polyline fill="none" stroke="var(--accent)" stroke-width="2"
+                      stroke-linejoin="round" stroke-linecap="round"
+                      points="56,104.5 96,95.7 137,160.1 177,125.8 217,132.3 257,75.3 298,41.6 338,77.9 378,155.5 419,137.7 459,84.7 499,149.6 539,165.4 580,159.5 620,183.6"/>
+            <!-- pontos extremos -->
+            <circle cx="298" cy="41.6"  r="3.5" fill="var(--paper-2)" stroke="var(--accent)" stroke-width="2"/>
+            <circle cx="620" cy="183.6" r="3.5" fill="var(--accent)"/>
+
+            <g fill="var(--ink-3)" font-family="var(--mono)" font-size="9">
+              <text x="56"  y="220">2010</text>
+              <text x="278" y="220">2016</text>
+              <text x="596" y="220">2025</text>
+            </g>
+            <text x="298" y="32" fill="var(--ink-2)" font-family="var(--mono)" font-size="9" text-anchor="middle">2h13:29</text>
+            <text x="620" y="202" fill="var(--accent)" font-family="var(--mono)" font-size="9" text-anchor="end">2h05:08</text>
+          </svg>
+          <figcaption>
+            Resultado de uma das 17 análises do projeto, calculada em SQL sobre o recorte
+            2010–2025 (2020 não teve edição).
+          </figcaption>
+        </figure>
+      </article>
+
+      <p style="margin-top:2.5rem;">
+        <a href="projetos.html" class="arrow-link">
+          Ver todos os projetos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </p>
     </div>
+  </section>
 
-  </div>
+  <!-- ═══════════════ NEGÓCIOS × DADOS × TECNOLOGIA ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — Posicionamento</p>
+        <h2 class="section-title">Negócios × Dados × Tecnologia</h2>
+        <p class="section-sub">
+          Antes de analisar um dado financeiro, eu o produzi. Oito anos de contabilidade
+          e rotinas corporativas ensinam de onde o número vem, onde ele quebra e
+          o que ele significa para o negócio.
+        </p>
+      </div>
+
+      <div class="triad reveal">
+        <div class="triad-col">
+          <p class="triad-num">01</p>
+          <h3 class="triad-title">Negócios</h3>
+          <p class="triad-desc">
+            O contexto que dá sentido ao dado — e que separa um número correto
+            de um número útil.
+          </p>
+          <ul class="triad-list">
+            <li>Contabilidade societária</li>
+            <li>Finanças corporativas</li>
+            <li>Processos de fechamento</li>
+            <li>Sistemas ERP</li>
+          </ul>
+        </div>
+
+        <div class="triad-col triad-col--accent">
+          <p class="triad-num">02</p>
+          <h3 class="triad-title">Analytics</h3>
+          <p class="triad-desc">
+            A tradução: da pergunta de negócio ao modelo que responde a ela de
+            forma consistente e reprodutível.
+          </p>
+          <ul class="triad-list">
+            <li>SQL analítico</li>
+            <li>Modelagem dimensional</li>
+            <li>Power BI &amp; DAX</li>
+            <li>Visualização de dados</li>
+          </ul>
+        </div>
+
+        <div class="triad-col">
+          <p class="triad-num">03</p>
+          <h3 class="triad-title">Tecnologia</h3>
+          <p class="triad-desc">
+            A construção: pipelines versionados, documentados e reexecutáveis
+            em vez de planilhas manuais.
+          </p>
+          <ul class="triad-list">
+            <li>Python &amp; pandas</li>
+            <li>ETL e automação</li>
+            <li>DuckDB · Databricks · Spark</li>
+            <li>Git &amp; GitHub</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="triad-statement">
+        A diferença não é saber SQL.<br/>
+        É <strong>entender o negócio por trás dos dados</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CAPACIDADES TÉCNICAS ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — Capacidades técnicas</p>
+        <h2 class="section-title">Stack</h2>
+      </div>
+
+      <div class="skills reveal">
+        <div class="skill-group">
+          <h3>Dados &amp; Analytics</h3>
+          <ul class="skill-list">
+            <li class="is-core">SQL</li>
+            <li class="is-core">Python</li>
+            <li class="is-core">Power BI</li>
+            <li>pandas</li>
+            <li>DAX</li>
+            <li>Visualização de dados</li>
+            <li>Análise exploratória</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Data Engineering</h3>
+          <ul class="skill-list">
+            <li class="is-core">ETL</li>
+            <li class="is-core">Modelagem dimensional</li>
+            <li>Star schema</li>
+            <li>DuckDB</li>
+            <li>Databricks</li>
+            <li>Apache Spark</li>
+            <li>pdfplumber</li>
+            <li>Automação</li>
+            <li>Git / GitHub</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Sistemas corporativos</h3>
+          <ul class="skill-list">
+            <li>SAP</li>
+            <li>Oracle</li>
+            <li>AlterData</li>
+            <li>Questor</li>
+            <li>Domínio</li>
+            <li>Prosoft</li>
+            <li>Superlógica</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Negócios</h3>
+          <ul class="skill-list">
+            <li>Contabilidade</li>
+            <li>Finanças corporativas</li>
+            <li>Processos financeiros</li>
+            <li>Conciliação contábil</li>
+            <li>Obrigações acessórias</li>
+            <li>Excel avançado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EXPERIÊNCIA ═══════════════ -->
+  <section class="section" id="experiencia">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Experiência</p>
+        <h2 class="section-title">Oito anos dentro dos números</h2>
+        <p class="section-sub">
+          De estagiário em uma companhia de capital aberto a responsável integral
+          por uma carteira contábil.
+        </p>
+      </div>
+
+      <div class="timeline reveal">
+
+        <article class="tl-item">
+          <div class="tl-aside">
+            <p class="tl-period">Jul 2026 — Atual</p>
+            <p class="tl-place">Juiz de Fora, MG</p>
+            <p class="tl-current">Atual</p>
+          </div>
+          <div>
+            <h3 class="tl-role">Assistente Contábil</h3>
+            <p class="tl-company"><strong>Addcon Contabilidade</strong></p>
+            <p class="tl-summary">
+              Assumi integralmente uma carteira contábil operacional após a saída de uma
+              colega, adaptando-me ao ERP AlterData em poucas semanas.
+            </p>
+            <ul class="tl-points">
+              <li>Rotinas de conciliação bancária e geração/importação de lançamentos contábeis.</li>
+              <li>Documentei o processo completo em um manual passo a passo, padronizando a rotina e facilitando a integração de novos assistentes.</li>
+            </ul>
+            <div class="stack-row"><span class="chip">AlterData</span><span class="chip">Conciliação bancária</span><span class="chip">Documentação de processo</span></div>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-aside">
+            <p class="tl-period">Jul 2024 — Jun 2026</p>
+            <p class="tl-place">Juiz de Fora, MG</p>
+          </div>
+          <div>
+            <h3 class="tl-role">Assistente Contábil</h3>
+            <p class="tl-company"><strong>Maximum Assessoria Contábil</strong> · promovido de Auxiliar a Assistente em jan. 2026</p>
+            <p class="tl-summary">
+              Rotina completa de fechamento contábil para múltiplas empresas, com
+              automação progressiva das etapas repetitivas.
+            </p>
+            <ul class="tl-points">
+              <li>Automação de atividades repetitivas de fechamento usando Excel e Python.</li>
+              <li>Conciliações contábeis, lançamentos de extratos bancários e revisão de balanço patrimonial.</li>
+              <li>Identificação de inconsistências antes do envio de REINF, DCTF e DIMOB.</li>
+            </ul>
+            <details class="tl-more">
+              <summary>Mais detalhes</summary>
+              <ul class="tl-points">
+                <li>Depreciação de ativos imobilizados.</li>
+                <li>Reconhecimento e contabilização de contratos.</li>
+                <li>Operação diária dos ERPs Questor e Domínio.</li>
+              </ul>
+            </details>
+            <div class="stack-row"><span class="chip">Python</span><span class="chip">Excel</span><span class="chip">Questor</span><span class="chip">Domínio</span></div>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-aside">
+            <p class="tl-period">Jan 2024 — Mai 2024</p>
+            <p class="tl-place">Juiz de Fora, MG</p>
+          </div>
+          <div>
+            <h3 class="tl-role">Assistente Financeiro / Contábil</h3>
+            <p class="tl-company"><strong>Universal Imóveis LTDA</strong></p>
+            <p class="tl-summary">
+              Demonstrações financeiras mensais de condomínios, análise de pagamentos e
+              recebimentos, conciliação contábil-financeira e relatórios gerenciais.
+            </p>
+            <div class="stack-row"><span class="chip">Superlógica</span><span class="chip">Relatórios gerenciais</span></div>
+          </div>
+        </article>
+
+        <article class="tl-item">
+          <div class="tl-aside">
+            <p class="tl-period">Abr 2022 — Dez 2023</p>
+            <p class="tl-place">Juiz de Fora, MG</p>
+          </div>
+          <div>
+            <h3 class="tl-role">Estagiário Contábil</h3>
+            <p class="tl-company"><strong>MRS Logística S.A.</strong> · companhia de capital aberto</p>
+            <p class="tl-summary">
+              Ambiente corporativo de grande porte: lançamentos contábeis, conciliação de
+              contas e provisões, com processos financeiros padronizados.
+            </p>
+            <ul class="tl-points">
+              <li>Exposição direta a ERP corporativo de nível enterprise: SAP e Oracle.</li>
+            </ul>
+            <div class="stack-row"><span class="chip">SAP</span><span class="chip">Oracle</span></div>
+          </div>
+        </article>
+
+      </div>
+
+      <p style="margin-top:2.5rem;">
+        <a href="experiencia.html" class="arrow-link">
+          Trajetória completa
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOCO ATUAL ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Agora</p>
+        <h2 class="section-title">Foco atual</h2>
+      </div>
+
+      <div class="focus-grid reveal">
+        <div class="focus-item">
+          <p class="focus-key">Estudando</p>
+          <p class="focus-val">Ciência da Computação</p>
+        </div>
+        <div class="focus-item">
+          <p class="focus-key">Construindo</p>
+          <p class="focus-val">Projetos de Data Analytics</p>
+        </div>
+        <div class="focus-item">
+          <p class="focus-key">Aprendendo</p>
+          <p class="focus-val">Data Engineering e programação</p>
+        </div>
+        <div class="focus-item">
+          <p class="focus-key">Explorando</p>
+          <p class="focus-val">Analytics Engineering e BI</p>
+        </div>
+        <div class="focus-item">
+          <p class="focus-key">Direção</p>
+          <p class="focus-val">Negócios × Dados × Tecnologia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTATO ═══════════════ -->
+  <section class="cta" id="contato">
+    <div class="wrap">
+      <h2 class="cta-title">Vamos nos conectar</h2>
+      <p class="cta-text">
+        Aberto a oportunidades em Data Analytics, Business Intelligence e
+        Analytics Engineering — presencial em Juiz de Fora ou remoto.
+      </p>
+
+      <div class="contact-list">
+        <a class="contact-item" href="mailto:victorramosdematos@hotmail.com">
+          <span class="contact-key">E-mail</span>
+          <span class="contact-val">victorramosdematos@hotmail.com</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/victor-ramos-alves-de-matos-1b3007116/" target="_blank" rel="noopener">
+          <span class="contact-key">LinkedIn</span>
+          <span class="contact-val">victor-ramos-alves-de-matos</span>
+        </a>
+        <a class="contact-item" href="https://github.com/Oceanthief" target="_blank" rel="noopener">
+          <span class="contact-key">GitHub</span>
+          <span class="contact-val">Oceanthief</span>
+        </a>
+        <a class="contact-item" href="https://www.kaggle.com/ramostherunning" target="_blank" rel="noopener">
+          <span class="contact-key">Kaggle</span>
+          <span class="contact-val">ramostherunning</span>
+        </a>
+      </div>
+
+      <div class="btn-row" style="margin-top:2rem;">
+        <a href="cv.html" class="btn btn--accent">Currículo completo</a>
+        <a href="curriculo.pdf" class="btn" download>Baixar PDF</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <script type="application/ld+json">
@@ -97,32 +638,42 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Victor Ramos Alves de Matos",
+  "alternateName": "Victor Ramos",
   "url": "https://oceanthief.github.io/victor-ramos-site/",
   "image": "https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg",
-  "jobTitle": "Accountant & Data Analyst",
-  "address": { "@type": "PostalAddress", "addressLocality": "Juiz de Fora", "addressRegion": "MG", "addressCountry": "BR" },
-  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade Federal de Juiz de Fora" },
+  "jobTitle": "Data & Business Analytics",
+  "description": "Profissional de Data & Business Analytics que combina formação em finanças e contabilidade com SQL, Python, Power BI e engenharia de dados.",
   "email": "mailto:victorramosdematos@hotmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Juiz de Fora",
+    "addressRegion": "MG",
+    "addressCountry": "BR"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Universidade Federal de Juiz de Fora" },
+    { "@type": "CollegeOrUniversity", "name": "PUC Minas" }
+  ],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "Professional License",
+    "name": "CRC-MG 136287/O",
+    "recognizedBy": { "@type": "Organization", "name": "Conselho Regional de Contabilidade de Minas Gerais" }
+  },
+  "knowsAbout": [
+    "Data Analytics", "Business Intelligence", "Analytics Engineering", "Data Engineering",
+    "SQL", "Python", "pandas", "Power BI", "DAX", "ETL", "Modelagem Dimensional",
+    "Star Schema", "Apache Spark", "Databricks", "DuckDB",
+    "Contabilidade", "Finanças Corporativas", "SAP", "Oracle"
+  ],
+  "knowsLanguage": ["pt-BR", "en", "it"],
   "sameAs": [
     "https://www.linkedin.com/in/victor-ramos-alves-de-matos-1b3007116/",
     "https://github.com/Oceanthief",
     "https://www.kaggle.com/ramostherunning"
-  ],
-  "knowsAbout": ["Accounting", "Corporate Finance", "Data Analysis", "Python", "SQL", "Power BI"]
+  ]
 }
 </script>
 <script src="js/site.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

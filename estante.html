@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
 <head>
   <meta charset="UTF-8"/>
-  <script>!function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}();</script>
+  <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Livros recomendados sobre finanças, programação, estatística e análise de dados."/>
   <link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/estante.html"/>
@@ -18,21 +18,22 @@
   <meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
   <meta name="author" content="Victor Ramos Alves de Matos"/>
   <title>Estante — Victor Ramos</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>V</text></svg>"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
-<body data-page="estante">
+<body data-page="sobre" data-lang="pt">
 
 
-<main>
+<main id="conteudo">
   <div class="wrap">
-    <div class="page-header">
-      <h1>Estante</h1>
-      <p>Livros que li e recomendo sobre finanças, programação, estatística e análise de dados.</p>
-    </div>
+    <header class="page-hero">
+      <p class="page-kicker">Sobre — Aprendizado</p>
+      <h1 class="page-title">Estante</h1>
+      <p class="page-lede">Livros que li e recomendo sobre finanças, programação, estatística e análise de dados — as leituras que moldaram como penso sobre o trabalho.</p>
+    </header>
 
     <!-- FINANÇAS -->
     <div class="shelf-section">
@@ -40,9 +41,7 @@
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/investidor-inteligente.jpg" alt="O Investidor Inteligente"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de O Investidor Inteligente indisponível">O</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -50,15 +49,13 @@
             <div class="book-author">Benjamin Graham · 1949</div>
             <div class="book-note">A obra mais importante sobre value investing. Graham apresenta a distinção entre especulação e investimento e introduz o conceito de margem de segurança — leitura obrigatória para qualquer pessoa que lida com finanças.</div>
           </div>
-          <span class="badge badge-blue">Investimentos</span>
+          <span class="chip">Investimentos</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/psicologia-dinheiro.jpg" alt="A Psicologia do Dinheiro"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <img src="capas/psicologia-dinheiro.jpg" alt="Capa de A Psicologia do Dinheiro" loading="lazy" width="64" height="96"/>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -66,15 +63,13 @@
             <div class="book-author">Dan Ariely &amp; Jeff Kreisler · 2017</div>
             <div class="book-note">Explora os vieses psicológicos que distorcem nossas decisões financeiras cotidianas — por que gastamos de formas irracionais, como avaliamos valor e o que nos impede de tomar melhores decisões com dinheiro. Direto, divertido e revelador.</div>
           </div>
-          <span class="badge badge-blue">Comportamento</span>
+          <span class="chip">Comportamento</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/psicologia-financeira.jpg" alt="A Psicologia Financeira"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de A Psicologia Financeira indisponível">A</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -82,15 +77,13 @@
             <div class="book-author">Morgan Housel · 2020</div>
             <div class="book-note">Explora como comportamento e emoções influenciam decisões financeiras mais do que qualquer planilha. Escrito de forma acessível, é um dos melhores livros sobre dinheiro dos últimos anos.</div>
           </div>
-          <span class="badge badge-blue">Comportamento</span>
+          <span class="chip">Comportamento</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/flash-boys.jpg" alt="Flash Boys"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Flash Boys indisponível">F</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -98,15 +91,13 @@
             <div class="book-author">Michael Lewis · 2014</div>
             <div class="book-note">Uma investigação jornalística sobre o mercado de alta frequência e como a tecnologia transformou (e distorceu) as bolsas de valores. Leitura fascinante na interseção de finanças e programação.</div>
           </div>
-          <span class="badge badge-blue">Mercados</span>
+          <span class="chip">Mercados</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/principios.jpg" alt="Princípios"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Princípios indisponível">P</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -114,7 +105,7 @@
             <div class="book-author">Ray Dalio · 2017</div>
             <div class="book-note">O fundador da maior hedge fund do mundo compartilha os princípios que guiam suas decisões de vida e negócio. Denso, mas cheio de frameworks úteis para pensar sobre gestão e economia.</div>
           </div>
-          <span class="badge badge-blue">Gestão</span>
+          <span class="chip">Gestão</span>
         </div>
       </div>
     </div>
@@ -125,9 +116,7 @@
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/python-analise-dados.jpg" alt="Python para Análise de Dados"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Python para Análise de Dados indisponível">P</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -135,15 +124,13 @@
             <div class="book-author">Wes McKinney · 2017</div>
             <div class="book-note">Escrito pelo criador do pandas, é o guia de referência para manipulação de dados com Python. Cobre NumPy, pandas e matplotlib com exemplos práticos e aplicados.</div>
           </div>
-          <span class="badge badge-green">Python</span>
+          <span class="chip">Python</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/automate-boring.jpg" alt="Automate the Boring Stuff with Python"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Automate the Boring Stuff with Python indisponível">A</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -151,15 +138,13 @@
             <div class="book-author">Al Sweigart · 2015</div>
             <div class="book-note">O melhor livro para quem quer aprender Python automatizando tarefas reais: manipulação de arquivos, planilhas, PDFs, e-mails e muito mais. Mudou como eu enxergo o trabalho repetitivo.</div>
           </div>
-          <span class="badge badge-green">Python</span>
+          <span class="chip">Python</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/clean-code.jpg" alt="Clean Code"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Clean Code indisponível">C</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -167,7 +152,7 @@
             <div class="book-author">Robert C. Martin · 2008</div>
             <div class="book-note">Ensina a escrever código legível, manutenível e bem estruturado. Os princípios se aplicam independentemente da linguagem — essencial para quem quer elevar a qualidade do próprio trabalho.</div>
           </div>
-          <span class="badge badge-green">Boas Práticas</span>
+          <span class="chip">Boas Práticas</span>
         </div>
       </div>
     </div>
@@ -178,9 +163,7 @@
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/como-mentir-estatistica.jpg" alt="Como Mentir com Estatística"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <img src="capas/como-mentir-estatistica.jpg" alt="Capa de Como Mentir com Estatística" loading="lazy" width="64" height="96"/>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -188,15 +171,13 @@
             <div class="book-author">Darrell Huff · 1954</div>
             <div class="book-note">Clássico e brevíssimo. Mostra como gráficos, médias e percentuais podem ser manipulados para enganar. Leitura obrigatória antes de confiar em qualquer dado apresentado na mídia.</div>
           </div>
-          <span class="badge badge-purple">Estatística</span>
+          <span class="chip">Estatística</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/andar-bebado.jpg" alt="O Andar do Bêbado"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de O Andar do Bêbado indisponível">O</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -204,15 +185,13 @@
             <div class="book-author">Leonard Mlodinow · 2008</div>
             <div class="book-note">Explora como a aleatoriedade molda nossas vidas de formas que raramente percebemos. Combina probabilidade, psicologia e história de forma envolvente. Ótimo para calibrar a humildade diante dos dados.</div>
           </div>
-          <span class="badge badge-purple">Probabilidade</span>
+          <span class="chip">Probabilidade</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/estatistica-pratica.jpg" alt="Estatística Prática para Cientistas de Dados"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Estatística Prática para Cientistas de Dados indisponível">E</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -220,7 +199,7 @@
             <div class="book-author">Peter Bruce &amp; Andrew Bruce · 2019</div>
             <div class="book-note">Abordagem moderna e aplicada da estatística voltada para quem trabalha com dados no dia a dia. Cobre os conceitos que realmente importam com foco em intuição e prática.</div>
           </div>
-          <span class="badge badge-purple">Estatística</span>
+          <span class="chip">Estatística</span>
         </div>
       </div>
     </div>
@@ -231,9 +210,7 @@
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/storytelling-dados.jpg" alt="Storytelling com Dados"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de Storytelling com Dados indisponível">S</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -241,15 +218,13 @@
             <div class="book-author">Cole Nussbaumer Knaflic · 2015</div>
             <div class="book-note">O melhor livro sobre visualização de dados orientada à comunicação. Ensina a eliminar ruído visual, escolher o gráfico certo e construir narrativas com dados. Transformou como apresento análises.</div>
           </div>
-          <span class="badge badge-gray">Visualização</span>
+          <span class="chip">Visualização</span>
         </div>
       </div>
 
       <div class="book-item">
         <div class="book-cover">
-          <img src="capas/data-warehouse-toolkit.jpg" alt="The Data Warehouse Toolkit"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="book-cover-placeholder" style="display:none">📖</div>
+          <div class="book-cover-placeholder" role="img" aria-label="Capa de The Data Warehouse Toolkit indisponível">T</div>
         </div>
         <div class="book-body">
           <div class="book-main">
@@ -257,11 +232,15 @@
             <div class="book-author">Ralph Kimball · 2013</div>
             <div class="book-note">A referência definitiva em modelagem dimensional. Fundamental para quem constrói pipelines de dados, dashboards e relatórios em Power BI ou qualquer ferramenta de BI.</div>
           </div>
-          <span class="badge badge-gray">Engenharia de Dados</span>
+          <span class="chip">Engenharia de Dados</span>
         </div>
       </div>
     </div>
 
+    <div class="btn-row" style="margin:3rem 0 5rem;">
+      <a href="about.html" class="btn btn--primary">← Voltar para Sobre</a>
+      <a href="blog.html" class="btn">Notas técnicas</a>
+    </div>
   </div>
 </main>
 

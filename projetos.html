@@ -1,119 +1,304 @@
-﻿<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
 <head>
-  <meta charset="UTF-8"/>
-  <script>!function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}();</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Projetos de automação contábil com Python, dashboards Power BI e análise de dados de Victor Ramos."/>
-  <link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos.html"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Projetos — Victor Ramos"/>
-  <meta property="og:description" content="Projetos de automação contábil com Python, dashboards Power BI e análise de dados de Victor Ramos."/>
-  <meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos.html"/>
-  <meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
-  <meta property="og:locale" content="pt_BR"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="Projetos — Victor Ramos"/>
-  <meta name="twitter:description" content="Projetos de automação contábil com Python, dashboards Power BI e análise de dados de Victor Ramos."/>
-  <meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
-  <meta name="author" content="Victor Ramos Alves de Matos"/>
-  <title>Projetos — Victor Ramos</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>V</text></svg>"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Trabalho — Projetos de dados de Victor Ramos</title>
+<meta name="description" content="Projetos de Data Analytics e engenharia de dados: Football Intel (7.512 partidas, motor estatístico próprio) e Chicago Marathon Analytics (931.958 registros, star schema)."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Trabalho — Projetos de dados de Victor Ramos"/>
+<meta property="og:description" content="Football Intel e Chicago Marathon Analytics: pipelines completos, do dado bruto ao produto."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Trabalho — Projetos de dados de Victor Ramos"/>
+<meta name="twitter:description" content="Football Intel e Chicago Marathon Analytics: pipelines completos, do dado bruto ao produto."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
-<body data-page="projetos">
+<body data-page="trabalho" data-lang="pt">
 
-<main>
+<main id="conteudo">
   <div class="wrap">
-    <div class="page-header">
-      <h1>Projetos</h1>
-      <p>Automações, dashboards e ferramentas que desenvolvi ao longo dos meus estudos sobre programação. Alguns para resolver problemas reais do dia a dia contábil e financeiro, outros para assuntos pessoais e outros para treinamentos.</p>
-    </div>
 
-    <div class="project-list">
+    <header class="page-hero">
+      <p class="page-kicker">Trabalho</p>
+      <h1 class="page-title">Projetos</h1>
+      <p class="page-lede">
+        O que eu construí, por que construí e o que aprendeu no caminho. Priorizo
+        projetos que exigem o ciclo completo — do dado bruto à decisão — em vez de
+        exercícios isolados de ferramenta.
+      </p>
+    </header>
 
-      <div class="project-card">
-        <div class="project-card-header">
-          <div class="project-title">Calculadora Fiscal Freelancer</div>
-          <span class="project-year">Em construção</span>
-        </div>
-        <div class="project-desc">
-          <p>
-            Ferramenta web que compara, lado a lado, quanto um freelancer brasileiro que
-            atende plataformas como Upwork e Workana pagaria de impostos em cada regime
-            tributário: Pessoa Física (autônomo), MEI, Simples Nacional (com Fator R) e
-            Lucro Presumido. O usuário informa o faturamento — inclusive em dólar, com
-            conversão automática — e os custos operacionais (taxa da plataforma, câmbio,
-            contador), e recebe uma recomendação explicada de qual regime deixa mais
-            dinheiro no bolso.
-          </p>
-          <p>
-            Os cálculos já consideram o exercício de 2026, incorporando a Lei 15.270/2025
-            e a fase de testes da Reforma Tributária. Além da comparação, a ferramenta
-            traz um otimizador de pró-labore, alertas de fronteira entre regimes, gráficos
-            interativos com os pontos de virada de faturamento e exportação de relatório
-            em PDF para levar ao contador.
-          </p>
-          <p>
-            Construída em Python com Streamlit e Plotly, com o motor de cálculo tributário
-            isolado em módulo próprio e coberto por testes automatizados.
-          </p>
-        </div>
-        <div class="project-meta">
-          <span class="badge badge-blue">Python</span>
-          <span class="badge badge-blue">Streamlit</span>
-          <span class="badge badge-purple">Tributário</span>
-          <span class="badge badge-gray">Em construção</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-card-header">
-          <div class="project-title">I Got It — Música &amp; Letras</div>
-          <span class="project-year">Em construção</span>
-        </div>
-        <div class="project-desc">
-          <p>
-            Buscador de letras de músicas com IA: o usuário pode pesquisar por título,
-            artista ou apenas um trecho da letra que ficou na memória, e o app encontra
-            a música. A experiência inclui karaokê com letra sincronizada, prévias de
-            áudio de 30 segundos com player global e fila, biografia dos artistas e
-            playlists inteligentes.
-          </p>
-          <p>
-            Funciona como PWA com suporte offline e combina fontes gratuitas de dados
-            (LRCLIB, lyrics.ovh, iTunes e Wikipedia) com recursos de IA via Google Gemini —
-            servidos por função serverless que mantém a chave de API protegida no servidor.
-            Um cache em duas camadas (memória + localStorage) garante respostas rápidas
-            mesmo em conexões instáveis.
-          </p>
-          <p>
-            Desenvolvido em React com TypeScript, testado com Vitest e com deploy na Vercel.
-          </p>
-        </div>
-        <div class="project-meta">
-          <span class="badge badge-green">React</span>
-          <span class="badge badge-green">TypeScript</span>
-          <span class="badge badge-purple">IA</span>
-          <span class="badge badge-gray">Em construção</span>
-        </div>
-      </div>
-
-    </div>
-
-    <p class="charts-intro" style="margin-top:2rem;">
-      Novos projetos com código aberto serão publicados no meu
-      <a href="https://github.com/Oceanthief" target="_blank" rel="noopener">GitHub</a>.
-    </p>
   </div>
+
+  <!-- ═══════════════ PROJETO 01 — DESTAQUE ═══════════════ -->
+  <section class="section section--flush">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Em destaque</p>
+      </div>
+
+      <!-- ───── PROJETO 01 — FOOTBALL INTEL ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 01 · EM ANDAMENTO</p>
+          <h2 class="project-name">
+            <a href="projetos/football-intel.html">Football Intel</a>
+          </h2>
+          <p class="project-tagline">
+            Plataforma de inteligência esportiva construída do zero sobre 7.512 partidas de
+            13 competições. Pipeline em Python que audita e trata a base, motor estatístico
+            próprio no navegador — Welch, intervalo de Wilson, correção de Benjamini-Hochberg
+            e encolhimento bayesiano — e um dashboard de 17 telas que roda offline, sem
+            servidor e sem nenhuma dependência externa.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value">7.512</div>
+              <div class="project-metric-label">Partidas</div>
+            </div>
+            <div>
+              <div class="project-metric-value">34.830</div>
+              <div class="project-metric-label">Cartões</div>
+            </div>
+            <div>
+              <div class="project-metric-value">489</div>
+              <div class="project-metric-label">Árbitros</div>
+            </div>
+            <div>
+              <div class="project-metric-value">0</div>
+              <div class="project-metric-label">Dependências</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">pandas</span>
+            <span class="chip chip--accent">JavaScript</span>
+            <span class="chip">Estatística aplicada</span>
+            <span class="chip">ETL</span>
+            <span class="chip">SVG</span>
+            <span class="chip">Design system</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;">
+            <span class="status-tag status-tag--live">Em desenvolvimento ativo</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="projetos/football-intel.html" class="btn btn--primary">
+              Ver estudo de caso
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <!-- DEMO AO VIVO: ver instruções em projetos/football-intel.html
+            <a href="demos/football-intel.html" class="btn" target="_blank" rel="noopener">Abrir o dashboard</a>
+            -->
+          </div>
+        </div>
+
+        <figure class="shot">
+          <img src="imagens/football-intel/home.png" loading="lazy" width="1400" height="1000"
+               alt="Tela inicial do Football Intel, com barra de filtros, cartões de indicadores e o painel de insight do dia."/>
+          <figcaption>Início — decisão rápida sobre o recorte ativo</figcaption>
+        </figure>
+      </article>
+
+      <!-- ───── PROJETO 02 — CHICAGO MARATHON ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 02</p>
+          <h2 class="project-name">
+            <a href="projetos/chicago-marathon-analytics.html">Chicago Marathon Analytics</a>
+          </h2>
+          <p class="project-tagline">
+            Pipeline analítico de ponta a ponta sobre 25 anos de resultados da Maratona de
+            Chicago. Ingestão, resolução de identidade de atletas com chave determinística,
+            normalização de códigos de país, modelagem em star schema e 17 análises
+            validadas em SQL.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value">931.958</div>
+              <div class="project-metric-label">Registros</div>
+            </div>
+            <div>
+              <div class="project-metric-value">25</div>
+              <div class="project-metric-label">Edições</div>
+            </div>
+            <div>
+              <div class="project-metric-value">17</div>
+              <div class="project-metric-label">Análises</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">SQL</span>
+            <span class="chip chip--accent">Power BI</span>
+            <span class="chip">pandas</span>
+            <span class="chip">Star schema</span>
+            <span class="chip">ETL</span>
+            <span class="chip">DAX</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;"><span class="status-tag status-tag--live">Concluído · dataset publicado</span></p>
+
+          <div class="btn-row">
+            <a href="projetos/chicago-marathon-analytics.html" class="btn btn--primary">
+              Ver estudo de caso
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn" target="_blank" rel="noopener">Dataset no Kaggle</a>
+          </div>
+        </div>
+
+        <figure class="project-visual">
+          <figcaption class="pipeline-detail" style="margin-bottom:1rem;">MODELO DIMENSIONAL — 1 FATO · 5 DIMENSÕES</figcaption>
+          <svg viewBox="0 0 700 390" role="img" aria-label="Diagrama de esquema estrela com a tabela fato_resultado ao centro e cinco dimensões ao redor" style="width:100%;height:auto;">
+            <g class="schema-line" stroke-width="1.5" stroke-dasharray="4 4">
+              <line x1="350" y1="195" x2="115" y2="70"/>
+              <line x1="350" y1="195" x2="330" y2="60"/>
+              <line x1="350" y1="195" x2="585" y2="70"/>
+              <line x1="350" y1="195" x2="115" y2="322"/>
+              <line x1="350" y1="195" x2="585" y2="322"/>
+            </g>
+            <g>
+              <rect class="schema-dim" x="40"  y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+              <text class="schema-title" x="56" y="60">dim_atleta</text>
+              <text class="schema-sub"   x="56" y="78">atleta_key (MD5)</text>
+              <rect class="schema-dim" x="255" y="24"  width="150" height="72" rx="8" stroke-width="1.5"/>
+              <text class="schema-title" x="271" y="50">dim_edicao</text>
+              <text class="schema-sub"   x="271" y="68">ano · data</text>
+              <rect class="schema-dim" x="510" y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+              <text class="schema-title" x="526" y="60">dim_pais</text>
+              <text class="schema-sub"   x="526" y="78">ISO / IOC</text>
+              <rect class="schema-dim" x="40"  y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+              <text class="schema-title" x="56" y="312">dim_divisao</text>
+              <text class="schema-sub"   x="56" y="330">faixa · gênero</text>
+              <rect class="schema-dim" x="510" y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+              <text class="schema-title" x="526" y="312">dim_clima</text>
+              <text class="schema-sub"   x="526" y="330">temp · vento · UR</text>
+            </g>
+            <rect class="schema-fact" x="262" y="150" width="176" height="92" rx="8" stroke-width="2"/>
+            <text class="schema-title" x="280" y="176" style="font-weight:500;">fato_resultado</text>
+            <text class="schema-sub"   x="280" y="196">5 chaves estrangeiras</text>
+            <text class="schema-sub"   x="280" y="216">tempo_full_seg · posição</text>
+          </svg>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EM CONSTRUÇÃO ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Também em construção</p>
+        <h2 class="section-title">Outros projetos ativos</h2>
+        <p class="section-sub">
+          Publicados aqui com o estágio real de desenvolvimento — sem prometer o que
+          ainda não está pronto.
+        </p>
+      </div>
+
+      <div class="project-grid reveal">
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">PROJETO 03</p>
+            <span class="status-tag">Em construção</span>
+          </div>
+          <h3>Calculadora Fiscal Freelancer</h3>
+          <p>
+            Ferramenta que compara, lado a lado, quanto um freelancer brasileiro pagaria
+            de impostos em cada regime tributário — Pessoa Física, MEI, Simples Nacional
+            com Fator R e Lucro Presumido — a partir do faturamento (inclusive em dólar,
+            com conversão) e dos custos operacionais.
+          </p>
+          <p>
+            Inclui otimizador de pró-labore, alertas de fronteira entre regimes, gráficos
+            com os pontos de virada de faturamento e exportação de relatório em PDF.
+            O motor de cálculo tributário fica isolado em módulo próprio, coberto por
+            testes automatizados.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">Plotly</span>
+            <span class="chip">Testes automatizados</span>
+          </div>
+          <p style="font-size:var(--fs-xs);color:var(--ink-3);">
+            Regras vigentes para o exercício de 2026, incorporando a Lei 15.270/2025.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">PROJETO 04</p>
+            <span class="status-tag">Em construção</span>
+          </div>
+          <h3>I Got It — Música &amp; Letras</h3>
+          <p>
+            Buscador de letras que encontra a música a partir de um trecho lembrado, além
+            de título ou artista. Karaokê com letra sincronizada, prévias de áudio com
+            player global e fila, biografia de artistas e playlists.
+          </p>
+          <p>
+            PWA com suporte offline, combinando fontes abertas de dados com recursos de IA
+            servidos por função serverless que mantém a chave de API protegida. Cache em
+            duas camadas — memória e localStorage — para responder bem em conexão instável.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">React</span>
+            <span class="chip chip--accent">TypeScript</span>
+            <span class="chip">Vitest</span>
+            <span class="chip">PWA</span>
+            <span class="chip">Serverless</span>
+          </div>
+          <p style="font-size:var(--fs-xs);color:var(--ink-3);">
+            Deploy na Vercel.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="repo-bar">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">Código e datasets</p>
+          <p class="repo-bar-sub">
+            Repositórios no GitHub e conjuntos de dados publicados no Kaggle.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a href="https://github.com/Oceanthief" class="btn btn--primary" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.kaggle.com/ramostherunning" class="btn" target="_blank" rel="noopener">Kaggle</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <script src="js/site.js"></script>
 </body>
 </html>
-
-
-
