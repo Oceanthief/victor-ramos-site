@@ -33,11 +33,11 @@
       { id: 'contato',     label: 'Contato',     href: 'index.html#contato' }
     ],
     en: [
-      { id: 'trabalho',    label: 'Work',       href: 'index.html#trabalho' },
-      { id: 'experiencia', label: 'Experience', href: 'index.html#experiencia' },
+      { id: 'trabalho',    label: 'Work',       href: 'index.html#work' },
+      { id: 'experiencia', label: 'Experience', href: 'index.html#experience' },
       { id: 'sobre',       label: 'About',      href: 'about.html' },
-      { id: 'cv',          label: 'Résumé',     href: 'cv.html' },
-      { id: 'contato',     label: 'Contact',    href: 'index.html#contato' }
+      { id: 'cv',          label: 'CV',         href: 'cv.html' },
+      { id: 'contato',     label: 'Contact',    href: 'index.html#contact' }
     ]
   };
 
@@ -67,6 +67,11 @@
       email: 'Email'
     }
   }[lang];
+
+  /* O id do bloco de conteudo acompanha o idioma da pagina, para que a
+     ancora do link "pular para o conteudo" nao apareca em portugues no site
+     em ingles. */
+  var CONTENT_ID = lang === 'en' ? 'content' : 'conteudo';
 
   /* Caminho para a versão no outro idioma.
      PT vive na raiz; EN vive em /en/. */
@@ -100,7 +105,7 @@
     '</button>';
 
   var header =
-    '<a href="#conteudo" class="skip-link">' + T.skip + '</a>' +
+    '<a href="#' + CONTENT_ID + '" class="skip-link">' + T.skip + '</a>' +
     '<header class="site-header" id="siteHeader">' +
       '<div class="wrap header-inner">' +
         '<a href="' + root + 'index.html" class="site-name">' +
