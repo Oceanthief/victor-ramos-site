@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Football Intel — Estudo de caso · Victor Ramos</title>
+<meta name="description" content="Plataforma de inteligência esportiva sobre 7.512 partidas e 34.830 cartões: pipeline Python, motor estatístico próprio (Welch, Wilson, Benjamini-Hochberg), biblioteca de gráficos SVG sem dependências e limitações declaradas."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/football-intel.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Football Intel — Estudo de caso"/>
+<meta property="og:description" content="7.512 partidas, 34.830 cartões, motor estatístico próprio e zero dependências externas."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/football-intel/home.png"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Football Intel — Estudo de caso"/>
+<meta name="twitter:description" content="7.512 partidas, 34.830 cartões, motor estatístico próprio e zero dependências externas."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/football-intel/home.png"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="pt" data-root="../">
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Trilha de navegação">
+      <a href="../index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <a href="../projetos.html">Trabalho</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Football Intel</span>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="page-hero">
+      <p class="page-kicker">Projeto 01 — Estudo de caso</p>
+      <h1 class="page-title">Football Intel</h1>
+      <p class="page-lede">
+        Uma plataforma de inteligência esportiva construída do zero: pipeline em Python
+        que audita e trata a base, motor estatístico próprio no navegador e um dashboard
+        de 17 telas que roda offline, sem servidor e sem uma única dependência externa.
+      </p>
+
+      <p style="margin-top:1.5rem;">
+        <span class="status-tag status-tag--live">Em desenvolvimento ativo</span>
+      </p>
+
+      <div class="btn-row" style="margin-top:1.5rem;">
+        <a href="#produto" class="btn btn--primary">
+          Ver o produto
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#engenharia" class="btn">As decisões técnicas</a>
+
+        <!--
+          DEMO AO VIVO — pronto para ativar.
+          Passo 1: copie output/dashboard.html para  demos/football-intel.html
+          Passo 2: descomente o bloco abaixo (e o equivalente em
+                   projetos.html, index.html e en/projetos/football-intel.html)
+
+        <a href="../demos/football-intel.html" class="btn btn--accent" target="_blank" rel="noopener">
+          Abrir o dashboard
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        -->
+      </div>
+    </header>
+
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-key">Papel</p>
+        <p class="case-meta-val">Projeto individual — dados, motor e produto</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Base</p>
+        <p class="case-meta-val">7.512 partidas · 13 competições</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Período</p>
+        <p class="case-meta-val">Fev/2024 a Ago/2026</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Stack</p>
+        <p class="case-meta-val">Python · pandas · SQL analítico · JavaScript · SVG</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ NÚMEROS ═══════════════ -->
+  <section class="wrap" aria-label="Volume da base">
+    <div class="proof">
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="7512" data-count-formatted="7.512">7.512</span></div>
+        <p class="proof-label">Partidas auditadas linha a linha
+          <span class="proof-note">13 competições · 6 temporadas</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="34830" data-count-formatted="34.830">34.830</span></div>
+        <p class="proof-label">Eventos de cartão individuais
+          <span class="proof-note">95,9% ligados à partida de origem</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="489" data-count-formatted="489">489</span></div>
+        <p class="proof-label">Árbitros perfilados
+          <span class="proof-note">439 equipes · 7.691 jogadores</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="0" data-count-formatted="0">0</span></div>
+        <p class="proof-label">Dependências externas no dashboard
+          <span class="proof-note">Sem CDN · funciona offline</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ O PROBLEMA ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — O problema</p>
+        <h2 class="section-title">Uma planilha não é uma base analítica</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          O ponto de partida foi uma única planilha Excel com resultados, estatísticas de
+          partida e eventos de cartão de treze competições. Tudo estava lá — e nada era
+          consultável. As abas tinham formatos diferentes, nomes chegavam com a codificação
+          corrompida, competições inteiras apareciam duplicadas e uma coluna de rodada tinha
+          virado data serial do Excel.
+        </p>
+        <p>
+          Mais importante: mesmo depois de limpa, a base <strong>induz ao erro</strong>.
+          Ranquear árbitros pela média de cartões parece óbvio e está errado — a média mede
+          em boa parte o campeonato em que ele trabalha, não o profissional. Foi isso que
+          definiu o objetivo do produto: não exibir números, mas
+          <strong>entregar cada número com o contexto que o torna utilizável</strong> —
+          referência da competição, percentil, tendência recente e tamanho real da amostra.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ O PRODUTO ═══════════════ -->
+  <section class="section" id="produto">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — O produto</p>
+        <h2 class="section-title">17 telas, cinco decisões</h2>
+        <p class="section-sub">
+          A primeira versão tinha 15 abas planas. Reorganizei em cinco grupos por
+          profundidade de uso — sem remover nenhuma análise.
+        </p>
+      </div>
+
+      <figure class="shot reveal">
+        <img src="../imagens/football-intel/home.png" loading="lazy" width="1400" height="1000"
+             alt="Tela inicial do Football Intel: cabeçalho com 7.512 partidas e 34.830 cartões, barra de filtros por campeonato, temporada, equipe, árbitro e mando, cartões de KPI e um painel de insight do dia."/>
+        <figcaption>Início — KPIs, Data Quality Score e o insight de maior relevância no recorte ativo</figcaption>
+      </figure>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Cada filtro recalcula tudo. O princípio de arquitetura é que
+          <strong>o HTML recebe os dados, não os resultados</strong>: rankings, médias,
+          últimos cinco jogos, correlações e limiares de extremo são computados no navegador
+          sobre o recorte filtrado. Nada está fixado no código — quando a planilha ganha uma
+          temporada ou uma competição nova, ela aparece sozinha nos filtros.
+        </p>
+      </div>
+
+      <div class="shot-grid reveal" style="margin-top:2.5rem;">
+        <figure class="shot">
+          <img src="../imagens/football-intel/match-intelligence.png" loading="lazy" width="1400" height="1050"
+               alt="Tela Match Intelligence do Football Intel, com análise de confronto em múltiplas dimensões."/>
+          <figcaption>Match Intelligence — confronto em sete dimensões, com correção FDR</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/football-intel/correlacoes.png" loading="lazy" width="1400" height="1050"
+               alt="Matriz de correlação do Football Intel com 17 métricas, escala divergente de vermelho a azul, e um aviso destacado de que correlação mede co-movimento e não causa."/>
+          <figcaption>Analytics Lab — matriz de correlação com o aviso de causalidade fixo no topo</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENGENHARIA ═══════════════ -->
+  <section class="section" id="engenharia">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — Engenharia</p>
+        <h2 class="section-title">As decisões que definem o projeto</h2>
+      </div>
+
+      <div class="prose">
+        <h3>1. Um motor estatístico próprio, porque a aproximação não bastava</h3>
+        <p>
+          A primeira versão testava significância com <code>|t| &gt; 1,96</code> e usava a
+          aproximação normal para intervalos de proporção. Isso produz limites impossíveis
+          em proporções extremas e ignora graus de liberdade. Separei toda a inferência num
+          módulo — <code>engine.js</code> — que nenhuma tela pode contornar:
+        </p>
+      </div>
+
+      <div class="data-table-wrap reveal" style="margin-top:2rem;">
+        <table class="data-table">
+          <caption class="visually-hidden">Rotinas do motor estatístico</caption>
+          <thead>
+            <tr><th scope="col">Rotina</th><th scope="col">O que faz</th><th scope="col">Por que importa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">ibeta</td><td>Beta incompleta regularizada (fração continuada de Lentz)</td><td>Base do p-valor exato</td></tr>
+            <tr><td class="strong">corr</td><td>Pearson + p exato + IC95 por z de Fisher + r²</td><td>Antes devolvia só o <em>r</em></td></tr>
+            <tr><td class="strong">welch</td><td>Welch com g.l. de Satterthwaite + IC95 + <em>d</em> de Cohen</td><td>Graus de liberdade corretos para variâncias desiguais</td></tr>
+            <tr><td class="strong">propCI</td><td>Intervalo de Wilson para proporções</td><td>A normal gera limites fora de [0,1]</td></tr>
+            <tr><td class="strong">fdr</td><td>Correção de Benjamini-Hochberg</td><td>O produto faz dezenas de testes simultâneos</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h3>2. Amostras pequenas são encolhidas, não excluídas</h3>
+        <p>
+          Rankings de árbitro usam <strong>encolhimento bayesiano empírico</strong>: a média
+          individual é puxada em direção à média global com peso proporcional à escassez de
+          jogos. Sem isso, um árbitro com três partidas lidera o ranking por acaso. Com isso,
+          ele aparece perto da média até acumular evidência suficiente para se destacar.
+        </p>
+
+        <h3>3. Quarentena de métricas por distribuição, não por linha</h3>
+        <p>
+          Nas temporadas recentes o coletor grava as estatísticas avançadas
+          <strong>por posição</strong>. Quando o provedor omite uma estatística naquela
+          partida, todas as seguintes escorregam uma casa — e o resultado é um xG de 94 numa
+          partida da Libertadores, ou desarmes certos maiores que os desarmes totais.
+        </p>
+        <p>
+          O defeito é sistemático por lote de coleta, não aleatório por linha. Então a
+          validação julga a <strong>distribuição de cada métrica dentro de cada
+          competição</strong> e descarta a combinação inteira quando ela não é compatível
+          com futebol. O xG do Brasileirão (mediana ~1,3) sobrevive; o da Libertadores
+          (mediana ~94) é removido.
+        </p>
+      </div>
+
+      <div class="versus reveal" style="margin-top:2rem;">
+        <div class="versus-side">
+          <p class="versus-key">Validação linha a linha</p>
+          <p class="versus-value">3,4%</p>
+          <p class="versus-note">
+            das combinações métrica × competição sobreviveriam. A abordagem intuitiva
+            destruiria a base avançada inteira.
+          </p>
+        </div>
+        <div class="versus-side versus-side--win">
+          <p class="versus-key">Validação por distribuição</p>
+          <p class="versus-value">77,5%</p>
+          <p class="versus-note">
+            <strong>348 de 449</strong> combinações preservadas, 101 descartadas.
+            O núcleo de métricas não foi afetado — passa em 100% das checagens de integridade.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>4. Uma biblioteca de gráficos escrita à mão</h3>
+        <p>
+          Barras, colunas, linhas, dispersão, heatmap, boxplot e tabelas ordenáveis são
+          primitivas SVG próprias, com tooltip e realce. O motivo não é purismo: o painel
+          precisa <strong>abrir com duplo clique, sem servidor e sem internet</strong>, e não
+          pode quebrar porque um CDN saiu do ar. A consequência boa foi o controle total da
+          acessibilidade — o que permitiu chegar a 67 de 67 gráficos descritos.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2rem;">
+        <div class="code-head">
+          <span>Validação numérica do motor sobre a base real</span>
+          <span>7.512 partidas</span>
+        </div>
+<pre><code><span class="c">// Cartões versus margem de gols — o equilíbrio da partida</span>
+corr(cartões, margem)    r = <span class="k">-0,1722</span>   p &lt; 1e-10
+                         IC95 [-0,194; -0,150]   n = 7.512
+
+<span class="c">// Partidas equilibradas (margem ≤ 1) contra decididas (margem ≥ 3)</span>
+welch(≤1 <span class="k">vs</span> ≥3)         diff = <span class="k">1,260</span> cartões
+                         df = 1783,1  IC95 [1,115; 1,405]  d = 0,526
+
+<span class="c">// Correção para múltiplas comparações</span>
+FDR (Benjamini-Hochberg) 36 pares testados → 35 com p &lt; 0,05
+                         <span class="k">35 sobrevivem</span> à correção</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ACHADOS ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Achados</p>
+        <h2 class="section-title">O que a base mostrou</h2>
+      </div>
+
+      <div class="findings reveal">
+        <div class="finding">
+          <p class="finding-value">17,7%</p>
+          <p class="finding-text">
+            da variância de cartões por partida é explicada pelo <strong>árbitro</strong>
+            (eta quadrado); o campeonato explica 7,8%. Os ~82% restantes são específicos do
+            jogo — o árbitro <strong>condiciona, não determina</strong>.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">65%</p>
+          <p class="finding-text">
+            de diferença entre a competição mais e a menos cartonada — de
+            <strong>3,34</strong> (Eredivisie) a <strong>5,51</strong> (Série B) por partida.
+            É por isso que a média bruta de um árbitro mede sobretudo a liga dele.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">−0,17</p>
+          <p class="finding-text">
+            a correlação entre cartões e margem de gols: <strong>o equilíbrio prevê cartões
+            melhor que o total de gols</strong>. Jogos apertados rendem 1,26 cartão a mais
+            que jogos decididos.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">9,9×</p>
+          <p class="finding-text">
+            o excesso de cartões registrados no minuto 90 em relação ao esperado pela
+            vizinhança — os acréscimos não têm minuto próprio. É uma
+            <strong>limitação da coleta</strong>, não um padrão do futebol.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ QUALIDADE DE DADOS ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Qualidade de dados</p>
+        <h2 class="section-title">O que estava quebrado e como foi tratado</h2>
+        <p class="section-sub">
+          Um relatório de auditoria é regenerado a cada build. Nada é corrigido em silêncio.
+        </p>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <caption class="visually-hidden">Problemas encontrados na base e tratamento aplicado</caption>
+          <thead>
+            <tr><th scope="col">Problema</th><th scope="col">Evidência</th><th scope="col">Tratamento</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="strong">Codificação corrompida</td>
+              <td><code>BrasileirAo SArie A</code>, <code>MartAn Zubimendi</code></td>
+              <td>Reconstrução byte a byte, aplicada em cascata. <strong>100% dos nomes recuperados</strong>; zero equipes ou árbitros órfãos depois do reparo</td>
+            </tr>
+            <tr>
+              <td class="strong">Partidas duplicadas</td>
+              <td>929 identificadores repetidos — duas competições inteiras duplicadas</td>
+              <td>Deduplicação por identificador e, na ausência dele, por chave natural</td>
+            </tr>
+            <tr>
+              <td class="strong">Rodada como data serial</td>
+              <td>Valores <code>1900-01-05</code> numa aba inteira</td>
+              <td>Conversão de volta para inteiro</td>
+            </tr>
+            <tr>
+              <td class="strong">Códigos 635/636 na rodada</td>
+              <td>Libertadores, Sudamericana, Champions e Europa League</td>
+              <td><strong>Não são erro</strong> — são códigos de fase eliminatória. Mantidos e sinalizados</td>
+            </tr>
+            <tr>
+              <td class="strong">Minuto sentinela</td>
+              <td>1.752 cartões com <code>minuto = -5</code></td>
+              <td>Tratados como minuto desconhecido: fora das análises temporais, dentro das contagens</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Os <strong>outliers foram mantidos</strong>. Uma partida com 12 cartões é um evento
+          real e informativo, não um erro de digitação — e existe uma tela dedicada a
+          isolá-los. Excluir o extremo seria apagar exatamente o que interessa analisar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LIMITAÇÕES — A PARTE ESPECIAL ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">06 — Honestidade analítica</p>
+        <h2 class="section-title">As limitações são parte do produto</h2>
+        <p class="section-sub">
+          Esta é a seção de que mais me orgulho. O painel declara o que
+          <em>não</em> pode responder — na própria interface, não num rodapé.
+        </p>
+      </div>
+
+      <div class="limits reveal">
+        <div class="callout">
+          <span class="callout-mark">1</span>
+          <div class="callout-body">
+            <p class="callout-title">O minuto do cartão é censurado</p>
+            <p class="callout-text">
+              Acréscimos são registrados como 45' e 90'. Análises por faixa de 15 minutos
+              continuam válidas; o minuto exato nesses dois pontos <strong>não é
+              confiável</strong>, e a média do último cartão é subestimada.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">2</span>
+          <div class="callout-body">
+            <p class="callout-title">Métricas avançadas cobrem ~12% da base</p>
+            <p class="callout-text">
+              Escanteios, xG, grandes chances e duelos só existem nas temporadas recentes.
+              <strong>Não servem para comparar temporadas</strong> — e o painel diz isso onde
+              elas aparecem.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">3</span>
+          <div class="callout-body">
+            <p class="callout-title">Jogadores são identificados só pelo nome</p>
+            <p class="callout-text">
+              Sem identificador único, homônimos podem estar somados. E como a base não traz
+              minutos jogados, <strong>cartões por minuto de jogador não é calculável</strong> —
+              em vez de estimar, o painel usa cartões por partida e declara a troca.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout--accent">
+          <span class="callout-mark">4</span>
+          <div class="callout-body">
+            <p class="callout-title">Frequência histórica não é probabilidade futura</p>
+            <p class="callout-text">
+              A tela de mercados mostra <strong>frequência observada</strong>, não previsão.
+              A "odd justa" é o inverso da frequência, sem margem, e serve para comparação —
+              nunca como recomendação. Todo percentual vem com intervalo de confiança, e não
+              há ajuste para força das equipes, escalação ou importância do jogo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Declarar limitação custa credibilidade no curto prazo e ganha no longo. Um painel
+          que responde tudo é um painel em que não se pode confiar em nada — e a disciplina
+          de separar <em>o que o dado sustenta</em> de <em>o que eu gostaria que ele
+          sustentasse</em> veio direto da contabilidade, onde assinar um número tem
+          consequência.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MEDIÇÕES ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">07 — Verificação</p>
+        <h2 class="section-title">Medido, não afirmado</h2>
+        <p class="section-sub">
+          Acessibilidade e responsividade foram auditadas em execução, sobre as 17 telas.
+        </p>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <caption class="visually-hidden">Resultados da auditoria de acessibilidade, responsividade e desempenho</caption>
+          <thead>
+            <tr><th scope="col">Item</th><th scope="col">Resultado</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Gráficos SVG com <code>role="img"</code> e título</td><td class="num">67 / 67</td></tr>
+            <tr><td>Cabeçalhos de tabela com <code>scope</code> e foco por teclado</td><td class="num">237 / 237</td></tr>
+            <tr><td>Overflow horizontal a 500, 750 e 1006 px</td><td class="num">0 elementos</td></tr>
+            <tr><td>Aproveitamento do cache do motor analítico</td><td class="num">77%</td></tr>
+            <tr><td>Cards de compartilhamento determinísticos</td><td class="num">17 pontos</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2rem;">
+        <p>
+          A descrição textual de cada gráfico é <strong>gerada a partir dos próprios
+          dados</strong> quando não é informada à mão — então o gráfico é descrito para o
+          leitor de tela, não apenas nomeado.
+        </p>
+        <p>
+          <strong>O que não foi medido:</strong> viewports abaixo de 500 px. O Chrome headless
+          impõe essa largura mínima, então 320–414 px estão cobertos por CSS mas não
+          verificados. Prefiro registrar o limite do teste a apresentá-lo como aprovado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PRÓXIMOS PASSOS ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">08 — Em andamento</p>
+        <h2 class="section-title">O que vem a seguir</h2>
+        <p class="section-sub">
+          O projeto está em desenvolvimento ativo. Em ordem de retorno sobre esforço:
+        </p>
+      </div>
+
+      <div class="prose">
+        <ol>
+          <li>
+            <strong>Identificador de partida na aba de cartões</strong> (coleta) — elimina as
+            1.421 ligações hoje ambíguas e libera análises por partida sobre a base inteira.
+          </li>
+          <li>
+            <strong>Estatísticas gravadas por nome, não por posição</strong> (coleta) —
+            recupera as 101 combinações métrica × competição em quarentena.
+          </li>
+          <li>
+            <strong>Modelo de contagem para cartões</strong> — Poisson ou binomial negativa,
+            com árbitro, liga e equipes como covariáveis, transformando frequência histórica
+            em probabilidade condicional.
+          </li>
+          <li>
+            <strong>Força das equipes por Elo</strong> — o produto já mostrou que o equilíbrio
+            prevê cartões melhor que o total de gols; falta o preditor do próprio equilíbrio.
+          </li>
+          <li>
+            <strong>Testes unitários das rotinas estatísticas</strong> contra valores de
+            referência do R e do scipy.
+          </li>
+        </ol>
+      </div>
+
+      <div class="callout" style="margin-top:2.5rem;">
+        <span class="callout-mark" aria-hidden="true">→</span>
+        <div class="callout-body">
+          <p class="callout-title">Dívida técnica que eu mesmo registro</p>
+          <p class="callout-text">
+            O dataset embutido no HTML (2 MB) é aceitável offline, mas vira gargalo se a base
+            crescer cinco vezes — o caminho é paginação por competição sob demanda. Um dos
+            arquivos de telas ainda tem cerca de mil linhas e comporta nova divisão. E as
+            rotinas estatísticas ainda são validadas por comparação manual, não por teste
+            automatizado.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STACK ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">09 — Stack</p>
+        <h2 class="section-title">Ferramentas</h2>
+      </div>
+
+      <div class="skills">
+        <div class="skill-group">
+          <h3>Pipeline de dados</h3>
+          <ul class="skill-list">
+            <li class="is-core">Python</li><li class="is-core">pandas</li>
+            <li>openpyxl</li><li>ETL</li><li>Auditoria automatizada</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Estatística</h3>
+          <ul class="skill-list">
+            <li>Welch–Satterthwaite</li><li>IC de Wilson</li>
+            <li>Benjamini-Hochberg</li><li>Encolhimento bayesiano</li>
+            <li>Pearson com IC de Fisher</li><li><em>d</em> de Cohen</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Produto</h3>
+          <ul class="skill-list">
+            <li class="is-core">JavaScript</li><li>SVG</li>
+            <li>CSS design system</li><li>Zero dependências</li><li>Offline-first</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Arquitetura</h3>
+          <ul class="skill-list">
+            <li>Separação dados / apresentação</li><li>Contrato de dados colunar</li>
+            <li>Motor analítico isolado</li><li>Memoização por filtro</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="chicago-marathon-analytics.html" class="btn btn--primary">
+          Próximo projeto: Chicago Marathon
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="../projetos.html" class="btn">Todos os projetos</a>
+        <a href="../index.html#contato" class="btn btn--ghost">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Football Intel — Estudo de caso",
+  "description": "Plataforma de inteligência esportiva sobre 7.512 partidas e 34.830 eventos de cartão: pipeline Python, motor estatístico próprio e dashboard offline sem dependências.",
+  "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/projetos/football-intel.html",
+  "about": ["Data Analytics", "Data Engineering", "Estatística Aplicada", "Python", "ETL", "Visualização de Dados"]
+}
+</script>
+<script src="../js/site.js"></script>
+</body>
+</html>

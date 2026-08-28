@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chicago Marathon Analytics — Estudo de caso · Victor Ramos</title>
+<meta name="description" content="Pipeline analítico de ponta a ponta sobre 931.958 registros e 25 edições da Maratona de Chicago: ingestão, modelagem dimensional em star schema, resolução de identidade, análise SQL e Power BI."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Chicago Marathon Analytics — Estudo de caso"/>
+<meta property="og:description" content="931.958 registros, 25 edições, modelagem dimensional e 17 análises validadas em SQL."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Chicago Marathon Analytics — Estudo de caso"/>
+<meta name="twitter:description" content="931.958 registros, 25 edições, modelagem dimensional e 17 análises validadas em SQL."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="pt" data-root="../">
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Trilha de navegação">
+      <a href="../index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <a href="../projetos.html">Trabalho</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Chicago Marathon Analytics</span>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="page-hero">
+      <p class="page-kicker">Projeto 01 — Estudo de caso</p>
+      <h1 class="page-title">Chicago Marathon Analytics</h1>
+      <p class="page-lede">
+        Um pipeline analítico de ponta a ponta que transforma 25 anos de resultados
+        brutos da Maratona de Chicago em um modelo dimensional consultável — com
+        resolução de identidade de atletas, normalização de países e 17 análises validadas.
+      </p>
+
+      <div class="btn-row" style="margin-top:2rem;">
+        <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn btn--primary" target="_blank" rel="noopener">
+          Dataset público no Kaggle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <a href="#pipeline" class="btn">Ver a arquitetura</a>
+      </div>
+    </header>
+
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-key">Papel</p>
+        <p class="case-meta-val">Projeto individual — do dado bruto ao dashboard</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Período</p>
+        <p class="case-meta-val">Dados de 2000 a 2025</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Volume</p>
+        <p class="case-meta-val">931.958 registros de chegada</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Stack</p>
+        <p class="case-meta-val">Python · pandas · SQL · Power BI</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ O PROBLEMA ═══════════════ -->
+  <section class="section section--flush">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — O problema</p>
+        <h2 class="section-title">Dados públicos não são dados utilizáveis</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          Os resultados da Maratona de Chicago são publicados edição por edição, em páginas
+          separadas, com formatação que muda ao longo dos anos. Existe muito dado disponível
+          e quase nenhuma análise possível: não há como responder <em>"o campo de elite
+          ficou mais rápido na última década?"</em> ou <em>"quantos brasileiros correm
+          Chicago e em que ritmo?"</em> sem antes construir a base que sustenta a pergunta.
+        </p>
+        <p>
+          O objetivo do projeto não era produzir um gráfico bonito. Era o inverso do que
+          costuma aparecer em portfólio: <strong>passar o tempo onde o trabalho realmente
+          está</strong> — ingestão, padronização, resolução de identidade e modelagem — de
+          modo que a camada de análise ficasse trivial e, principalmente, confiável.
+        </p>
+        <p>
+          Como critério de sucesso, defini que o dataset final teria valor por si só e que
+          qualquer pessoa deveria conseguir refazer as análises a partir dele — por isso ele
+          foi publicado como recurso aberto, sob licença ODbL.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ OS DADOS ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — Os dados</p>
+        <h2 class="section-title">Origem, volume e o que estava quebrado</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          A base consolidada reúne <strong>931.958 registros de corredores que cruzaram a
+          linha de chegada</strong>, cobrindo <strong>25 edições entre 2000 e 2025</strong>
+          — 2020 não teve prova, cancelada pela pandemia. A ela somei uma tabela auxiliar de
+          <strong>condições climáticas de dia de prova</strong>, porque temperatura, umidade
+          e vento na largada explicam boa parte da variação de tempo entre edições.
+        </p>
+      </div>
+
+      <div class="data-table-wrap" style="margin-top:2rem;">
+        <table class="data-table">
+          <caption class="visually-hidden">Estrutura dos dados de origem</caption>
+          <thead>
+            <tr><th scope="col">Campo</th><th scope="col">Tipo</th><th scope="col">Problema encontrado</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">Name</td><td>texto livre</td><td>Capitalização inconsistente; mesmo atleta grafado de formas diferentes entre edições</td></tr>
+            <tr><td class="strong">Country</td><td>código de 3 letras</td><td>Mistura de padrões ISO 3166 e IOC para o mesmo país</td></tr>
+            <tr><td class="strong">Gender</td><td>M / F</td><td>Número de peito reutilizado entre gêneros na mesma edição</td></tr>
+            <tr><td class="strong">Division</td><td>faixa etária</td><td>Nomenclatura de faixas variando entre anos</td></tr>
+            <tr><td class="strong">Half Time</td><td>tempo</td><td>Ausente em parte dos registros — inclusive em atletas de elite</td></tr>
+            <tr><td class="strong">Finish Time</td><td>tempo</td><td>Texto, não tipo temporal; formatos mistos exigindo conversão tolerante a falha</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2rem;">
+        <p>
+          Nenhum desses problemas é exótico. São exatamente os mesmos que aparecem em
+          conciliação contábil: <strong>a mesma entidade descrita de formas diferentes por
+          sistemas diferentes</strong>. A diferença é a escala.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ O PIPELINE ═══════════════ -->
+  <section class="section" id="pipeline">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — O pipeline</p>
+        <h2 class="section-title">Arquitetura de ponta a ponta</h2>
+        <p class="section-sub">
+          Cada etapa é reexecutável e deixa um artefato verificável — nada depende
+          de um passo manual lembrado de memória.
+        </p>
+      </div>
+
+      <div class="pipeline reveal" role="img" aria-label="Fluxo do pipeline: dados brutos, ingestão, limpeza, transformação, modelo dimensional, análise SQL e Power BI">
+        <div class="pipeline-stage">
+          <p class="pipeline-num">01</p>
+          <p class="pipeline-name">Dados brutos</p>
+          <p class="pipeline-detail">Resultados por edição</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">02</p>
+          <p class="pipeline-name">Ingestão</p>
+          <p class="pipeline-detail">Carga em massa<br/>Tabela de staging</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">03</p>
+          <p class="pipeline-name">Limpeza</p>
+          <p class="pipeline-detail">Tipos, nulos<br/>Conversão tolerante</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">04</p>
+          <p class="pipeline-name">Transformação</p>
+          <p class="pipeline-detail">Identidade<br/>Normalização ISO/IOC</p>
+        </div>
+        <div class="pipeline-stage pipeline-stage--accent">
+          <p class="pipeline-num">05</p>
+          <p class="pipeline-name">Modelo dimensional</p>
+          <p class="pipeline-detail">Star schema<br/>1 fato · 5 dimensões</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">06</p>
+          <p class="pipeline-name">Análise SQL</p>
+          <p class="pipeline-detail">17 análises<br/>CTEs · window functions</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">07</p>
+          <p class="pipeline-name">Visualização</p>
+          <p class="pipeline-detail">matplotlib<br/>Power BI</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:3rem;font-size:var(--fs-lg);font-weight:600;letter-spacing:-0.02em;">O modelo dimensional</h3>
+      <p class="section-sub" style="margin-bottom:1.5rem;">
+        Uma tabela fato na granularidade de <em>um atleta em uma edição</em>, cercada por
+        cinco dimensões conformes.
+      </p>
+
+      <figure class="schema-figure reveal">
+        <svg viewBox="0 0 700 390" role="img" aria-labelledby="schemaTitle schemaDesc">
+          <title id="schemaTitle">Diagrama do esquema estrela</title>
+          <desc id="schemaDesc">A tabela fato fato_resultado no centro conecta-se a cinco dimensões: dim_atleta, dim_edicao, dim_pais, dim_divisao e dim_clima.</desc>
+
+          <!-- conexões -->
+          <g class="schema-line" stroke-width="1.5" stroke-dasharray="4 4">
+            <line x1="350" y1="195" x2="115" y2="70"/>
+            <line x1="350" y1="195" x2="330" y2="60"/>
+            <line x1="350" y1="195" x2="585" y2="70"/>
+            <line x1="350" y1="195" x2="115" y2="322"/>
+            <line x1="350" y1="195" x2="585" y2="322"/>
+          </g>
+
+          <!-- dimensões -->
+          <g>
+            <rect class="schema-dim" x="40"  y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="56" y="60">dim_atleta</text>
+            <text class="schema-sub"   x="56" y="78">atleta_key (MD5)</text>
+            <text class="schema-sub"   x="56" y="93">nome · gênero</text>
+
+            <rect class="schema-dim" x="255" y="24"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="271" y="50">dim_edicao</text>
+            <text class="schema-sub"   x="271" y="68">ano · data</text>
+            <text class="schema-sub"   x="271" y="83">nº de participantes</text>
+
+            <rect class="schema-dim" x="510" y="34"  width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="526" y="60">dim_pais</text>
+            <text class="schema-sub"   x="526" y="78">código ISO/IOC</text>
+            <text class="schema-sub"   x="526" y="93">nome · continente</text>
+
+            <rect class="schema-dim" x="40"  y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="56" y="312">dim_divisao</text>
+            <text class="schema-sub"   x="56" y="330">faixa etária</text>
+            <text class="schema-sub"   x="56" y="345">gênero</text>
+
+            <rect class="schema-dim" x="510" y="286" width="150" height="72" rx="8" stroke-width="1.5"/>
+            <text class="schema-title" x="526" y="312">dim_clima</text>
+            <text class="schema-sub"   x="526" y="330">temp. largada · UR</text>
+            <text class="schema-sub"   x="526" y="345">vento · condição</text>
+          </g>
+
+          <!-- fato -->
+          <rect class="schema-fact" x="262" y="150" width="176" height="92" rx="8" stroke-width="2"/>
+          <text class="schema-title" x="280" y="176" style="font-weight:500;">fato_resultado</text>
+          <text class="schema-sub"   x="280" y="196">5 chaves estrangeiras</text>
+          <text class="schema-sub"   x="280" y="212">tempo_half_seg</text>
+          <text class="schema-sub"   x="280" y="228">tempo_full_seg · posição</text>
+        </svg>
+        <figcaption style="margin-top:1rem;font-size:var(--fs-xs);color:var(--ink-3);">
+          Granularidade da fato: um registro por atleta por edição. Tempos armazenados em
+          segundos inteiros para permitir agregação sem perda de precisão.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENGENHARIA ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Engenharia</p>
+        <h2 class="section-title">As quatro decisões que sustentam o modelo</h2>
+      </div>
+
+      <div class="prose">
+        <h3>1. Chave determinística MD5 para identidade de atleta</h3>
+        <p>
+          Não existe identificador estável de atleta entre edições. O número de peito muda
+          todo ano; o nome varia em capitalização e acentuação. Usar um <code>IDENTITY</code>
+          incremental quebraria a rastreabilidade a cada recarga da base.
+        </p>
+        <p>
+          A solução foi gerar uma <strong>chave hash MD5 determinística</strong> a partir dos
+          atributos normalizados do atleta. A mesma entrada produz sempre a mesma chave, o que
+          torna o pipeline <em>idempotente</em>: reprocessar tudo do zero gera exatamente as
+          mesmas chaves, e recargas parciais não duplicam dimensão.
+        </p>
+
+        <h3>2. Padronização de código de país (ISO / IOC)</h3>
+        <p>
+          A base mistura os padrões ISO 3166 e IOC. São conflitantes: a Alemanha é
+          <code>DEU</code> em ISO e <code>GER</code> em IOC; a Suíça é <code>CHE</code> contra
+          <code>SUI</code>. Sem normalizar, o mesmo país aparece como duas linhas distintas em
+          qualquer agregação por nacionalidade — e toda análise de "quem domina o topo"
+          nasceria errada.
+        </p>
+
+        <h3>3. Duplicidade de número de peito entre gêneros</h3>
+        <p>
+          Em algumas edições o mesmo número de peito aparece nas provas masculina e feminina.
+          Tratar o peito como chave natural fundiria dois atletas diferentes em um só. A chave
+          de resolução passou a incluir o gênero, eliminando a colisão.
+        </p>
+
+        <h3>4. Conversão de tempo tolerante a falha</h3>
+        <p>
+          Os tempos chegam como texto em formatos mistos, e parte dos registros tem o tempo de
+          meia maratona ausente. Uma conversão rígida abortaria a carga inteira por causa de
+          poucas linhas. Optei por conversão tolerante — a linha inválida vira nulo e é
+          isolada, em vez de derrubar o processo — e por armazenar tempos em
+          <strong>segundos inteiros</strong>, o que permite média, desvio-padrão e diferença
+          sem os problemas de agregar tipos temporais.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2.5rem;">
+        <div class="code-head">
+          <span>SQL · conversão tolerante e normalização por Z-score</span>
+          <span>T-SQL</span>
+        </div>
+<pre><code><span class="c">-- Desempenho relativo à própria edição: normaliza o tempo pelo</span>
+<span class="c">-- desvio-padrão do ano, tornando anos quentes e frios comparáveis.</span>
+<span class="k">WITH</span> stats_ano <span class="k">AS</span> (
+    <span class="k">SELECT</span> Ano,
+           <span class="k">AVG</span>(<span class="k">CAST</span>(TempoFullSegundos <span class="k">AS FLOAT</span>)) <span class="k">AS</span> MediaSeg,
+           <span class="k">STDEV</span>(<span class="k">CAST</span>(TempoFullSegundos <span class="k">AS FLOAT</span>)) <span class="k">AS</span> DesvioSeg
+    <span class="k">FROM</span>   chicago.v_chicago_tempos
+    <span class="k">WHERE</span>  TempoFullSegundos <span class="k">IS NOT NULL</span>
+    <span class="k">GROUP BY</span> Ano
+)
+<span class="k">SELECT</span> t.Ano, t.Nome, t.Pais,
+       (t.TempoFullSegundos - s.MediaSeg) / <span class="k">NULLIF</span>(s.DesvioSeg, 0) <span class="k">AS</span> ZScoreTempo
+<span class="k">FROM</span>   chicago.v_chicago_tempos t
+<span class="k">JOIN</span>   stats_ano s <span class="k">ON</span> t.Ano = s.Ano
+<span class="k">ORDER BY</span> ZScoreTempo <span class="k">ASC</span>;   <span class="c">-- menores Z = performances mais destoantes</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ANÁLISE ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Análise</p>
+        <h2 class="section-title">As perguntas que o modelo passou a responder</h2>
+        <p class="section-sub">
+          17 análises validadas, escritas em SQL com CTEs e funções de janela sobre o
+          modelo dimensional.
+        </p>
+      </div>
+
+      <div class="prose">
+        <ul>
+          <li>O campo de elite ficou mais rápido? (média do Top 10 por edição)</li>
+          <li>Quantos corredores cruzam marcos de tempo — sub-2h10, sub-3h, sub-4h — por ano?</li>
+          <li>Qual a diferença média de tempo entre gêneros e como ela evoluiu?</li>
+          <li>Quais países mais colocam atletas no pódio e no Top 100 de cada edição?</li>
+          <li>Qual a probabilidade de sub-3h por faixa etária e gênero?</li>
+          <li>Como o clima do dia de prova se relaciona com o tempo médio da edição?</li>
+          <li>Quem faz <em>negative split</em> — segunda metade mais rápida que a primeira?</li>
+          <li>Como evoluiu a participação e o desempenho dos brasileiros?</li>
+          <li>Quais atletas participaram de todas as edições do recorte?</li>
+        </ul>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2.5rem;">
+        <div class="code-head">
+          <span>SQL · profundidade da elite por edição</span>
+          <span>Window function</span>
+        </div>
+<pre><code><span class="k">WITH</span> ranked <span class="k">AS</span> (
+    <span class="k">SELECT</span> Ano, Nome, TempoFullSegundos,
+           <span class="k">ROW_NUMBER</span>() <span class="k">OVER</span> (
+               <span class="k">PARTITION BY</span> Ano <span class="k">ORDER BY</span> TempoFullSegundos
+           ) <span class="k">AS</span> Pos
+    <span class="k">FROM</span>  chicago.v_chicago_tempos
+    <span class="k">WHERE</span> TempoFullSegundos <span class="k">IS NOT NULL</span>
+)
+<span class="k">SELECT</span> Ano, <span class="k">AVG</span>(TempoFullSegundos) <span class="k">AS</span> MediaTop10
+<span class="k">FROM</span>   ranked
+<span class="k">WHERE</span>  Pos &lt;= 10
+<span class="k">GROUP BY</span> Ano
+<span class="k">ORDER BY</span> Ano;</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RESULTADOS ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">06 — Resultados</p>
+        <h2 class="section-title">O que os dados mostraram</h2>
+        <p class="section-sub">
+          Números apurados sobre o recorte 2010–2025 do modelo (15 edições; 2020 não teve prova).
+        </p>
+      </div>
+
+      <div class="findings reveal">
+        <div class="finding">
+          <p class="finding-value">−4min39s</p>
+          <p class="finding-text">
+            A média do <strong>Top 10</strong> caiu de 2h09:47 (2010) para
+            <strong>2h05:08</strong> (2025) — o topo da prova ficou mensuravelmente mais rápido.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">5,8×</p>
+          <p class="finding-text">
+            Corredores <strong>sub-3h</strong> saltaram de 707 (2010) para
+            <strong>4.067</strong> (2025). Não é só a elite: a faixa competitiva inteira cresceu.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">7,6×</p>
+          <p class="finding-text">
+            A participação <strong>brasileira</strong> passou de 233 para
+            <strong>1.776</strong> corredores por edição, com o tempo médio caindo de
+            4h20:38 para 4h02:17.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">39 / 45</p>
+          <p class="finding-text">
+            Dos pódios do recorte, <strong>Quênia (28) e Etiópia (11)</strong> ocupam 39 das
+            45 posições — uma concentração que se manteve estável ao longo de 15 edições.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">66,6%</p>
+          <p class="finding-text">
+            Dois terços dos participantes terminam <strong>acima de 4h</strong>, e apenas
+            <strong>0,24%</strong> ficam abaixo de 2h30. A distribuição é fortemente assimétrica.
+          </p>
+        </div>
+        <div class="finding">
+          <p class="finding-value">2h21:51</p>
+          <p class="finding-text">
+            Melhor marca brasileira do recorte — <strong>Leonardo Santana de Olinda</strong>,
+            em 2025, superando a própria marca de 2023 (2h23:47).
+          </p>
+        </div>
+      </div>
+
+      <div class="data-table-wrap" style="margin-top:2.5rem;">
+        <table class="data-table">
+          <caption class="visually-hidden">Corredores abaixo de marcos de tempo por edição</caption>
+          <thead>
+            <tr>
+              <th scope="col">Edição</th>
+              <th scope="col">Sub-2h10</th>
+              <th scope="col">Sub-2h30</th>
+              <th scope="col">Sub-3h</th>
+              <th scope="col">Sub-4h</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">2010</td><td class="num">6</td><td class="num">72</td><td class="num">707</td><td class="num">8.293</td></tr>
+            <tr><td class="strong">2015</td><td class="num">2</td><td class="num">79</td><td class="num">940</td><td class="num">11.127</td></tr>
+            <tr><td class="strong">2019</td><td class="num">8</td><td class="num">140</td><td class="num">1.989</td><td class="num">16.559</td></tr>
+            <tr><td class="strong">2022</td><td class="num">14</td><td class="num">134</td><td class="num">2.069</td><td class="num">14.716</td></tr>
+            <tr><td class="strong">2025</td><td class="num">17</td><td class="num">196</td><td class="num">4.067</td><td class="num">23.287</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1rem;font-size:var(--fs-xs);color:var(--ink-3);">
+        Recorte de 5 das 15 edições analisadas, para leitura. Fonte: modelo do projeto.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ VISUALIZAÇÃO ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">07 — Visualização</p>
+        <h2 class="section-title">Da consulta ao dashboard</h2>
+        <p class="section-sub">
+          Exploração em matplotlib durante a análise; entrega final em Power BI, com o
+          modelo dimensional carregado diretamente e medidas em DAX.
+        </p>
+      </div>
+
+      <figure class="project-visual reveal">
+        <figcaption class="pipeline-detail" style="margin-bottom:1.25rem;">
+          DISTRIBUIÇÃO DE TEMPOS DE CHEGADA — 621.727 REGISTROS COM TEMPO VÁLIDO (2010–2025)
+        </figcaption>
+        <svg viewBox="0 0 700 300" role="img" aria-labelledby="distTitle distDesc" style="width:100%;height:auto;">
+          <title id="distTitle">Distribuição dos tempos de chegada por faixa</title>
+          <desc id="distDesc">66,62% dos corredores terminam acima de 4 horas; 18,88% entre 3h30 e 4h; 10,68% entre 3h e 3h30; 3,59% entre 2h30 e 3h; e 0,24% abaixo de 2h30.</desc>
+
+          <!-- barras horizontais -->
+          <g font-family="var(--mono)" font-size="10">
+            <!-- >= 4h : 66.62% -->
+            <text x="0" y="38" fill="var(--ink-2)">&gt;= 4h</text>
+            <rect x="92" y="24" width="466" height="22" rx="3" fill="var(--accent)"/>
+            <text x="568" y="39" fill="var(--ink)">66,62%</text>
+            <text x="640" y="39" fill="var(--ink-3)">414.180</text>
+
+            <!-- 3h30-4h : 18.88% -->
+            <text x="0" y="88" fill="var(--ink-2)">3h30–4h</text>
+            <rect x="92" y="74" width="132" height="22" rx="3" fill="var(--accent)" fill-opacity="0.72"/>
+            <text x="234" y="89" fill="var(--ink)">18,88%</text>
+            <text x="640" y="89" fill="var(--ink-3)">117.378</text>
+
+            <!-- 3h-3h30 : 10.68% -->
+            <text x="0" y="138" fill="var(--ink-2)">3h–3h30</text>
+            <rect x="92" y="124" width="75" height="22" rx="3" fill="var(--accent)" fill-opacity="0.55"/>
+            <text x="177" y="139" fill="var(--ink)">10,68%</text>
+            <text x="640" y="139" fill="var(--ink-3)">66.384</text>
+
+            <!-- 2h30-3h : 3.59% -->
+            <text x="0" y="188" fill="var(--ink-2)">2h30–3h</text>
+            <rect x="92" y="174" width="25" height="22" rx="3" fill="var(--accent)" fill-opacity="0.4"/>
+            <text x="127" y="189" fill="var(--ink)">3,59%</text>
+            <text x="640" y="189" fill="var(--ink-3)">22.305</text>
+
+            <!-- < 2h30 : 0.24% -->
+            <text x="0" y="238" fill="var(--ink-2)">&lt; 2h30</text>
+            <rect x="92" y="224" width="4" height="22" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+            <text x="106" y="239" fill="var(--ink)">0,24%</text>
+            <text x="640" y="239" fill="var(--ink-3)">1.480</text>
+
+            <line x1="92" y1="266" x2="660" y2="266" stroke="var(--line)"/>
+            <text x="92" y="284" fill="var(--ink-3)">0%</text>
+            <text x="330" y="284" fill="var(--ink-3)">35%</text>
+            <text x="558" y="284" fill="var(--ink-3)">70%</text>
+          </g>
+        </svg>
+        <figcaption>
+          A cauda longa é o achado: a maratona popular é dominada pela faixa acima de 4h,
+          o que muda completamente qual média faz sentido reportar.
+        </figcaption>
+      </figure>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Essa distribuição é o tipo de resultado que só aparece depois da modelagem — e é
+          também o que impede o erro mais comum de leitura: reportar a média geral como se
+          descrevesse o corredor típico. Com a distribuição à vista, a mediana e os percentis
+          passam a ser as medidas honestas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STACK + REPOSITÓRIO ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">08 — Stack e código</p>
+        <h2 class="section-title">Ferramentas e artefatos</h2>
+      </div>
+
+      <div class="skills" style="margin-bottom:3rem;">
+        <div class="skill-group">
+          <h3>Ingestão e transformação</h3>
+          <ul class="skill-list">
+            <li class="is-core">Python</li><li class="is-core">pandas</li>
+            <li>Carga em massa</li><li>Hash MD5</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Modelagem e análise</h3>
+          <ul class="skill-list">
+            <li class="is-core">SQL</li><li>CTEs</li><li>Window functions</li>
+            <li>Star schema</li><li>Views</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Visualização</h3>
+          <ul class="skill-list">
+            <li class="is-core">Power BI</li><li>DAX</li><li>matplotlib</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Entrega</h3>
+          <ul class="skill-list">
+            <li>README</li><li>Guia de reprodutibilidade</li><li>Git / GitHub</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="repo-bar reveal">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">Dataset publicado</p>
+          <p class="repo-bar-sub">
+            <em>Chicago Marathon 2000–2025</em> — 931.958 finishers, tratados e documentados.
+            Licença ODbL, aberto para uso e reprodução.
+          </p>
+        </div>
+        <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="btn btn--accent" target="_blank" rel="noopener">
+          Abrir no Kaggle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LIÇÕES ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">09 — Lições aprendidas</p>
+        <h2 class="section-title">O que eu faria diferente</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          <strong>Modelar antes de analisar economiza mais tempo do que parece.</strong>
+          Minhas primeiras consultas foram feitas direto sobre a tabela bruta, e cada nova
+          pergunta exigia repetir a mesma limpeza. Depois do star schema, análises que levavam
+          uma tarde passaram a levar minutos — e, mais importante, passaram a concordar entre si.
+        </p>
+        <p>
+          <strong>Chaves determinísticas são uma decisão de arquitetura, não um detalhe.</strong>
+          Trocar o identificador incremental por um hash reprodutível foi o que tornou o
+          pipeline reexecutável sem medo. É o mesmo princípio de um plano de contas: o
+          identificador precisa significar a mesma coisa em toda recarga.
+        </p>
+        <p>
+          <strong>Qualidade de dado é um problema de domínio, não de código.</strong>
+          Perceber que ISO e IOC coexistiam na coluna de país não veio de um teste automatizado
+          — veio de conferir um total que não fechava. É exatamente o reflexo que a conciliação
+          contábil treina: desconfiar do número que parece certo.
+        </p>
+        <p>
+          <strong>O que eu faria diferente:</strong> escreveria testes de qualidade desde a
+          primeira carga — contagens por edição, domínio de valores aceitos para país e gênero,
+          faixas plausíveis de tempo — em vez de descobrir os problemas na análise. Também
+          versionaria as regras de normalização como dados de configuração, e não embutidas
+          na transformação.
+        </p>
+      </div>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="../projetos.html" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Todos os projetos
+        </a>
+        <a href="../index.html#contato" class="btn">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Chicago Marathon Analytics — Estudo de caso",
+  "description": "Pipeline analítico de ponta a ponta sobre 931.958 registros e 25 edições da Maratona de Chicago: ingestão, modelagem dimensional, análise SQL e Power BI.",
+  "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/projetos/chicago-marathon-analytics.html",
+  "about": ["Data Analytics", "Modelagem Dimensional", "SQL", "Power BI", "ETL"]
+}
+</script>
+<script src="../js/site.js"></script>
+</body>
+</html>
