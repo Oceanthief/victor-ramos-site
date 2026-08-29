@@ -5,7 +5,7 @@
 <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Football Intel — Case study · Victor Ramos</title>
-<meta name="description" content="Sports intelligence platform over 7,512 matches and 34,830 card events: Python pipeline, a custom statistical engine (Welch, Wilson, Benjamini-Hochberg), a hand-written SVG charting library and declared limitations."/>
+<meta name="description" content="Sports intelligence platform over 9,051 matches and 42,547 card events: Python pipeline, a custom statistical engine (Welch, Wilson, Benjamini-Hochberg), a hand-written SVG charting library and declared limitations."/>
 <meta name="author" content="Victor Ramos Alves de Matos"/>
 <meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
@@ -15,13 +15,13 @@
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Victor Ramos"/>
 <meta property="og:title" content="Football Intel — Case study"/>
-<meta property="og:description" content="7,512 matches, 34,830 card events, a custom statistical engine and zero external dependencies."/>
+<meta property="og:description" content="9,051 matches, 42,547 card events, a custom statistical engine and zero external dependencies."/>
 <meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/en/projetos/football-intel.html"/>
 <meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/football-intel/home.png"/>
 <meta property="og:locale" content="en_US"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Football Intel — Case study"/>
-<meta name="twitter:description" content="7,512 matches, 34,830 card events, a custom statistical engine and zero external dependencies."/>
+<meta name="twitter:description" content="9,051 matches, 42,547 card events, a custom statistical engine and zero external dependencies."/>
 <meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/football-intel/home.png"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -84,11 +84,11 @@
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Dataset</p>
-        <p class="case-meta-val">7,512 matches · 13 competitions</p>
+        <p class="case-meta-val">9,051 matches · 13 competitions</p>
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Period</p>
-        <p class="case-meta-val">Feb 2024 to Aug 2026</p>
+        <p class="case-meta-val">Jan 2020 to Aug 2026</p>
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Stack</p>
@@ -101,19 +101,19 @@
   <section class="wrap" aria-label="Dataset scale">
     <div class="proof">
       <div class="proof-item">
-        <div class="proof-value"><span data-count-to="7512" data-count-formatted="7,512">7,512</span></div>
+        <div class="proof-value"><span data-count-to="9051" data-count-formatted="9,051">9,051</span></div>
         <p class="proof-label">Matches audited row by row
-          <span class="proof-note">13 competitions · 6 seasons</span></p>
+          <span class="proof-note">13 competitions · 11 seasons</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-count-to="34830" data-count-formatted="34,830">34,830</span></div>
+        <div class="proof-value"><span data-count-to="42547" data-count-formatted="42,547">42,547</span></div>
         <p class="proof-label">Individual card events
-          <span class="proof-note">95.9% linked to their source match</span></p>
+          <span class="proof-note">94.3% linked to their source match</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-count-to="489" data-count-formatted="489">489</span></div>
+        <div class="proof-value"><span data-count-to="522" data-count-formatted="522">522</span></div>
         <p class="proof-label">Referees profiled
-          <span class="proof-note">439 teams · 7,691 players</span></p>
+          <span class="proof-note">460 teams · 8,685 players</span></p>
       </div>
       <div class="proof-item">
         <div class="proof-value"><span data-count-to="0" data-count-formatted="0">0</span></div>
@@ -165,7 +165,7 @@
 
       <figure class="shot reveal">
         <img src="../../imagens/football-intel/home.png" loading="lazy" width="1400" height="1000"
-             alt="Football Intel home screen: header showing 7,512 matches and 34,830 cards, a filter bar for competition, season, team, referee and home/away, KPI cards, and an insight-of-the-day panel."/>
+             alt="Football Intel home screen: header showing 9,051 matches and 42,547 cards, a filter bar for competition, season, team, referee and home/away, KPI cards, and an insight-of-the-day panel."/>
         <figcaption>Home — KPIs, data quality score and the most relevant insight for the active filter</figcaption>
       </figure>
 
@@ -263,9 +263,9 @@
         </div>
         <div class="versus-side versus-side--win">
           <p class="versus-key">Distribution validation</p>
-          <p class="versus-value">77.5%</p>
+          <p class="versus-value">75.3%</p>
           <p class="versus-note">
-            <strong>348 of 449</strong> combinations preserved, 101 discarded. The core
+            <strong>339 of 450</strong> combinations preserved, 111 discarded. The core
             metrics were untouched — they pass 100% of the integrity checks.
           </p>
         </div>
@@ -285,15 +285,15 @@
       <div class="code-block reveal" style="margin-top:2rem;">
         <div class="code-head">
           <span>Engine validation against the real dataset</span>
-          <span>7,512 matches</span>
+          <span>9,051 matches</span>
         </div>
 <pre><code><span class="c">// Cards versus goal margin — how close the match was</span>
-corr(cards, margin)      r = <span class="k">-0.1722</span>   p &lt; 1e-10
-                         95% CI [-0.194; -0.150]   n = 7,512
+corr(cards, margin)      r = <span class="k">-0.1707</span>   p &lt; 1e-10
+                         95% CI [-0.191; -0.151]   n = 9,051
 
 <span class="c">// Close matches (margin ≤ 1) versus decided ones (margin ≥ 3)</span>
-welch(≤1 <span class="k">vs</span> ≥3)         diff = <span class="k">1.260</span> cards
-                         df = 1783.1  95% CI [1.115; 1.405]  d = 0.526
+welch(≤1 <span class="k">vs</span> ≥3)         diff = <span class="k">1.223</span> cards
+                         df = 2176.8  95% CI [1.090; 1.357]  d = 0.507
 
 <span class="c">// Multiple-comparison correction</span>
 FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
@@ -312,10 +312,10 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
 
       <div class="findings reveal">
         <div class="finding">
-          <p class="finding-value">17.7%</p>
+          <p class="finding-value">16.7%</p>
           <p class="finding-text">
             of the variance in cards per match is explained by the <strong>referee</strong>
-            (eta squared); the competition explains 7.8%. The remaining ~82% is
+            (eta squared); the competition explains 7.4%. The remaining ~83% is
             match-specific — the referee <strong>conditions, it does not determine</strong>.
           </p>
         </div>
@@ -336,7 +336,7 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
           </p>
         </div>
         <div class="finding">
-          <p class="finding-value">9.9×</p>
+          <p class="finding-value">9.7×</p>
           <p class="finding-text">
             the excess of cards recorded at minute 90 versus what neighbouring minutes
             predict — stoppage time has no minute of its own. That is a
@@ -373,7 +373,7 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
             <tr>
               <td class="strong">Duplicate matches</td>
               <td>929 repeated identifiers — two competitions duplicated in full</td>
-              <td>Deduplication by identifier and, where absent, by natural key</td>
+              <td>Deduplication by identifier and, where absent, by natural key. 1,084 rows removed</td>
             </tr>
             <tr>
               <td class="strong">Round stored as serial date</td>
@@ -387,7 +387,7 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
             </tr>
             <tr>
               <td class="strong">Sentinel minute</td>
-              <td>1,752 cards with <code>minute = -5</code></td>
+              <td>2,076 cards with <code>minute = -5</code></td>
               <td>Treated as unknown minute: excluded from time analyses, kept in counts</td>
             </tr>
           </tbody>
@@ -432,7 +432,7 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
         <div class="callout">
           <span class="callout-mark">2</span>
           <div class="callout-body">
-            <p class="callout-title">Advanced metrics cover ~12% of the base</p>
+            <p class="callout-title">Advanced metrics cover ~24% of the base</p>
             <p class="callout-text">
               Corners, xG, big chances and duels only exist in recent seasons. They
               <strong>cannot be used to compare seasons</strong> — and the dashboard says so
@@ -534,8 +534,8 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
 
       <div class="prose">
         <ol>
-          <li><strong>A match identifier on the cards sheet</strong> (collection) — removes the 1,421 currently ambiguous links and unlocks per-match analysis over the full card base.</li>
-          <li><strong>Statistics written by name, not by position</strong> (collection) — recovers the 101 quarantined metric × competition combinations.</li>
+          <li><strong>A match identifier on the cards sheet</strong> (collection) — removes the 2,423 currently ambiguous links and unlocks per-match analysis over the full card base.</li>
+          <li><strong>Statistics written by name, not by position</strong> (collection) — recovers the 111 quarantined metric × competition combinations.</li>
           <li><strong>A count model for cards</strong> — Poisson or negative binomial with referee, league and teams as covariates, turning historical frequency into conditional probability.</li>
           <li><strong>Team strength via Elo</strong> — the product already showed that closeness predicts cards better than total goals; what is missing is a predictor of closeness itself.</li>
           <li><strong>Unit tests for the statistical routines</strong> against reference values from R and scipy.</li>
@@ -573,7 +573,7 @@ FDR (Benjamini-Hochberg) 36 pairs tested → 35 with p &lt; 0.05
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Football Intel — Case study",
-  "description": "Sports intelligence platform over 7,512 matches and 34,830 card events: Python pipeline, custom statistical engine and an offline dashboard with zero dependencies.",
+  "description": "Sports intelligence platform over 9,051 matches and 42,547 card events: Python pipeline, custom statistical engine and an offline dashboard with zero dependencies.",
   "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
   "inLanguage": "en",
   "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/en/projetos/football-intel.html",

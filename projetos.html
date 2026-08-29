@@ -5,7 +5,7 @@
 <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Trabalho — Projetos de dados de Victor Ramos</title>
-<meta name="description" content="Projetos de Data Analytics e engenharia de dados: Football Intel (7.512 partidas, motor estatístico próprio) e Chicago Marathon Analytics (931.958 registros, star schema)."/>
+<meta name="description" content="Projetos de Data Analytics e engenharia de dados: Football Intel (9.051 partidas, motor estatístico próprio) e Chicago Marathon Analytics (931.958 registros, star schema)."/>
 <meta name="author" content="Victor Ramos Alves de Matos"/>
 <meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
@@ -59,7 +59,7 @@
             <a href="projetos/football-intel.html">Football Intel</a>
           </h2>
           <p class="project-tagline">
-            Plataforma de inteligência esportiva construída do zero sobre 7.512 partidas de
+            Plataforma de inteligência esportiva construída do zero sobre 9.051 partidas de
             13 competições. Pipeline em Python que audita e trata a base, motor estatístico
             próprio no navegador — Welch, intervalo de Wilson, correção de Benjamini-Hochberg
             e encolhimento bayesiano — e um dashboard de 17 telas que roda offline, sem
@@ -68,15 +68,15 @@
 
           <div class="project-metrics">
             <div>
-              <div class="project-metric-value">7.512</div>
+              <div class="project-metric-value">9.051</div>
               <div class="project-metric-label">Partidas</div>
             </div>
             <div>
-              <div class="project-metric-value">34.830</div>
+              <div class="project-metric-value">42.547</div>
               <div class="project-metric-label">Cartões</div>
             </div>
             <div>
-              <div class="project-metric-value">489</div>
+              <div class="project-metric-value">522</div>
               <div class="project-metric-label">Árbitros</div>
             </div>
             <div>
@@ -201,6 +201,65 @@
           </svg>
         </figure>
       </article>
+
+      <!-- ───── PROJETO 03 — I GOT IT ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 03 · NO AR</p>
+          <h2 class="project-name">
+            <a href="projetos/i-got-it.html">I Got It</a>
+          </h2>
+          <p class="project-tagline">
+            Plataforma de descoberta musical em produção. Busca por trecho de letra,
+            karaokê sincronizado, discografias e biografias — com roteador próprio sobre
+            a History API, cache em duas camadas com revalidação e o problema de SEO em
+            SPA resolvido por pré-renderização para robôs sociais.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value">~12 mil</div>
+              <div class="project-metric-label">Linhas de TypeScript</div>
+            </div>
+            <div>
+              <div class="project-metric-value">9</div>
+              <div class="project-metric-label">Rotas públicas</div>
+            </div>
+            <div>
+              <div class="project-metric-value">5</div>
+              <div class="project-metric-label">Fontes de dados</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">React 19</span>
+            <span class="chip chip--accent">TypeScript</span>
+            <span class="chip">Vite</span>
+            <span class="chip">Tailwind</span>
+            <span class="chip">Vitest</span>
+            <span class="chip">PWA</span>
+            <span class="chip">Serverless</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;">
+            <span class="status-tag status-tag--live">No ar na Vercel</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="https://i-got-it-eosin.vercel.app" class="btn btn--accent" target="_blank" rel="noopener">
+              Abrir o app
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="projetos/i-got-it.html" class="btn">Ver estudo de caso</a>
+          </div>
+        </div>
+
+        <figure class="shot">
+          <img src="imagens/i-got-it/home.png" loading="lazy" width="1400" height="1000"
+               alt="Tela inicial do I Got It, com busca que aceita trechos de letra, música do dia e prateleiras de capas de álbuns."/>
+          <figcaption>Busca que aceita o trecho de letra que ficou na memória</figcaption>
+        </figure>
+      </article>
     </div>
   </section>
 
@@ -208,8 +267,8 @@
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">Também em construção</p>
-        <h2 class="section-title">Outros projetos ativos</h2>
+        <p class="section-label">Outros projetos</p>
+        <h2 class="section-title">Ferramentas menores</h2>
         <p class="section-sub">
           Publicados aqui com o estágio real de desenvolvimento — sem prometer o que
           ainda não está pronto.
@@ -220,7 +279,38 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 03</p>
+            <p class="project-index" style="margin:0;">PROJETO 04</p>
+            <span class="status-tag status-tag--live">Em uso</span>
+          </div>
+          <h3>Bet Tracker — extração de dados de imagem</h3>
+          <p>
+            Ferramenta que transforma o print de um comprovante em registro estruturado.
+            A imagem passa por um modelo de visão que devolve casa, valor, cotação,
+            retorno, mercado, evento e data já tipados — e o que não puder ser lido com
+            segurança volta em branco, sinalizado, em vez de ser inventado.
+          </p>
+          <p>
+            As regras de resultado, retorno e taxa de acerto vivem num módulo único
+            usado <strong>pelo navegador e pelo servidor</strong>: o número que aparece na
+            tela e o número exportado no CSV saem do mesmo código, por construção.
+            Gráficos em SVG próprio, escala de tempo que se ajusta ao intervalo filtrado,
+            escrita atômica em disco e exportação para CSV e JSON.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Node.js</span>
+            <span class="chip chip--accent">JavaScript</span>
+            <span class="chip">Extração por visão</span>
+            <span class="chip">SVG</span>
+            <span class="chip">Local-first</span>
+          </div>
+          <p style="font-size:var(--fs-xs);color:var(--ink-3);">
+            Roda na máquina do usuário: os registros nunca saem do disco local.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">PROJETO 05</p>
             <span class="status-tag">Em construção</span>
           </div>
           <h3>Calculadora Fiscal Freelancer</h3>
@@ -247,33 +337,7 @@
           </p>
         </article>
 
-        <article class="project-card">
-          <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 04</p>
-            <span class="status-tag">Em construção</span>
-          </div>
-          <h3>I Got It — Música &amp; Letras</h3>
-          <p>
-            Buscador de letras que encontra a música a partir de um trecho lembrado, além
-            de título ou artista. Karaokê com letra sincronizada, prévias de áudio com
-            player global e fila, biografia de artistas e playlists.
-          </p>
-          <p>
-            PWA com suporte offline, combinando fontes abertas de dados com recursos de IA
-            servidos por função serverless que mantém a chave de API protegida. Cache em
-            duas camadas — memória e localStorage — para responder bem em conexão instável.
-          </p>
-          <div class="stack-row">
-            <span class="chip chip--accent">React</span>
-            <span class="chip chip--accent">TypeScript</span>
-            <span class="chip">Vitest</span>
-            <span class="chip">PWA</span>
-            <span class="chip">Serverless</span>
-          </div>
-          <p style="font-size:var(--fs-xs);color:var(--ink-3);">
-            Deploy na Vercel.
-          </p>
-        </article>
+
 
       </div>
     </div>

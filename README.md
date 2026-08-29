@@ -21,22 +21,25 @@ formação ou projeto, altere **os quatro lugares**: `cv.html`, `en/cv.html`,
 index.html                                  Home (hero, prova, projeto, posicionamento,
                                             stack, experiência, foco, contato)
 projetos.html                               Trabalho — índice de projetos
-projetos/football-intel.html                Estudo de caso — projeto em andamento
-projetos/chicago-marathon-analytics.html    Estudo de caso completo
+projetos/football-intel.html                Estudo de caso — em desenvolvimento
+projetos/chicago-marathon-analytics.html    Estudo de caso — concluído
+projetos/i-got-it.html                      Estudo de caso — produto no ar
 imagens/football-intel/                     Capturas reais do dashboard
+imagens/i-got-it/                           Capturas do app em produção
 experiencia.html                            Linha do tempo profissional + formação
 about.html                                  Sobre — narrativa de evolução
 estante.html                                Aprendizado (livros) — fora da nav principal
 blog.html                                   Lab — notas técnicas
 posts/                                      Artigos (um HTML por post)
 cv.html                                     Currículo web (fonte do PDF)
-curriculo.pdf                               Gerado a partir de cv.html — ver abaixo
+curriculo.pdf                               Documento autoral — NÃO regenerar (ver abaixo)
 404.html                                    Página de erro
 
 en/                                         Versão em inglês
   index.html · about.html · cv.html
   projetos/football-intel.html
   projetos/chicago-marathon-analytics.html
+  projetos/i-got-it.html
 
 style.css                                   Sistema de design (tokens, componentes,
                                             dark mode, responsivo, impressão)
@@ -95,6 +98,16 @@ um documento diferente do PDF, e não o substitui.
 1. Copie um arquivo de `posts/` e edite o conteúdo (envolva o texto em `class="prose"`).
 2. Adicione a entrada em `blog.html`.
 3. Acrescente a URL em `sitemap.xml`.
+
+## Números do Football Intel
+
+Os números citados no site (partidas, cartões, árbitros, percentuais de quarentena e
+variância) vêm de `output/DIAGNOSTICO.md` do projeto, e as duas estatísticas do bloco
+de validação são recalculadas sobre `output/data.json`. **Quando a base crescer, os
+dois precisam ser atualizados juntos** — em `projetos/football-intel.html`,
+`en/projetos/football-intel.html`, `index.html`, `en/index.html`, `projetos.html`,
+`cv.html` e `en/cv.html`. As capturas em `imagens/football-intel/` também mostram os
+totais no cabeçalho do dashboard e envelhecem junto.
 
 ## Demo ao vivo do Football Intel
 

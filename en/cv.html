@@ -108,11 +108,11 @@
             <h3>Football Intel — sports intelligence platform</h3>
             <span class="cv-entry-period">In progress</span>
           </div>
-          <p class="cv-entry-org">Python · pandas · JavaScript · 7,512 matches · 13 competitions · 34,830 card events</p>
+          <p class="cv-entry-org">Python · pandas · JavaScript · 9,051 matches · 13 competitions · 42,547 card events</p>
           <ul>
-            <li>Python pipeline that ingests, audits and cleans the source data, regenerating a data-quality report on every run: 929 duplicate matches removed, 100% of mojibake-corrupted names recovered.</li>
+            <li>Python pipeline that ingests, audits and cleans the source data, regenerating a data-quality report on every run: 1,084 duplicate rows removed, 100% of mojibake-corrupted names recovered.</li>
             <li>Custom statistical engine in JavaScript: Welch's t-test with Satterthwaite degrees of freedom, Wilson confidence intervals, Benjamini-Hochberg correction for multiple comparisons, and empirical Bayesian shrinkage for small-sample rankings.</li>
-            <li>Advanced-metric validation by distribution (metric × competition) rather than row by row, preserving 348 of 449 combinations — 77.5% versus 3.4% with the conventional approach.</li>
+            <li>Advanced-metric validation by distribution (metric × competition) rather than row by row, preserving 339 of 450 combinations — 75.3% versus 3.4% with the conventional approach.</li>
             <li>17-screen dashboard with a hand-written SVG charting library and zero external dependencies: runs offline, with no server.</li>
             <li>Accessibility audited at runtime: 67/67 charts with text descriptions, 237/237 table headers scoped; zero horizontal overflow at 500, 750 and 1006 px.</li>
             <li>Dataset limitations declared in the interface itself — card-minute censoring, partial coverage of advanced metrics, and the absence of a player identifier.</li>
@@ -132,6 +132,37 @@
             <li>Country-code standardisation across ISO 3166 and IOC; resolution of bib-number collisions across genders.</li>
             <li>17 validated SQL analyses using CTEs and window functions; matplotlib visualisations and a Power BI dashboard.</li>
             <li>README and reproducibility guide; dataset published under the ODbL licence.</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <h3>I Got It — music discovery platform</h3>
+            <span class="cv-entry-period">In production</span>
+          </div>
+          <p class="cv-entry-org">React 19 · TypeScript · Vite · Tailwind · Vitest · ~12k lines · i-got-it-eosin.vercel.app</p>
+          <ul>
+            <li>Live application on Vercel: search by a remembered lyric fragment, synchronised karaoke, discographies, biographies, audio previews and per-entity shareable links.</li>
+            <li>Four-layer architecture with an explicit boundary between public metadata and licensed content, which allows browsing a full album without requesting a single lyric and swapping the lyrics provider without touching navigation.</li>
+            <li>SEO solved inside a SPA: meta tags and structured data are generated client-side for Google and, from the same description, by a serverless pre-rendering function for social crawlers that do not execute JavaScript.</li>
+            <li>Two-layer cache (memory and local storage) with stale-while-revalidate and LRU eviction, exposed to React through a single integration point.</li>
+            <li>API key kept out of the bundle behind a server-side proxy, restricted to its own origin and rate-limited per IP; the app is fully functional with no key at all.</li>
+            <li>Strict TypeScript, Vitest coverage over routing, SEO, caching and response normalisation, and a type check enforced at build time.</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <h3>Bet Tracker — structured data extraction from images</h3>
+            <span class="cv-entry-period">In use</span>
+          </div>
+          <p class="cv-entry-org">Node.js · JavaScript · vision model API</p>
+          <ul>
+            <li>Turns a screenshot of a receipt into a structured, typed record — source, amounts, odds, return, market, event and date — handling Brazilian currency formats and multiple odds notations.</li>
+            <li>Any field that cannot be read confidently returns empty and is flagged in a warnings list rather than being estimated.</li>
+            <li>Result, return and hit-rate rules isolated in a single module shared by browser and server, so the figure on screen and the figure in the CSV export come from the same code.</li>
+            <li>Charts in hand-written SVG with a time axis that adapts to the filtered range; CSV and JSON export; atomic writes to disk.</li>
+            <li>Local-first architecture: records never leave the user's machine.</li>
           </ul>
         </div>
 

@@ -112,11 +112,11 @@
             <h3>Football Intel — plataforma de inteligência esportiva</h3>
             <span class="cv-entry-period">Em andamento</span>
           </div>
-          <p class="cv-entry-org">Python · pandas · JavaScript · 7.512 partidas · 13 competições · 34.830 eventos de cartão</p>
+          <p class="cv-entry-org">Python · pandas · JavaScript · 9.051 partidas · 13 competições · 42.547 eventos de cartão</p>
           <ul>
-            <li>Pipeline em Python que ingere, audita e trata a base, gerando relatório de qualidade de dados a cada execução: 929 partidas duplicadas removidas, 100% dos nomes com codificação corrompida recuperados.</li>
+            <li>Pipeline em Python que ingere, audita e trata a base, gerando relatório de qualidade de dados a cada execução: 1.084 linhas duplicadas removidas, 100% dos nomes com codificação corrompida recuperados.</li>
             <li>Motor estatístico próprio em JavaScript: teste de Welch com graus de liberdade de Satterthwaite, intervalo de confiança de Wilson, correção de Benjamini-Hochberg para múltiplas comparações e encolhimento bayesiano empírico em rankings com amostra pequena.</li>
-            <li>Validação de métricas avançadas por distribuição (métrica × competição) em vez de linha a linha, preservando 348 de 449 combinações — 77,5% contra 3,4% da abordagem convencional.</li>
+            <li>Validação de métricas avançadas por distribuição (métrica × competição) em vez de linha a linha, preservando 339 de 450 combinações — 75,3% contra 3,4% da abordagem convencional.</li>
             <li>Dashboard de 17 telas com biblioteca de gráficos SVG própria, sem nenhuma dependência externa: funciona offline, sem servidor.</li>
             <li>Acessibilidade auditada em execução: 67/67 gráficos com descrição textual e 237/237 cabeçalhos de tabela com escopo; zero overflow horizontal a 500, 750 e 1006 px.</li>
             <li>Limitações da base declaradas na própria interface — censura do minuto do cartão, cobertura parcial de métricas avançadas e ausência de identificador de jogador.</li>
@@ -136,6 +136,37 @@
             <li>Padronização de códigos de país entre os padrões ISO 3166 e IOC; resolução de duplicidade de número de peito entre gêneros.</li>
             <li>17 análises validadas em SQL com CTEs e funções de janela; visualizações em matplotlib e dashboard em Power BI.</li>
             <li>README e guia de reprodutibilidade; dataset publicado sob licença ODbL.</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <h3>I Got It — plataforma de descoberta musical</h3>
+            <span class="cv-entry-period">Em produção</span>
+          </div>
+          <p class="cv-entry-org">React 19 · TypeScript · Vite · Tailwind · Vitest · ~12 mil linhas · i-got-it-eosin.vercel.app</p>
+          <ul>
+            <li>Aplicação em produção na Vercel: busca por trecho de letra, karaokê sincronizado, discografias, biografias, prévias de áudio e compartilhamento com link próprio por entidade.</li>
+            <li>Arquitetura em quatro camadas com separação explícita entre metadado público e conteúdo licenciado, o que permite navegar um álbum inteiro sem requisitar nenhuma letra e trocar o provedor de letras sem alterar a navegação.</li>
+            <li>SEO resolvido dentro de uma SPA: as metatags e os dados estruturados são gerados no cliente para o Google e, a partir da mesma descrição, por função serverless de pré-renderização para robôs sociais que não executam JavaScript.</li>
+            <li>Cache em duas camadas (memória e armazenamento local) com revalidação stale-while-revalidate e despejo LRU, exposto ao React por um único ponto de integração.</li>
+            <li>Chave de API mantida fora do bundle por proxy no servidor, restrito à própria origem e com limite por IP; o app funciona por completo sem nenhuma chave.</li>
+            <li>TypeScript em modo estrito, testes em Vitest sobre rotas, SEO, cache e normalização de resposta, e verificação de tipos obrigatória no build.</li>
+          </ul>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <h3>Bet Tracker — extração de dados estruturados a partir de imagem</h3>
+            <span class="cv-entry-period">Em uso</span>
+          </div>
+          <p class="cv-entry-org">Node.js · JavaScript · API de visão computacional</p>
+          <ul>
+            <li>Converte a captura de tela de um comprovante em registro estruturado e tipado — origem, valores, cotação, retorno, mercado, evento e data — reconhecendo formatos monetários brasileiros e diferentes notações de cotação.</li>
+            <li>Campo que não pode ser lido com segurança retorna vazio e entra numa lista de avisos, em vez de receber valor estimado.</li>
+            <li>Regras de resultado, retorno e taxa de acerto isoladas em módulo único compartilhado entre navegador e servidor, garantindo que o valor exibido e o valor exportado venham do mesmo código.</li>
+            <li>Gráficos em SVG sem biblioteca externa, com escala temporal que se adapta ao intervalo filtrado; exportação em CSV e JSON; escrita atômica em disco.</li>
+            <li>Arquitetura local-first: os registros permanecem na máquina do usuário.</li>
           </ul>
         </div>
 

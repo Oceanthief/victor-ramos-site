@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>I Got It — Estudo de caso · Victor Ramos</title>
+<meta name="description" content="Plataforma de descoberta musical no ar: React 19 e TypeScript estrito, roteador próprio sobre a History API, cache SWR em duas camadas, SEO resolvido em SPA e separação entre metadado público e conteúdo licenciado."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos/i-got-it.html"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/i-got-it.html"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/i-got-it.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="I Got It — Estudo de caso"/>
+<meta property="og:description" content="Produto no ar: React 19, TypeScript estrito, roteador próprio, cache SWR e SEO resolvido dentro de uma SPA."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos/i-got-it.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/i-got-it/home.png"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="I Got It — Estudo de caso"/>
+<meta name="twitter:description" content="Produto no ar: React 19, TypeScript estrito, roteador próprio, cache SWR e SEO resolvido dentro de uma SPA."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/i-got-it/home.png"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="pt" data-root="../">
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Trilha de navegação">
+      <a href="../index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <a href="../projetos.html">Trabalho</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">I Got It</span>
+    </nav>
+
+    <header class="page-hero">
+      <p class="page-kicker">Projeto 03 — Estudo de caso</p>
+      <h1 class="page-title">I Got It</h1>
+      <p class="page-lede">
+        Uma plataforma de descoberta musical onde cada música é um cruzamento: da letra
+        se chega ao álbum, do álbum ao artista, do artista à próxima descoberta — e de
+        qualquer ponto sai um link que funciona sozinho quando compartilhado.
+      </p>
+
+      <p style="margin-top:1.5rem;">
+        <span class="status-tag status-tag--live">No ar · em evolução</span>
+      </p>
+
+      <div class="btn-row" style="margin-top:1.5rem;">
+        <a href="https://i-got-it-eosin.vercel.app" class="btn btn--accent" target="_blank" rel="noopener">
+          Abrir o app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <a href="#arquitetura" class="btn">A arquitetura</a>
+        <a href="#direitos" class="btn btn--ghost">A questão dos direitos</a>
+      </div>
+    </header>
+
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-key">Papel</p>
+        <p class="case-meta-val">Projeto individual — produto, arquitetura e deploy</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Estado</p>
+        <p class="case-meta-val">Em produção na Vercel</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Escala</p>
+        <p class="case-meta-val">~12 mil linhas de TypeScript</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Stack</p>
+        <p class="case-meta-val">React 19 · TypeScript · Vite · Tailwind · Vitest</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ O PRODUTO ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — O produto</p>
+        <h2 class="section-title">Da busca ao contexto completo</h2>
+        <p class="section-sub">
+          Busca por título, artista ou por um trecho da letra que ficou na memória.
+          A partir daí: letra completa, karaokê sincronizado, prévia de 30 segundos,
+          discografia, biografia e a próxima faixa.
+        </p>
+      </div>
+
+      <figure class="shot reveal">
+        <img src="../imagens/i-got-it/home.png" loading="lazy" width="1400" height="1000"
+             alt="Tela inicial do I Got It: título 'Descubra sua próxima música', campo de busca que aceita trechos de letra, cartão da música do dia e prateleira Top Brasil com capas de álbuns."/>
+        <figcaption>Início — busca por trecho de letra, música do dia e prateleiras temáticas</figcaption>
+      </figure>
+
+      <div class="shot-grid reveal" style="margin-top:2.5rem;">
+        <figure class="shot">
+          <img src="../imagens/i-got-it/musica.png" loading="lazy" width="1400" height="1000"
+               alt="Página de música do I Got It mostrando Bohemian Rhapsody, do Queen, com capa do álbum, botões de prévia, salvar e compartilhar, controles de tamanho de fonte e modo karaokê, e a letra completa."/>
+          <figcaption>Página de música — letra, karaokê, prévia e compartilhamento</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/i-got-it/artista.png" loading="lazy" width="1400" height="1000"
+               alt="Página de artista do I Got It com biografia, país de origem, discografia e músicas populares."/>
+          <figcaption>Página de artista — biografia, origem e discografia</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          <strong>Sem nenhuma chave de API o app funciona por completo</strong> — busca,
+          letras, karaokê, discografias, prévias, favoritos e compartilhamento vêm de
+          fontes públicas. Os recursos de IA (interpretação da letra, curiosidades,
+          tradução, playlists) são uma camada opcional: quando a chave não existe, eles
+          somem sem quebrar nada em volta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ARQUITETURA ═══════════════ -->
+  <section class="section" id="arquitetura">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — Arquitetura</p>
+        <h2 class="section-title">Quatro camadas com uma fronteira que importa</h2>
+      </div>
+
+      <div class="pipeline reveal" role="img" aria-label="Camadas do aplicativo: interface, estado, domínio e infraestrutura">
+        <div class="pipeline-stage">
+          <p class="pipeline-num">01</p>
+          <p class="pipeline-name">Interface</p>
+          <p class="pipeline-detail">pages · components<br/>design system próprio</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">02</p>
+          <p class="pipeline-name">Estado</p>
+          <p class="pipeline-detail">useResource<br/>PlayerContext · router</p>
+        </div>
+        <div class="pipeline-stage pipeline-stage--accent">
+          <p class="pipeline-num">03</p>
+          <p class="pipeline-name">Domínio</p>
+          <p class="pipeline-detail">catálogo · letras<br/>IA opcional</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">04</p>
+          <p class="pipeline-name">Infraestrutura</p>
+          <p class="pipeline-detail">cache L1+L2<br/>funções serverless</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>A fronteira entre metadado e letra</h3>
+        <p>
+          A decisão que organiza o resto: <strong>metadado é fato público, letra é conteúdo
+          licenciado</strong>, e os dois vivem em serviços separados. Artista, álbum, faixa,
+          duração e capa saem de um lugar; a letra sai de outro.
+        </p>
+        <p>
+          Isso não é purismo de arquitetura — é o que permite abrir um álbum inteiro sem
+          disparar um único pedido de letra, e trocar o provedor de letra sem tocar em
+          nada da navegação. Uma fronteira desenhada a partir de uma restrição jurídica
+          acabou virando a melhor decisão técnica do projeto.
+        </p>
+
+        <h3>Um roteador próprio, e a decisão de não migrar</h3>
+        <p>
+          O app usa um roteador escrito à mão sobre a History API, com cerca de 120 linhas.
+          A pergunta óbvia de qualquer revisor é por que não Next.js, ou pelo menos
+          react-router. A resposta está escrita dentro do próprio app, na página
+          <em>Sobre</em>: o custo de migrar não se paga porque o problema que o framework
+          resolveria — renderização no servidor para SEO — já está resolvido por outro
+          caminho, e o roteador atual cabe na cabeça de quem for dar manutenção.
+        </p>
+        <p>
+          Rotas antigas com escape de URL continuam resolvendo, e os apelidos em inglês
+          (<code>/search</code>, <code>/favorites</code>, <code>/about</code>) convivem com
+          os caminhos em português. Nenhum link já compartilhado quebra.
+        </p>
+
+        <h3>Cache em duas camadas com revalidação</h3>
+        <p>
+          Memória e armazenamento local, com política <em>stale-while-revalidate</em> e
+          despejo LRU: a tela aparece na hora com o dado que já existe e se atualiza sozinha
+          quando a resposta nova chega. Um único ponto — <code>useResource</code> — liga
+          esse contrato ao React, então nenhuma tela precisa saber que existe cache.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SEO EM SPA ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — O problema difícil</p>
+        <h2 class="section-title">SEO dentro de uma aplicação client-side</h2>
+        <p class="section-sub">
+          Robôs sociais não executam JavaScript. Um link colado no WhatsApp mostraria
+          o título genérico do app, não o da música.
+        </p>
+      </div>
+
+      <div class="versus reveal">
+        <div class="versus-side">
+          <p class="versus-key">Google</p>
+          <p class="versus-value">Executa JS</p>
+          <p class="versus-note">
+            As tags escritas no cliente são indexadas normalmente: título, descrição,
+            canônica, Open Graph e dados estruturados de música, álbum, artista e
+            trilha de navegação.
+          </p>
+        </div>
+        <div class="versus-side versus-side--win">
+          <p class="versus-key">WhatsApp · X · Slack</p>
+          <p class="versus-value">Não executa</p>
+          <p class="versus-note">
+            Esses agentes são roteados para uma <strong>função serverless de
+            pré-renderização</strong>, que resolve a entidade pedida e devolve HTML já com
+            as tags corretas daquela música, álbum ou artista.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Os dois caminhos partem da <strong>mesma descrição</strong>. Não existe uma
+          versão das tags para o robô e outra para o navegador — existe uma só, consumida
+          de duas formas. Sem isso, as duas cópias divergiriam na primeira mudança.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DIREITOS ═══════════════ -->
+  <section class="section" id="direitos">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Direitos e limites</p>
+        <h2 class="section-title">O que o app se recusa a fazer</h2>
+      </div>
+
+      <div class="limits reveal">
+        <div class="callout callout--accent">
+          <span class="callout-mark">1</span>
+          <div class="callout-body">
+            <p class="callout-title">Nada é raspado de sites de letra</p>
+            <p class="callout-text">
+              Todo conteúdo vem de APIs que se propõem a servi-lo, e
+              <strong>toda origem aparece na interface</strong>. O usuário sabe de onde
+              veio cada dado que está lendo.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">2</span>
+          <div class="callout-body">
+            <p class="callout-title">Quando a fonte diz "só um trecho", é só um trecho</p>
+            <p class="callout-text">
+              Os provedores sinalizam quando não podem liberar a letra inteira. O app
+              respeita a sinalização, mostra apenas o trecho permitido e
+              <strong>leva o usuário até a fonte</strong> em vez de contornar o limite.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">3</span>
+          <div class="callout-body">
+            <p class="callout-title">Prévia é prévia</p>
+            <p class="callout-text">
+              São os 30 segundos que a licença pública permite. A faixa completa é sempre
+              um link para a plataforma oficial — o app <strong>não hospeda nem serve
+              áudio protegido</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">4</span>
+          <div class="callout-body">
+            <p class="callout-title">A chave de API não vai para o navegador</p>
+            <p class="callout-text">
+              Os recursos de IA passam por um proxy no servidor, restrito à própria origem
+              e com limite por IP. Existe uma saída para hospedagem estática que exporia a
+              chave no cliente — e ela está <strong>documentada como insegura</strong>,
+              justamente para que ninguém a use sem saber o que está fazendo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FONTES ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Fontes de dados</p>
+        <h2 class="section-title">De onde vem cada informação</h2>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <caption class="visually-hidden">Fontes de dados usadas pelo aplicativo</caption>
+          <thead>
+            <tr><th scope="col">Fonte</th><th scope="col">O que fornece</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong">Apple iTunes Search</td><td>Artistas, discografias, tracklists, capas e prévias de 30 segundos</td></tr>
+            <tr><td class="strong">LRCLIB · lyrics.ovh</td><td>Letras, incluindo as versões sincronizadas que alimentam o karaokê</td></tr>
+            <tr><td class="strong">MusicBrainz · Cover Art Archive</td><td>País de origem, ano de formação e capas em alta resolução</td></tr>
+            <tr><td class="strong">Wikipédia</td><td>Fotos e biografias de artistas</td></tr>
+            <tr><td class="strong">Google Gemini <em>(opcional)</em></td><td>Interpretação, curiosidades, tradução e playlists</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENGENHARIA ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">06 — Disciplina de código</p>
+        <h2 class="section-title">O que mudou na reforma</h2>
+      </div>
+
+      <div class="prose">
+        <ul>
+          <li>
+            <strong>TypeScript passou a ser estrito de verdade.</strong> Antes de
+            <code>strict: true</code> e dos tipos de React instalados, a verificação era
+            decorativa: os tipos vinham inferidos de JavaScript e quase nada era checado.
+          </li>
+          <li>
+            <strong>Tokens de design centralizados.</strong> Nenhum componente carrega cor
+            literal — tema e paleta vivem num lugar só, como no site que você está lendo.
+          </li>
+          <li>
+            <strong>Testes onde o erro é silencioso.</strong> A suíte cobre justamente o
+            que falha sem alarde: normalização de caminhos, geração de tags de SEO,
+            política de cache e limpeza de resposta da IA.
+          </li>
+          <li>
+            <strong>Um comando antes de publicar.</strong> <code>npm run check</code> roda
+            verificação de tipos e testes; o build recusa sair se a tipagem quebrar.
+          </li>
+        </ul>
+      </div>
+
+      <div class="skills" style="margin-top:2.5rem;">
+        <div class="skill-group">
+          <h3>Interface</h3>
+          <ul class="skill-list">
+            <li class="is-core">React 19</li><li class="is-core">TypeScript</li>
+            <li>Tailwind CSS</li><li>Design tokens</li><li>PWA</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Arquitetura</h3>
+          <ul class="skill-list">
+            <li>Roteador próprio</li><li>Cache SWR + LRU</li>
+            <li>Camadas de domínio</li><li>Degradação graciosa</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Plataforma</h3>
+          <ul class="skill-list">
+            <li class="is-core">Vite</li><li>Vercel</li>
+            <li>Funções serverless</li><li>Pré-renderização para robôs</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Qualidade</h3>
+          <ul class="skill-list">
+            <li>Vitest</li><li>Testing Library</li>
+            <li>Typecheck no build</li><li>Dados estruturados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="repo-bar reveal" style="margin-top:3rem;">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">O app está no ar</p>
+          <p class="repo-bar-sub">
+            Busque por um trecho de letra que você lembra e veja o caminho até o artista.
+          </p>
+        </div>
+        <a href="https://i-got-it-eosin.vercel.app" class="btn btn--accent" target="_blank" rel="noopener">
+          i-got-it-eosin.vercel.app
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="football-intel.html" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Projeto 01: Football Intel
+        </a>
+        <a href="../projetos.html" class="btn">Todos os projetos</a>
+        <a href="../index.html#contato" class="btn btn--ghost">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "I Got It — Estudo de caso",
+  "description": "Plataforma de descoberta musical em produção: React 19, TypeScript estrito, roteador próprio, cache SWR em duas camadas e SEO resolvido dentro de uma SPA.",
+  "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/projetos/i-got-it.html",
+  "about": ["React", "TypeScript", "Engenharia de Software", "SEO", "Arquitetura de Front-end"]
+}
+</script>
+<script src="../js/site.js"></script>
+</body>
+</html>

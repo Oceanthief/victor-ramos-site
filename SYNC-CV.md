@@ -4,7 +4,7 @@ O `curriculo.pdf` passou a ser um **documento autoral**, escrito no Word e expor
 ilovepdf — não é mais gerado a partir de `cv.html`. Os dois documentos agora podem
 divergir, e esta é a lista de conferência.
 
-Última verificação: **28/08/2026** — PDF de 28/08/2026, 2 páginas, 207 KB.
+Última verificação: **29/08/2026** — PDF de 28/08/2026, 2 páginas, 207 KB.
 
 ---
 
@@ -39,15 +39,27 @@ para conferir qual está ativo. Se a URL personalizada já foi criada, o site de
 |---|---|---|
 | Football Intel | ausente | **Projeto 01 em destaque** |
 | Chicago Marathon Analytics | presente | Projeto 02 |
+| I Got It | ausente | **Projeto 03 em destaque, com demo ao vivo** |
+| Bet Tracker | ausente | Projeto 04 |
+| Calculadora Fiscal Freelancer | ausente | Projeto 05 |
 | Credit Card Portfolio Analytics | **presente** | ausente |
 | Extrator de Extratos Bancários em PDF | **presente** | ausente |
-| Calculadora Fiscal Freelancer | ausente | Projeto 03 |
-| I Got It | ausente | Projeto 04 |
 
-O ponto mais relevante: **o Football Intel não está no PDF**, embora seja o projeto mais
-forte tecnicamente e o primeiro do site. E os dois projetos que só existem no PDF
-— carteira de cartão de crédito e extrator de extratos — não aparecem em lugar nenhum do
-site, apesar de o `pdfplumber` estar listado na stack.
+A distância aumentou em 29/08/2026. O PDF não traz **três** dos projetos que hoje
+ocupam o site — Football Intel, I Got It e Bet Tracker — e um deles, o I Got It, é o
+único com **demo ao vivo** (`i-got-it-eosin.vercel.app`), ou seja, a prova mais
+imediata que um recrutador pode abrir. No sentido inverso, carteira de cartão de
+crédito e extrator de extratos continuam existindo só no PDF.
+
+Enquanto os dois documentos não convergirem, vale saber qual está sendo enviado: **o
+site está mais atualizado que o currículo em PDF.**
+
+### 🟡 Os números do Football Intel envelhecem rápido
+
+A base cresceu de 7.512 para **9.051 partidas** entre 27 e 29 de agosto de 2026, e todos
+os números derivados mudaram junto (cartões, árbitros, percentuais de quarentena e
+variância). O site foi atualizado; qualquer material impresso feito antes disso está
+desatualizado. Ver a seção correspondente no `README.md`.
 
 ### 🟡 Volume do Chicago Marathon
 
