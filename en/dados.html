@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Open data — 13 published datasets · Victor Ramos</title>
+<meta name="description" content="13 open datasets published on Kaggle with over 1 million cleaned records: match and player statistics from major football leagues, plus marathon, street-running and triathlon results."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/en/dados.html"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/dados.html"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/dados.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="Open data — 13 published datasets"/>
+<meta property="og:description" content="Over 1 million cleaned records published on Kaggle, across football and endurance sport."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/en/dados.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Open data — 13 published datasets"/>
+<meta name="twitter:description" content="Over 1 million cleaned records published on Kaggle."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="en" data-root="">
+
+<main id="content">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="index.html#work">Work</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Open data</span>
+    </nav>
+
+    <header class="page-hero">
+      <p class="page-kicker">Open data</p>
+      <h1 class="page-title">13 public datasets</h1>
+      <p class="page-lede">
+        Sources I cleaned, documented and published under open licences on Kaggle. Each
+        started from data that existed but was not queryable — result pages, official PDFs,
+        spreadsheets with inconsistent formatting — and ended as an analysis-ready file with
+        a column dictionary and declared limitations.
+      </p>
+
+      <div class="btn-row" style="margin-top:2rem;">
+        <a href="https://www.kaggle.com/ramostherunning/datasets" class="btn btn--accent" target="_blank" rel="noopener">
+          View on Kaggle
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <a href="index.html#work" class="btn">Projects built on this data</a>
+      </div>
+    </header>
+  </div>
+
+  <!-- NUMBERS -->
+  <section class="wrap" aria-label="Published volume">
+    <div class="proof">
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="13" data-count-formatted="13">13</span></div>
+        <p class="proof-label">Datasets published
+          <span class="proof-note">Football · running · endurance</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value">1<span class="unit">million+</span></div>
+        <p class="proof-label">Cleaned records made open
+          <span class="proof-note">The three largest alone total 1,036,990</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-count-to="142" data-count-formatted="142">142</span></div>
+        <p class="proof-label">Downloads by other people
+          <span class="proof-note">644 views · 25 upvotes</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value">0.90</div>
+        <p class="proof-label">Average usability score
+          <span class="proof-note">Kaggle metric · maximum 1.00</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Why publish</p>
+        <h2 class="section-title">Cleaning is the work; publishing is the proof</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          The expensive part of any analysis happens before the first chart: understanding
+          the source format, reconciling names that change between seasons, deciding what to
+          do with the missing field. That work is normally invisible — it disappears inside a
+          notebook nobody opens.
+        </p>
+        <p>
+          Publishing each cleaned base makes the effort <strong>verifiable</strong>. Whoever
+          opens the file sees the structure, the column dictionary and the limitations I
+          recorded; whoever disagrees with one of my decisions can redo the analysis
+          themselves. It is the same principle as the case studies on this site, applied to
+          the raw material.
+        </p>
+        <p>
+          The football sets are also the <strong>raw material behind
+          <a href="projetos/football-intel.html">Football Intel</a></strong>: whatever the
+          dashboard consumes, anyone can download and check.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTBALL -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Football — 9 datasets</p>
+        <h2 class="section-title">Matches, players and refereeing</h2>
+        <p class="section-sub">
+          Match- and player-level statistics from major European and American leagues,
+          standardised across seasons and merged into a single file per competition.
+        </p>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <caption class="visually-hidden">Football datasets published on Kaggle</caption>
+          <thead>
+            <tr><th scope="col">Dataset</th><th scope="col">Period</th><th scope="col">Volume</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/european-top-5-player-match-stats-202627" target="_blank" rel="noopener">European Top 5 — player statistics</a></td><td>2026/27</td><td>5 leagues, player per match</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/laliga-player-match-statistics-20202024" target="_blank" rel="noopener">LaLiga — player statistics</a></td><td>2020–2024</td><td class="num">56,310 records</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/laliga-disciplinary-cards-2020-2026" target="_blank" rel="noopener">LaLiga — disciplinary cards</a></td><td>2020–2026</td><td class="num">11,500 cards</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/serie-a-historical-match-statistics-20202026" target="_blank" rel="noopener">Serie A — match statistics</a></td><td>2020–2026</td><td class="num">2,281 matches</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/premier-league-historical-match-2021-2526" target="_blank" rel="noopener">Premier League — match statistics</a></td><td>2020/21–2025/26</td><td class="num">2,280 matches</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/laliga-historical-match-statistics-20212526" target="_blank" rel="noopener">LaLiga — match statistics</a></td><td>2020/21–2025/26</td><td class="num">2,280 matches</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/ligue-1-historical-match-statistics-20202026" target="_blank" rel="noopener">Ligue 1 — match statistics</a></td><td>2020/21–2025/26</td><td class="num">2,077 matches</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/champions-league-historical-match-20202026" target="_blank" rel="noopener">Champions League — match statistics</a></td><td>2020–2026</td><td class="num">1,383 matches</td></tr>
+            <tr><td class="strong"><a href="https://www.kaggle.com/datasets/ramostherunning/mls-historical-match-statistics-20202025" target="_blank" rel="noopener">MLS — match statistics</a></td><td>2020–2025</td><td>match, team and referee</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUNNING -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Running and endurance — 4 datasets</p>
+        <h2 class="section-title">Race results, from elite to amateur</h2>
+      </div>
+
+      <div class="project-grid reveal">
+
+        <article class="project-card">
+          <div class="project-card-top"><p class="project-index" style="margin:0;">931,958 RECORDS</p></div>
+          <h3>Chicago Marathon 2000–2025</h3>
+          <p>
+            Finisher results from 24 editions of one of the world's largest marathons, from
+            elite athletes to recreational runners. 2020 is deliberately absent: the race was
+            cancelled during the pandemic.
+          </p>
+          <div class="stack-row"><span class="chip chip--accent">24 editions</span><span class="chip">ODbL licence</span></div>
+          <a href="https://www.kaggle.com/datasets/ramostherunning/chicago-marathon-2000-2025" class="arrow-link" target="_blank" rel="noopener">
+            Open on Kaggle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top"><p class="project-index" style="margin:0;">48,722 RESULTS</p></div>
+          <h3>Juiz de Fora street running 2022–2026</h3>
+          <p>
+            My city's municipal street-running ranking, which existed only as
+            <strong>official PDFs</strong>, turned into a relational base: 50 events,
+            16 recurring series and 17,787 athletes — the latter
+            <strong>pseudonymised</strong>, because they are identifiable people.
+          </p>
+          <div class="stack-row"><span class="chip chip--accent">PDF extraction</span><span class="chip">Pseudonymisation</span><span class="chip">CC BY-SA 4.0</span></div>
+          <a href="https://www.kaggle.com/datasets/ramostherunning/pjf-de-corridas-de-rua-juiz-de-fora-20222026" class="arrow-link" target="_blank" rel="noopener">
+            Open on Kaggle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top"><p class="project-index" style="margin:0;">10.4K+ RESULTS</p></div>
+          <h3>IRONMAN 70.3 São Paulo</h3>
+          <p>
+            Six half-Ironman editions — 2019 and 2022 to 2026 — with detailed per-athlete
+            results. It carries the highest usability score of the whole set:
+            <strong>1.00</strong>.
+          </p>
+          <div class="stack-row"><span class="chip chip--accent">6 editions</span><span class="chip">Usability 1.00</span></div>
+          <a href="https://www.kaggle.com/datasets/ramostherunning/ironman-70-3-so-paulo-results-2019-20222026" class="arrow-link" target="_blank" rel="noopener">
+            Open on Kaggle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top"><p class="project-index" style="margin:0;">PER-ATHLETE SPLITS</p></div>
+          <h3>Buenos Aires Marathon 2026</h3>
+          <p>
+            Results and split times that existed only behind interactive lookup pages,
+            reorganised into one athlete per row — the format that makes it possible to
+            analyse pacing across the course, not just the finish time.
+          </p>
+          <div class="stack-row"><span class="chip chip--accent">Split times</span><span class="chip">One row per athlete</span></div>
+          <a href="https://www.kaggle.com/datasets/ramostherunning/buenos-aires-marathon-2026" class="arrow-link" target="_blank" rel="noopener">
+            Open on Kaggle
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">Method</p>
+        <h2 class="section-title">What every published base carries</h2>
+      </div>
+
+      <div class="limits reveal">
+        <div class="callout">
+          <span class="callout-mark">1</span>
+          <div class="callout-body">
+            <p class="callout-title">A row means exactly one thing</p>
+            <p class="callout-text">
+              The grain is declared and held: one match, one athlete in one race, one player
+              in one match, one card. Without that, any sum a user computes counts the same
+              event twice.
+            </p>
+          </div>
+        </div>
+        <div class="callout">
+          <span class="callout-mark">2</span>
+          <div class="callout-body">
+            <p class="callout-title">Seasons standardised before being merged</p>
+            <p class="callout-text">
+              Source files arrive with column names, date formats and team spellings that
+              shift from one year to the next. Reconciliation happens before the join — that
+              is what lets you compare 2020 with 2026 without a footnote.
+            </p>
+          </div>
+        </div>
+        <div class="callout">
+          <span class="callout-mark">3</span>
+          <div class="callout-body">
+            <p class="callout-title">Absence declared, not filled in</p>
+            <p class="callout-text">
+              When a year is missing, the description says why — Chicago 2020 was cancelled,
+              and that is written down. An empty field stays empty; none of my bases estimate
+              a number to plug a hole.
+            </p>
+          </div>
+        </div>
+        <div class="callout callout--accent">
+          <span class="callout-mark">4</span>
+          <div class="callout-body">
+            <p class="callout-title">Identifiable people get different treatment</p>
+            <p class="callout-text">
+              In the Juiz de Fora ranking, the 17,787 runners are amateurs from one city, not
+              public athletes. Names were <strong>pseudonymised</strong> before publication:
+              performance analysis remains possible, individual identification does not.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="repo-bar reveal" style="margin-top:3rem;">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">All open, all checkable</p>
+          <p class="repo-bar-sub">
+            The 13 datasets sit on my Kaggle profile, with licence, column dictionary and
+            version history.
+          </p>
+        </div>
+        <a href="https://www.kaggle.com/ramostherunning/datasets" class="btn btn--accent" target="_blank" rel="noopener">
+          kaggle.com/ramostherunning
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+
+      <p style="margin-top:1.25rem;font-size:var(--fs-xs);color:var(--ink-3);">
+        Download, view and usability figures checked on 26 September 2026.
+      </p>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="index.html#work" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Back to work
+        </a>
+        <a href="index.html#contact" class="btn">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Open data — 13 published datasets",
+  "description": "13 open datasets published on Kaggle by Victor Ramos, with over 1 million cleaned records across football and endurance sport.",
+  "inLanguage": "en",
+  "url": "https://oceanthief.github.io/victor-ramos-site/en/dados.html",
+  "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" }
+}
+</script>
+<script src="../js/site.js"></script>
+</body>
+</html>

@@ -21,6 +21,7 @@ formação ou projeto, altere **os quatro lugares**: `cv.html`, `en/cv.html`,
 index.html                                  Home (hero, prova, projeto, posicionamento,
                                             stack, experiência, foco, contato)
 projetos.html                               Trabalho — índice de projetos
+dados.html                                  Dados abertos — os 13 datasets do Kaggle
 projetos/football-intel.html                Estudo de caso — em desenvolvimento
 projetos/chicago-marathon-analytics.html    Estudo de caso — concluído
 projetos/i-got-it.html                      Estudo de caso — produto no ar
@@ -36,7 +37,7 @@ curriculo.pdf                               Documento autoral — NÃO regenerar
 404.html                                    Página de erro
 
 en/                                         Versão em inglês
-  index.html · about.html · cv.html
+  index.html · about.html · cv.html · dados.html
   projetos/football-intel.html
   projetos/chicago-marathon-analytics.html
   projetos/i-got-it.html
@@ -98,6 +99,20 @@ um documento diferente do PDF, e não o substitui.
 1. Copie um arquivo de `posts/` e edite o conteúdo (envolva o texto em `class="prose"`).
 2. Adicione a entrada em `blog.html`.
 3. Acrescente a URL em `sitemap.xml`.
+
+## Números do Kaggle
+
+A página `dados.html` cita contagens que vêm da API pública do Kaggle e envelhecem a
+cada dataset novo. Para reconferir:
+
+```bash
+curl -s "https://www.kaggle.com/api/v1/datasets/list?user=ramostherunning"
+```
+
+Some `downloadCount`, `viewCount`, `voteCount` e a média de `usabilityRating` do retorno.
+Os volumes por dataset (registros, partidas, edições) saem do `subtitle` e da `description`
+de cada um. A data da última conferência aparece no rodapé da própria página, em pt e en —
+atualize-a junto com os números.
 
 ## Números do Football Intel
 
