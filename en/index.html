@@ -363,6 +363,82 @@
           <figcaption>I Got It — lyric-fragment search</figcaption>
         </figure>
       </article>
+
+      <div class="section-head" style="margin-top:var(--s-9);">
+        <p class="section-label">Also on GitHub</p>
+        <h2 class="section-title">Pipelines and automations</h2>
+      </div>
+
+      <div class="project-grid reveal">
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">OPEN SOURCE</p>
+            <span class="status-tag status-tag--live">23 tests · CI</span>
+          </div>
+          <h3>Juiz de Fora running ranking</h3>
+          <p>
+            Python pipeline that turns ~400 public PDFs from the city council into a DuckDB
+            database: word-coordinate extraction, 17,788 athletes identified with no ID in
+            the source, and incremental updates with stable IDs.
+          </p>
+          <p>
+            <strong>A bug the cache was hiding.</strong> One version of the parser was saved
+            with corrupted accents (<code>º</code> became <code>Âº</code>). The code ran
+            without errors, but the regex that reads an athlete's position
+            (<code>12º</code>) stopped matching: on a real PDF, zero rows extracted. The
+            pipeline looked healthy because older PDFs came from cache. I fixed the file and
+            added a regression test that runs on GitHub Actions on every push.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">DuckDB</span>
+            <span class="chip">pdfplumber</span>
+            <span class="chip">pytest</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/Oceanthief/ranking-corridas-jf" class="arrow-link" target="_blank" rel="noopener">
+              Code on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="https://www.kaggle.com/datasets/ramostherunning/pjf-de-corridas-de-rua-juiz-de-fora-20222026" class="arrow-link" target="_blank" rel="noopener">
+              Dataset on Kaggle
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">IN DAILY USE</p>
+            <span class="status-tag status-tag--live">257 tests · CI</span>
+          </div>
+          <h3>Accounting automations</h3>
+          <p>
+            Three automations I use for month-end close at an accounting firm: bank
+            reconciliation against accounts payable (one bank debit can pay several
+            suppliers, solved with subset-sum matching), rule-based classification of bank
+            statements with human review of open items, and daily investment and redemption
+            entries, all producing the ERP import file.
+          </p>
+          <p>
+            No account is ever guessed: anything without a confirmed rule becomes an open
+            item and blocks the export. Client data stays out of Git, and each project runs
+            on a synthetic month generated in the same format as the real files.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">pandas</span>
+            <span class="chip">openpyxl</span>
+            <span class="chip">pytest</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/Oceanthief/automacoes-contabeis" class="arrow-link" target="_blank" rel="noopener">
+              Code on GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 

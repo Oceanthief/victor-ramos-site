@@ -268,7 +268,7 @@
     <div class="wrap">
       <div class="section-head">
         <p class="section-label">Outros projetos</p>
-        <h2 class="section-title">Ferramentas menores</h2>
+        <h2 class="section-title">Ferramentas e automações</h2>
         <p class="section-sub">
           Publicados aqui com o estágio real de desenvolvimento — sem prometer o que
           ainda não está pronto.
@@ -335,6 +335,78 @@
           <p style="font-size:var(--fs-xs);color:var(--ink-3);">
             Regras vigentes para o exercício de 2026, incorporando a Lei 15.270/2025.
           </p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">PROJETO 06</p>
+            <span class="status-tag status-tag--live">Código aberto</span>
+          </div>
+          <h3>Ranking de corridas de Juiz de Fora</h3>
+          <p>
+            Pipeline em Python que transforma ~400 PDFs públicos da Prefeitura em um banco
+            DuckDB: extração por coordenadas das palavras, identificação de 17.788 atletas
+            sem nenhum ID na fonte e atualização incremental com IDs estáveis.
+          </p>
+          <p>
+            <strong>Um bug que o cache escondia.</strong> Uma versão do parser foi salva
+            com a acentuação corrompida (<code>º</code> virou <code>Âº</code>). O código
+            rodava sem erro, mas a regex que reconhece a posição do atleta
+            (<code>12º</code>) deixou de casar: num PDF real, zero linhas extraídas.
+            O pipeline parecia saudável porque os PDFs antigos vinham do cache. Corrigi o
+            arquivo e escrevi um teste de regressão que roda no GitHub Actions a cada push.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">DuckDB</span>
+            <span class="chip">pdfplumber</span>
+            <span class="chip">pytest</span>
+            <span class="chip">CI</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/Oceanthief/ranking-corridas-jf" class="arrow-link" target="_blank" rel="noopener">
+              Código no GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="https://www.kaggle.com/datasets/ramostherunning/pjf-de-corridas-de-rua-juiz-de-fora-20222026" class="arrow-link" target="_blank" rel="noopener">
+              Dataset no Kaggle
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-top">
+            <p class="project-index" style="margin:0;">PROJETO 07</p>
+            <span class="status-tag status-tag--live">Em uso</span>
+          </div>
+          <h3>Automações contábeis</h3>
+          <p>
+            Três automações que uso no fechamento mensal de um escritório de contabilidade:
+            conciliação do extrato com o Contas Pagas (um débito bancário pode pagar vários
+            fornecedores, resolvido por soma de subconjuntos), classificação do extrato por
+            regras com revisão humana das pendências e lançamentos diários de aplicação e
+            resgate, todos gerando o TXT de importação do ERP.
+          </p>
+          <p>
+            Nenhuma conta é adivinhada: o que não tem regra confirmada vira pendência e
+            bloqueia o TXT. Os dados de clientes ficam fora do Git, e cada projeto roda
+            com um mês fictício gerado no mesmo formato dos arquivos reais.
+            257 testes automatizados.
+          </p>
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">pandas</span>
+            <span class="chip">openpyxl</span>
+            <span class="chip">pytest</span>
+            <span class="chip">CI</span>
+          </div>
+          <div class="project-card-links">
+            <a href="https://github.com/Oceanthief/automacoes-contabeis" class="arrow-link" target="_blank" rel="noopener">
+              Código no GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
         </article>
 
 

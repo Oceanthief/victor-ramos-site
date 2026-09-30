@@ -525,6 +525,7 @@ a.project-card:hover {
 }
 .project-card p { font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.6; margin-bottom: var(--s-5); }
 .project-card .stack-row { margin-top: auto; margin-bottom: var(--s-4); }
+.project-card-links { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-6); }
 
 /* ---------------------------------------------------------
    9. NEGÓCIOS × DADOS × TECNOLOGIA
@@ -773,7 +774,8 @@ a.project-card:hover {
   padding-left: var(--s-5); border-left: 2px solid var(--accent);
   font-size: var(--fs-lg); line-height: 1.5; letter-spacing: -0.015em; color: var(--ink);
 }
-.prose code {
+.prose code,
+.project-card code {
   font-family: var(--mono); font-size: 0.85em;
   padding: 2px 5px; border-radius: 4px;
   background: var(--paper-3); color: var(--ink); border: 1px solid var(--line);
