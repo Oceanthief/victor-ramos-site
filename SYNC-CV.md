@@ -40,13 +40,11 @@ para conferir qual está ativo. Se a URL personalizada já foi criada, o site de
 | Football Intel | ausente | **Projeto 01 em destaque** |
 | Chicago Marathon Analytics | presente | Projeto 02 |
 | I Got It | ausente | **Projeto 03 em destaque, com demo ao vivo** |
-| Bet Tracker | ausente | Projeto 04 |
-| Calculadora Fiscal Freelancer | ausente | Projeto 05 |
 | Credit Card Portfolio Analytics | **presente** | ausente |
 | Extrator de Extratos Bancários em PDF | **presente** | ausente |
 
-A distância aumentou em 29/08/2026. O PDF não traz **três** dos projetos que hoje
-ocupam o site — Football Intel, I Got It e Bet Tracker — e um deles, o I Got It, é o
+A distância aumentou em 29/08/2026. O PDF não traz **dois** dos projetos que hoje
+ocupam o site — Football Intel e I Got It — e um deles, o I Got It, é o
 único com **demo ao vivo** (`i-got-it-eosin.vercel.app`), ou seja, a prova mais
 imediata que um recrutador pode abrir. No sentido inverso, carteira de cartão de
 crédito e extrator de extratos continuam existindo só no PDF.
