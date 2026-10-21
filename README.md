@@ -33,7 +33,9 @@ estante.html                                Aprendizado (livros) — fora da nav
 blog.html                                   Lab — notas técnicas
 posts/                                      Artigos (um HTML por post)
 cv.html                                     Currículo web (fonte do PDF)
-curriculo.pdf                               Documento autoral — NÃO regenerar (ver abaixo)
+curriculo.pdf                               PDF gerado de cv.html (scripts/gerar_pdf.py)
+curriculo-en.pdf                            PDF gerado de en/cv.html
+scripts/gerar_pdf.py                        Gera os dois PDFs do currículo
 404.html                                    Página de erro
 
 en/                                         Versão em inglês
@@ -81,18 +83,19 @@ Espaçamento em escala 4pt (`--s-1` … `--s-10`).
 
 ## O PDF do currículo
 
-⚠️ **`curriculo.pdf` é mantido à mão — NÃO regenere a partir de `cv.html`.**
+Desde 21/10/2026, **`cv.html` é a fonte única do currículo**. Os PDFs são gerados a
+partir das páginas web, com o CSS de impressão de `style.css`:
 
-O arquivo servido pelo botão "Baixar PDF" é um documento autoral (Word → ilovepdf),
-substituído manualmente. Rodar um comando de impressão headless sobre `cv.html`
-sobrescreveria essa versão. Para atualizar o PDF, copie o novo arquivo por cima de
-`curriculo.pdf`.
+```bash
+python scripts/gerar_pdf.py   # cv.html -> curriculo.pdf · en/cv.html -> curriculo-en.pdf
+```
 
-Como o PDF e a página `cv.html` são documentos independentes, **precisam ser conferidos
-um contra o outro a cada atualização**. As divergências conhecidas estão em `SYNC-CV.md`.
+Fluxo para qualquer mudança no currículo: edite `cv.html` e `en/cv.html`, rode o script,
+confira o PDF e faça o commit dos três juntos. Assim o PDF e o site não divergem mais —
+o problema que o antigo `SYNC-CV.md` existia para controlar.
 
-O botão "Imprimir" de `cv.html` continua gerando uma versão impressa da página web — é
-um documento diferente do PDF, e não o substitui.
+Antes, o PDF era um documento autoral no Word. Ao trocar pela versão gerada, saíram
+coisas que só existiam no Word, como o telefone.
 
 ## Novo post no Lab
 

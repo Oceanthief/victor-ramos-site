@@ -1224,7 +1224,14 @@ a.project-card:hover {
   a { color: #000; text-decoration: none; }
   .cv-contact a::after { content: ''; }
 
-  .cv-section { break-inside: avoid; padding: 8pt 0; }
+  /* A seção pode quebrar entre páginas; só os itens internos ficam inteiros.
+     Com a seção inteira presa, uma seção longa pulava de página e deixava
+     a anterior quase vazia. */
+  .cv-section { break-inside: auto; padding: 8pt 0; }
+  .cv-section > h2 { break-after: avoid; }
+  /* Sem glifos alternativos na impressão: o 'l' estilizado do Inter (cv05)
+     não tem mapeamento de texto no PDF e quebra a leitura por ATS. */
+  body { font-feature-settings: normal; }
   .cv-entry { break-inside: avoid; margin-bottom: 7pt; }
   .cv-head { break-after: avoid; }
   h1, h2, h3 { break-after: avoid; }
