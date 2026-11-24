@@ -157,8 +157,9 @@
         <p class="section-label">01 — Projetos selecionados</p>
         <h2 class="section-title">Do dado bruto à decisão</h2>
         <p class="section-sub">
-          Dois pipelines analíticos completos e um produto no ar: ingestão, tratamento,
-          modelagem, análise estatística e entrega — construídos, documentados e auditados.
+          Dois pipelines analíticos completos e dois produtos no ar: ingestão, tratamento,
+          modelagem, análise estatística, automação e entrega — construídos, documentados e
+          auditados.
         </p>
       </div>
 
@@ -368,6 +369,62 @@
           <img src="imagens/i-got-it/home.png" loading="lazy" width="1400" height="1000"
                alt="Tela inicial do I Got It, com busca que aceita trechos de letra e prateleiras de capas de álbuns."/>
           <figcaption>I Got It — busca por trecho de letra</figcaption>
+        </figure>
+      </article>
+
+      <!-- ───── PROJETO 04 — THE OCEANTHIEF RUN ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 04 · NO AR</p>
+          <h3 class="project-name">
+            <a href="projetos/oceanthief-run.html">The Oceanthief Run</a>
+          </h3>
+          <p class="project-tagline">
+            Meu site de corrida, alimentado pelos meus dados do Strava e atualizado sozinho
+            cerca de um minuto depois de cada treino — sem servidor, sem banco de dados e com
+            uma zona de privacidade que esconde de onde eu saio para correr.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value" data-oc="atividades">937</div>
+              <div class="project-metric-label">Atividades</div>
+            </div>
+            <div>
+              <div class="project-metric-value">~1 min</div>
+              <div class="project-metric-label">Do treino ao site</div>
+            </div>
+            <div>
+              <div class="project-metric-value">3</div>
+              <div class="project-metric-label">Idiomas</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">GitHub Actions</span>
+            <span class="chip">Cloudflare Workers</span>
+            <span class="chip">API do Strava</span>
+            <span class="chip">JavaScript</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;">
+            <span class="status-tag status-tag--live">No ar · atualiza a cada treino</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="https://oceanthief.github.io/oceanthief-run/" class="btn btn--accent" target="_blank" rel="noopener">
+              Abrir o site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="projetos/oceanthief-run.html" class="btn">Ver estudo de caso</a>
+          </div>
+        </div>
+
+        <figure class="shot">
+          <img src="imagens/oceanthief-run/home.jpg" loading="lazy" width="1400" height="1000"
+               alt="Abertura do The Oceanthief Run: o título entre duas fotos de corrida, a contagem regressiva para a próxima maratona e os totais de atividades, quilômetros, horas e subida."/>
+          <figcaption>The Oceanthief Run — atualizado a cada treino</figcaption>
         </figure>
       </article>
 
@@ -773,5 +830,6 @@
 }
 </script>
 <script src="js/site.js"></script>
+<script src="js/oceanthief-ao-vivo.js"></script>
 </body>
 </html>

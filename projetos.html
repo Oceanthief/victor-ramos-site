@@ -260,6 +260,65 @@
           <figcaption>Busca que aceita o trecho de letra que ficou na memória</figcaption>
         </figure>
       </article>
+
+      <!-- ───── PROJETO 04 — THE OCEANTHIEF RUN ───── -->
+      <article class="project-feature reveal">
+        <div>
+          <p class="project-index">PROJETO 04 · NO AR</p>
+          <h2 class="project-name">
+            <a href="projetos/oceanthief-run.html">The Oceanthief Run</a>
+          </h2>
+          <p class="project-tagline">
+            Meu site de corrida, alimentado pelos meus dados do Strava e atualizado sozinho
+            cerca de um minuto depois de cada treino: webhook do Strava via Cloudflare Worker,
+            sincronização incremental em Python no GitHub Actions, dados versionados no git e
+            uma zona de privacidade que esconde de onde eu saio para correr.
+          </p>
+
+          <div class="project-metrics">
+            <div>
+              <div class="project-metric-value" data-oc="atividades">937</div>
+              <div class="project-metric-label">Atividades</div>
+            </div>
+            <div>
+              <div class="project-metric-value">~1 min</div>
+              <div class="project-metric-label">Do treino ao site</div>
+            </div>
+            <div>
+              <div class="project-metric-value">0</div>
+              <div class="project-metric-label">Servidores</div>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="chip chip--accent">Python</span>
+            <span class="chip chip--accent">GitHub Actions</span>
+            <span class="chip chip--accent">JavaScript</span>
+            <span class="chip">Cloudflare Workers</span>
+            <span class="chip">API do Strava</span>
+            <span class="chip">Webhooks</span>
+            <span class="chip">Leaflet</span>
+          </div>
+
+          <p style="margin-bottom:1.5rem;">
+            <span class="status-tag status-tag--live">No ar · atualiza a cada treino</span>
+          </p>
+
+          <div class="btn-row">
+            <a href="https://oceanthief.github.io/oceanthief-run/" class="btn btn--accent" target="_blank" rel="noopener">
+              Abrir o site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="projetos/oceanthief-run.html" class="btn">Ver estudo de caso</a>
+          </div>
+        </div>
+
+        <figure class="shot">
+          <img src="imagens/oceanthief-run/home.jpg" loading="lazy" width="1400" height="1000"
+               alt="Abertura do The Oceanthief Run: o título entre duas fotos de corrida, a contagem regressiva para a próxima maratona e os totais de atividades, quilômetros, horas e subida."/>
+          <figcaption>Abertura com a contagem regressiva para a próxima prova</figcaption>
+        </figure>
+      </article>
     </div>
   </section>
 
@@ -279,7 +338,7 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 04</p>
+            <p class="project-index" style="margin:0;">PROJETO 05</p>
             <span class="status-tag status-tag--live">Código aberto</span>
           </div>
           <h3>Ranking de corridas de Juiz de Fora</h3>
@@ -317,7 +376,7 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 05</p>
+            <p class="project-index" style="margin:0;">PROJETO 06</p>
             <span class="status-tag status-tag--live">Em uso</span>
           </div>
           <h3>Automações contábeis</h3>
@@ -377,5 +436,6 @@
 </main>
 
 <script src="js/site.js"></script>
+<script src="js/oceanthief-ao-vivo.js"></script>
 </body>
 </html>

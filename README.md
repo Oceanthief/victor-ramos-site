@@ -25,8 +25,10 @@ dados.html                                  Dados abertos — os 13 datasets do 
 projetos/football-intel.html                Estudo de caso — em desenvolvimento
 projetos/chicago-marathon-analytics.html    Estudo de caso — concluído
 projetos/i-got-it.html                      Estudo de caso — produto no ar
+projetos/oceanthief-run.html                Estudo de caso — site de corrida no ar
 imagens/football-intel/                     Capturas reais do dashboard
 imagens/i-got-it/                           Capturas do app em produção
+imagens/oceanthief-run/                     Capturas do site de corrida (24/11/2026)
 experiencia.html                            Linha do tempo profissional + formação
 about.html                                  Sobre — narrativa de evolução
 estante.html                                Aprendizado (livros) — fora da nav principal
@@ -43,11 +45,13 @@ en/                                         Versão em inglês
   projetos/football-intel.html
   projetos/chicago-marathon-analytics.html
   projetos/i-got-it.html
+  projetos/oceanthief-run.html
 
 style.css                                   Sistema de design (tokens, componentes,
                                             dark mode, responsivo, impressão)
 js/site.js                                  Header/rodapé bilíngues, tema, menu,
                                             reveal e contadores
+js/oceanthief-ao-vivo.js                    Números ao vivo do The Oceanthief Run
 ```
 
 ## Como funciona
@@ -126,6 +130,20 @@ dois precisam ser atualizados juntos** — em `projetos/football-intel.html`,
 `en/projetos/football-intel.html`, `index.html`, `en/index.html`, `projetos.html`,
 `cv.html` e `en/cv.html`. As capturas em `imagens/football-intel/` também mostram os
 totais no cabeçalho do dashboard e envelhecem junto.
+
+## Números do The Oceanthief Run
+
+O site de corrida (https://oceanthief.github.io/oceanthief-run/) se atualiza sozinho a
+cada treino. Por isso os números dele aqui **não são fixos**: `js/oceanthief-ao-vivo.js`
+lê o `data/site.json` publicado por ele e preenche os elementos marcados com
+`data-oc="atividades|km|horas|ultimo|atualizado|fonte"` — no estudo de caso, em
+`projetos.html`, `index.html` e `en/index.html`. O valor escrito no HTML só aparece se a
+leitura falhar; pode ficar como está.
+
+Se o site de corrida ganhar domínio próprio, troque `URL_DADOS` no topo do script e os
+links "Abrir o site" (busque por `oceanthief-run/`). O que é fixo e envelhece: a tabela
+"A primeira semana no ar" (medida em 24/11/2026, com data na própria página) e as
+capturas em `imagens/oceanthief-run/`.
 
 ## Demo ao vivo do Football Intel
 

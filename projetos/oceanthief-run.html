@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8"/>
+<script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>The Oceanthief Run — Estudo de caso · Victor Ramos</title>
+<meta name="description" content="Site de corrida alimentado pelos meus dados do Strava e atualizado sozinho a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, privacidade por projeto e três idiomas, sem servidor e sem build."/>
+<meta name="author" content="Victor Ramos Alves de Matos"/>
+<meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
+<link rel="canonical" href="https://oceanthief.github.io/victor-ramos-site/projetos/oceanthief-run.html"/>
+<link rel="alternate" hreflang="pt-BR" href="https://oceanthief.github.io/victor-ramos-site/projetos/oceanthief-run.html"/>
+<link rel="alternate" hreflang="en" href="https://oceanthief.github.io/victor-ramos-site/en/projetos/oceanthief-run.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Victor Ramos"/>
+<meta property="og:title" content="The Oceanthief Run — Estudo de caso"/>
+<meta property="og:description" content="Do relógio ao site em cerca de um minuto: Strava, Cloudflare Worker, GitHub Actions e Pages, sem servidor e sem build."/>
+<meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos/oceanthief-run.html"/>
+<meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/oceanthief-run/home.jpg"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="The Oceanthief Run — Estudo de caso"/>
+<meta name="twitter:description" content="Do relógio ao site em cerca de um minuto: Strava, Cloudflare Worker, GitHub Actions e Pages, sem servidor e sem build."/>
+<meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/imagens/oceanthief-run/home.jpg"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+</head>
+<body data-page="trabalho" data-lang="pt" data-root="../">
+
+<main id="conteudo">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Trilha de navegação">
+      <a href="../index.html">Início</a>
+      <span aria-hidden="true">/</span>
+      <a href="../projetos.html">Trabalho</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">The Oceanthief Run</span>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <header class="page-hero">
+      <p class="page-kicker">Projeto 04 — Estudo de caso</p>
+      <h1 class="page-title">The Oceanthief Run</h1>
+      <p class="page-lede">
+        Meu site de corrida, alimentado pelos meus próprios dados do Strava. Cada treino
+        que eu registro aparece no site cerca de um minuto depois, sem que eu encoste em
+        nada — e sem servidor, sem banco de dados e sem etapa de build.
+      </p>
+
+      <p style="margin-top:1.5rem;">
+        <span class="status-tag status-tag--live">No ar · atualiza a cada treino</span>
+      </p>
+
+      <div class="btn-row" style="margin-top:1.5rem;">
+        <a href="https://oceanthief.github.io/oceanthief-run/" class="btn btn--accent" target="_blank" rel="noopener">
+          Abrir o site
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+        </a>
+        <a href="#automacao" class="btn">Como ele se atualiza</a>
+        <a href="#privacidade" class="btn btn--ghost">A questão da privacidade</a>
+      </div>
+    </header>
+
+    <div class="case-meta">
+      <div class="case-meta-item">
+        <p class="case-meta-key">Papel</p>
+        <p class="case-meta-val">Projeto individual — dados, automação e produto</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Estado</p>
+        <p class="case-meta-val">No ar no GitHub Pages desde nov/2026</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Escala</p>
+        <p class="case-meta-val">~9 mil linhas · 5 páginas · 3 idiomas</p>
+      </div>
+      <div class="case-meta-item">
+        <p class="case-meta-key">Stack</p>
+        <p class="case-meta-val">Python · JavaScript · GitHub Actions · Cloudflare Workers</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ AO VIVO ═══════════════ -->
+  <section class="wrap" aria-label="Números do site de corrida, lidos ao vivo">
+    <div class="proof">
+      <div class="proof-item">
+        <div class="proof-value"><span data-oc="atividades">937</span></div>
+        <p class="proof-label">Atividades sincronizadas
+          <span class="proof-note">Desde abr/2024 · todos os esportes</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-oc="km">3.722</span><span class="unit">km</span></div>
+        <p class="proof-label">Distância somada
+          <span class="proof-note">Corrida, caminhada e o resto</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-oc="ultimo">24 de nov</span></div>
+        <p class="proof-label">Último treino registrado
+          <span class="proof-note">Vindo do relógio, via Strava</span></p>
+      </div>
+      <div class="proof-item">
+        <div class="proof-value"><span data-oc="atualizado">a cada treino</span></div>
+        <p class="proof-label">Atualização dos dados
+          <span class="proof-note">Sem ninguém rodar nada</span></p>
+      </div>
+    </div>
+    <p style="margin-top:0.75rem;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:0.06em;color:var(--ink-3);">
+      <span data-oc="fonte">Números de 24/11/2026.</span>
+    </p>
+  </section>
+
+  <!-- ═══════════════ A IDEIA ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">01 — A ideia</p>
+        <h2 class="section-title">Um site pessoal que também é um produto de dados</h2>
+      </div>
+
+      <div class="prose">
+        <p>
+          O Strava guarda tudo, mas mostra pouco do que importa para quem treina para uma
+          prova: como os recordes evoluíram, quais provas já corri e em quanto tempo, se o
+          volume está onde deveria estar a meses da maratona. Eu queria um lugar meu para
+          isso, no espírito dos sites pessoais de corredores — o
+          <a href="https://therealroach.co" target="_blank" rel="noopener">therealroach.co</a>
+          foi a referência.
+        </p>
+        <p>
+          A restrição que definiu o projeto: <strong>ele tinha que se manter sozinho</strong>.
+          Um site de treinos que depende de eu lembrar de rodar um script vira um site
+          desatualizado em duas semanas. Então o trabalho de verdade não foi a página — foi o
+          encanamento que leva o dado do relógio até ela, sem custo e sem servidor para
+          administrar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ O PRODUTO ═══════════════ -->
+  <section class="section" id="produto">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">02 — O produto</p>
+        <h2 class="section-title">Do resumo da carreira ao quilômetro a quilômetro</h2>
+        <p class="section-sub">
+          Início, Provas, Evolução, a página de cada treino e o plano da maratona — em
+          português, inglês e espanhol, com tema claro e escuro e km ou milhas.
+        </p>
+      </div>
+
+      <figure class="shot reveal">
+        <img src="../imagens/oceanthief-run/home.jpg" loading="lazy" width="1400" height="1000"
+             alt="Abertura do The Oceanthief Run: o título do site entre duas fotos de corrida, a contagem regressiva para a New Balance 42K Porto Alegre e a faixa com 937 atividades, 3.722 quilômetros, 464 horas e 21.375 metros de subida."/>
+        <figcaption>Início — contagem regressiva para a próxima prova e os totais da carreira</figcaption>
+      </figure>
+
+      <div class="shot-grid reveal" style="margin-top:2.5rem;">
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/evolucao.jpg" loading="lazy" width="1400" height="1000"
+               alt="Gráfico de recordes de 5 km ao longo do tempo: uma linha em degraus desce de 34:24 em abril de 2024 para 20:21 em julho de 2026, sobre os pontos do melhor trecho de cada corrida, com a lista de cada recorde novo abaixo."/>
+          <figcaption>Evolução — cada recorde de 5 km, em degraus, sobre o melhor trecho de cada corrida</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/treino.jpg" loading="lazy" width="1400" height="1000"
+               alt="Página de um treino de prova: distância, tempo, ritmo, subida, frequência cardíaca, cadência e potência no topo; o mapa do percurso à esquerda e as parciais por quilômetro à direita."/>
+          <figcaption>Treino — números, percurso com as pontas escondidas e parciais</figcaption>
+        </figure>
+      </div>
+
+      <div class="shot-grid reveal" style="margin-top:2.5rem;">
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/numeros.jpg" loading="lazy" width="1400" height="1000"
+               alt="Seção Números: distância de corrida por ano, quantidade de treinos por hora de início, distância média por dia da semana e tempo em cada zona de frequência cardíaca."/>
+          <figcaption>Números — volume por ano, horário, dia da semana e zonas de FC</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/lugares.jpg" loading="lazy" width="1400" height="1000"
+               alt="Mapa de Juiz de Fora com as rotas publicadas em laranja e, abaixo, o resumo dos lugares: 5 cidades, 3 estados e o treino mais longe de casa."/>
+          <figcaption>Lugares — o mapa de todas as rotas publicadas</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          O que o Strava não calcula ficou a cargo do site. A <strong>previsão de tempo pela
+          fórmula de Riegel</strong>, a partir das melhores marcas dos últimos 12 meses,
+          comparada com a meta da maratona — com o aviso, na própria página, de que para a
+          maratona ela costuma ser otimista. O <strong>ritmo contra a frequência
+          cardíaca</strong> em dois períodos, para ver se o mesmo esforço ficou mais rápido.
+          E o <strong>arquivo de provas</strong>, que agrupa as edições de uma mesma corrida:
+          o Strava não tem identificador de prova, então o agrupamento combina nome parecido,
+          mesma época do ano e distância parecida.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AUTOMAÇÃO ═══════════════ -->
+  <section class="section" id="automacao">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">03 — Automação</p>
+        <h2 class="section-title">Do relógio ao site em cerca de um minuto</h2>
+      </div>
+
+      <div class="pipeline reveal" role="img" aria-label="Caminho de um treino até o site: Strava, Cloudflare Worker, GitHub Actions, repositório git e GitHub Pages">
+        <div class="pipeline-stage">
+          <p class="pipeline-num">01</p>
+          <p class="pipeline-name">Strava</p>
+          <p class="pipeline-detail">treino criado,<br/>editado ou apagado</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">02</p>
+          <p class="pipeline-name">Cloudflare Worker</p>
+          <p class="pipeline-detail">confere o aviso<br/>responde em &lt; 2 s</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">03</p>
+          <p class="pipeline-name">GitHub Actions</p>
+          <p class="pipeline-detail">sync em Python<br/>incremental</p>
+        </div>
+        <div class="pipeline-stage pipeline-stage--accent">
+          <p class="pipeline-num">04</p>
+          <p class="pipeline-name">Repositório</p>
+          <p class="pipeline-detail">JSON versionado<br/>no git</p>
+        </div>
+        <div class="pipeline-stage">
+          <p class="pipeline-num">05</p>
+          <p class="pipeline-name">GitHub Pages</p>
+          <p class="pipeline-detail">site estático<br/>sem servidor</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>Dois gatilhos: o aviso e o relógio</h3>
+        <p>
+          Quando uma atividade é criada, editada ou apagada, o Strava manda um aviso
+          (<em>webhook</em>) para um Cloudflare Worker de umas 60 linhas. O Worker confere se o
+          aviso é do atleta certo, responde na hora — o Strava desiste se a resposta passar
+          de 2 segundos — e só depois pede ao GitHub para rodar a atualização. Nas rodadas
+          disparadas por treino, o caminho inteiro — baixar, gerar, versionar e publicar —
+          levou <strong>de 39 a 75 segundos</strong>.
+        </p>
+        <p>
+          Avisos podem se perder. Por isso a mesma automação roda também em três horários
+          fixos por dia, como rede de segurança. Como a sincronização é incremental, rodar
+          duas vezes não estraga nada: a segunda rodada só não encontra novidade. E uma fila
+          garante que duas rodadas nunca escrevam ao mesmo tempo.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2rem;">
+        <div class="code-head">
+          <span>.github/workflows/atualizar.yml</span>
+          <span>gatilhos</span>
+        </div>
+<pre><code>on:
+  repository_dispatch:     <span class="c"># o aviso do Strava, via Cloudflare Worker</span>
+    types: [strava]
+  schedule:                <span class="c"># rede de segurança: 6h, 13h e 21h (Brasília)</span>
+    - cron: <span class="k">"0 0,9,16 * * *"</span>
+  push:                    <span class="c"># mudança no código publica na hora</span>
+    branches: [main]
+
+concurrency:
+  group: atualizar-site    <span class="c"># uma rodada por vez, nenhuma cancelada</span>
+  cancel-in-progress: <span class="k">false</span></code></pre>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>Os dados moram no git</h3>
+        <p>
+          Não existe banco de dados. O script em Python gera arquivos JSON — um resumo de
+          todas as atividades, as rotas, as séries mensais e um arquivo por treino — e faz
+          commit deles no repositório. O site só lê esses arquivos. O resultado: cada
+          atualização fica no histórico, dá para ver exatamente o que mudou em cada rodada,
+          e o site inteiro é estático, hospedado de graça e sem nada para administrar.
+        </p>
+
+        <h3>Cache do navegador sem etapa de build</h3>
+        <p>
+          O GitHub Pages manda o navegador guardar CSS e JavaScript por 10 minutos: uma
+          correção publicada podia levar esse tempo para aparecer para quem já tinha
+          visitado o site. Sem bundler para resolver isso, a própria automação, ao montar a
+          pasta publicada, acrescenta a cada arquivo uma etiqueta com o hash do código
+          (<code>site.css?v=…</code>). Mudou o código, muda a etiqueta, e o navegador busca a
+          versão nova. O código no repositório continua sem etiqueta nenhuma.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DADOS ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Engenharia de dados</p>
+        <h2 class="section-title">Um pipeline que respeita os limites da fonte</h2>
+      </div>
+
+      <div class="prose">
+        <h3>1. Sincronização incremental sob limite de requisições</h3>
+        <p>
+          A API do Strava libera 100 pedidos a cada 15 minutos. A lista de atividades sai
+          barata, mas o detalhe de cada treino (parciais, melhores trechos, equipamento) e as
+          séries ao longo do percurso (altimetria, ritmo, frequência cardíaca) custam um
+          pedido cada. A primeira carga levou horas, com o script esperando sozinho entre os
+          lotes. Desde então, cada rodada tem um orçamento — até 90 detalhes e 90 séries, os
+          treinos mais novos primeiro — e tudo o que já foi baixado fica em cache, inclusive
+          o clima de cada treino (Open-Meteo) e a cidade (Nominatim).
+          <strong>Cada série é pedida uma única vez.</strong>
+        </p>
+
+        <h3>2. Só a biblioteca padrão do Python</h3>
+        <p>
+          O sincronizador tem cerca de 850 linhas e nenhuma dependência: HTTP, OAuth, JSON e
+          as contas de geometria saem da biblioteca padrão. Na prática, a automação não tem
+          <code>pip install</code> para quebrar nem versão de pacote para envelhecer.
+        </p>
+
+        <h3>3. Números que fecham</h3>
+        <p>
+          Um detalhe que só aparece com uso real: o resumo da semana mostrava "2 km" para
+          uma caminhada de 1,55 km. Arredondar parece inofensivo até alguém comparar com o
+          próprio Strava. Virou regra escrita: treino sozinho sempre com duas casas, como no
+          Strava; somas com menos casas conforme o número cresce. No mesmo pacote, as
+          parciais passaram a usar o tempo (em movimento ou total) cuja soma bate com o do
+          treino, e a cadência de caminhada passou a contar as duas pernas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PRIVACIDADE ═══════════════ -->
+  <section class="section section--tint" id="privacidade">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Privacidade</p>
+        <h2 class="section-title">Publicar o mapa sem publicar o endereço</h2>
+        <p class="section-sub">
+          Um site público com as rotas de alguém é, sem cuidado, um mapa até a porta de casa.
+        </p>
+      </div>
+
+      <div class="prose">
+        <p>
+          A primeira versão fazia o que muita gente faz: cortava 400 metros do começo e do
+          fim de cada rota. Antes de considerar isso resolvido, auditei o resultado contra os
+          dados publicados.
+        </p>
+      </div>
+
+      <div class="versus reveal" style="margin-top:2rem;">
+        <div class="versus-side">
+          <p class="versus-key">Corte fixo de 400 m</p>
+          <p class="versus-value">~54%</p>
+          <p class="versus-note">
+            das pontas de rota publicadas caíam num mesmo quadrado de uns 400 m. O corte
+            escondia o ponto exato, mas o conjunto <strong>desenhava um alvo</strong>.
+          </p>
+        </div>
+        <div class="versus-side versus-side--win">
+          <p class="versus-key">Zona de privacidade automática</p>
+          <p class="versus-value">1 km</p>
+          <p class="versus-note">
+            de raio em volta do lugar de onde mais saem treinos, encontrado pelo próprio
+            script. Nada dentro dela é publicado, e o centro da zona fica
+            <strong>deslocado do lugar real numa direção secreta</strong>: o buraco no mapa
+            não aponta para o endereço.
+          </p>
+        </div>
+      </div>
+
+      <div class="limits reveal" style="margin-top:2.5rem;">
+        <div class="callout">
+          <span class="callout-mark">1</span>
+          <div class="callout-body">
+            <p class="callout-title">Permissão mínima</p>
+            <p class="callout-text">
+              O site pede ao Strava só <code>activity:read</code>, nunca
+              <code>read_all</code>. Treinos marcados como "Só eu" <strong>nem chegam ao
+              pipeline</strong> — não existe o que vazar.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">2</span>
+          <div class="callout-body">
+            <p class="callout-title">Pontas que variam por treino</p>
+            <p class="callout-text">
+              Além da zona, o começo e o fim de cada rota são cortados entre 400 e 600 m, num
+              valor diferente para cada treino. Um corte sempre igual alinha as pontas num
+              anel em volta da origem; variando, o anel some.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">3</span>
+          <div class="callout-body">
+            <p class="callout-title">O dado completo não sai do computador</p>
+            <p class="callout-text">
+              As rotas sem corte ficam numa pasta que o git ignora. As chaves do Strava e o
+              token do GitHub vivem como segredos do Actions e do Worker — o token,
+              <strong>restrito a um único repositório</strong> e só com permissão de escrever
+              conteúdo.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout--accent">
+          <span class="callout-mark">4</span>
+          <div class="callout-body">
+            <p class="callout-title">Precisão só onde ela serve</p>
+            <p class="callout-text">
+              O mapa geral e a lista de cidades usam coordenadas arredondadas. O que serve
+              para dizer "treinei em Juiz de Fora" não precisa servir para dizer em que rua.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ INTERFACE ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">06 — Interface</p>
+        <h2 class="section-title">Feito à mão, em três idiomas</h2>
+      </div>
+
+      <div class="prose">
+        <ul>
+          <li>
+            <strong>HTML, CSS e JavaScript puros</strong>, em módulos ES, sem npm e sem
+            build. Os gráficos de barras, linhas e degraus são SVG próprio; os mapas usam
+            Leaflet com o OpenStreetMap; os globos da abertura, d3-geo.
+          </li>
+          <li>
+            <strong>Três idiomas com um verificador.</strong> Todo texto da interface passa
+            por uma função de tradução que usa a frase em português como chave. Um script
+            aponta qualquer frase sem versão em inglês ou espanhol, ou um marcador como
+            <code>{n}</code> que sumiu numa delas.
+          </li>
+          <li>
+            <strong>Cores validadas, não escolhidas no olho.</strong> As cores dos esportes e
+            das fases do plano passaram por um validador de contraste e de distinção entre
+            si, nos dois temas.
+          </li>
+          <li>
+            <strong>Tipografia testada com o conteúdo real.</strong> A primeira fonte
+            desenhava o "ª" como um "a" comum — e corridas como a "14ª Corrida Camilo dos
+            Santos" são justamente o conteúdo do site. Troquei de fonte.
+          </li>
+          <li>
+            <strong>Layout medido, e olhado.</strong> Controlando o Chrome pelo protocolo de
+            depuração, as mudanças de layout são medidas de 360 a 1920 px: rolagem
+            horizontal, palavras partidas, altura de linha. E conferidas em print, porque
+            medir texto não mostra uma legenda quebrando letra por letra.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EM PRODUÇÃO ═══════════════ -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">07 — Em produção</p>
+        <h2 class="section-title">A primeira semana no ar</h2>
+        <p class="section-sub">
+          Medido no histórico do GitHub Actions, de 16 a 24/11/2026.
+        </p>
+      </div>
+
+      <div class="data-table-wrap reveal">
+        <table class="data-table">
+          <caption class="visually-hidden">Rodadas da automação na primeira semana</caption>
+          <thead>
+            <tr><th scope="col">Item</th><th scope="col">Resultado</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rodadas da automação</td><td class="num">52</td></tr>
+            <tr><td>Disparadas por um treino (aviso do Strava)</td><td class="num">18</td></tr>
+            <tr><td>Duração de uma rodada disparada por treino</td><td class="num">39 a 75 s</td></tr>
+            <tr><td>Rodadas concluídas</td><td class="num">48 / 52</td></tr>
+            <tr><td>Atividades com detalhe completo</td><td class="num">810 / 937</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose" style="margin-top:2rem;">
+        <p>
+          As quatro falhas ensinaram algo. Três foram o GitHub Pages recusando a publicação
+          logo depois de receber o pacote do site — um problema intermitente do lado do
+          GitHub. A automação agora espera 20 segundos e tenta de novo. A quarta foi uma
+          corrida entre o robô e eu: publiquei código no mesmo minuto em que ele tentava
+          salvar dados novos, e o envio dele foi recusado. Nada se perdeu — a rodada
+          seguinte pôs tudo em dia —, mas é o próximo ponto a blindar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ LIMITAÇÕES ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">08 — Limitações</p>
+        <h2 class="section-title">O que os dados não sustentam</h2>
+      </div>
+
+      <div class="limits reveal">
+        <div class="callout">
+          <span class="callout-mark">1</span>
+          <div class="callout-body">
+            <p class="callout-title">Frequência cardíaca e cadência só desde maio de 2026</p>
+            <p class="callout-text">
+              Foi quando passei a correr com um relógio com sensor. Antes disso não há o que
+              mostrar, então <strong>comparações de esforço só valem a partir dessa
+              data</strong> — dois anos de corrida ficam de fora delas.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">2</span>
+          <div class="callout-body">
+            <p class="callout-title">79 corridas antigas não têm detalhe</p>
+            <p class="callout-text">
+              Foram lançadas à mão no Strava, sem GPS nem parciais. Entram nos totais, mas
+              <strong>não nos recordes por trecho</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="callout-mark">3</span>
+          <div class="callout-body">
+            <p class="callout-title">Às vezes o Strava discorda de si mesmo</p>
+            <p class="callout-text">
+              Em 27 caminhadas com paradas, nem o tempo em movimento nem o tempo total
+              fecham com a soma das parciais. A conta certa só sai das séries completas do
+              percurso, que ainda não foram baixadas para todos os treinos.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout--accent">
+          <span class="callout-mark">4</span>
+          <div class="callout-body">
+            <p class="callout-title">A Riegel é referência, não promessa</p>
+            <p class="callout-text">
+              A previsão para a maratona extrapola marcas de distâncias menores e costuma
+              ser otimista. A página mostra a conta, a fonte de cada tempo usado e esse
+              aviso, lado a lado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ STACK ═══════════════ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">09 — Stack</p>
+        <h2 class="section-title">Ferramentas</h2>
+      </div>
+
+      <div class="skills">
+        <div class="skill-group">
+          <h3>Dados</h3>
+          <ul class="skill-list">
+            <li class="is-core">Python</li><li>API do Strava (OAuth 2)</li>
+            <li>Open-Meteo</li><li>Nominatim</li><li>JSON versionado</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Automação</h3>
+          <ul class="skill-list">
+            <li class="is-core">GitHub Actions</li><li>Cloudflare Workers</li>
+            <li>Webhooks</li><li>GitHub Pages</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Interface</h3>
+          <ul class="skill-list">
+            <li class="is-core">JavaScript</li><li>CSS</li><li>SVG</li>
+            <li>Leaflet</li><li>d3-geo</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Qualidade</h3>
+          <ul class="skill-list">
+            <li>Auditoria de privacidade</li><li>Verificador de traduções</li>
+            <li>Testes de layout via CDP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="repo-bar reveal" style="margin-top:3rem;">
+        <div class="repo-bar-text">
+          <p class="repo-bar-title">O site está no ar</p>
+          <p class="repo-bar-sub">
+            Abra num dia de treino: ele aparece lá cerca de um minuto depois de salvo no
+            Strava. O código é aberto.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a href="https://oceanthief.github.io/oceanthief-run/" class="btn btn--accent" target="_blank" rel="noopener">
+            Abrir o site
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+          <a href="https://github.com/Oceanthief/oceanthief-run" class="btn" target="_blank" rel="noopener">Código no GitHub</a>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top:3rem;">
+        <a href="football-intel.html" class="btn btn--primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Projeto 01: Football Intel
+        </a>
+        <a href="../projetos.html" class="btn">Todos os projetos</a>
+        <a href="../index.html#contato" class="btn btn--ghost">Entrar em contato</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Oceanthief Run — Estudo de caso",
+  "description": "Site de corrida alimentado pelos dados do Strava e atualizado a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, privacidade por projeto.",
+  "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/projetos/oceanthief-run.html",
+  "about": ["Engenharia de Dados", "Automação", "GitHub Actions", "Python", "Privacidade de Dados", "Visualização de Dados"]
+}
+</script>
+<script src="../js/site.js"></script>
+<script src="../js/oceanthief-ao-vivo.js"></script>
+</body>
+</html>
