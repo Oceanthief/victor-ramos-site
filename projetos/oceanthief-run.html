@@ -5,7 +5,7 @@
 <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>The Oceanthief Run — Estudo de caso · Victor Ramos</title>
-<meta name="description" content="Site de corrida alimentado pelos meus dados do Strava e atualizado sozinho a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, privacidade por projeto e três idiomas, sem servidor e sem build."/>
+<meta name="description" content="Site de corrida alimentado pelos meus dados do Strava e atualizado sozinho a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, uma história animada do ano e figuras de cada treino para compartilhar, sem servidor e sem build."/>
 <meta name="author" content="Victor Ramos Alves de Matos"/>
 <meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
@@ -44,7 +44,7 @@
 
     <!-- ═══════════════ HERO ═══════════════ -->
     <header class="page-hero">
-      <p class="page-kicker">Projeto 04 — Estudo de caso</p>
+      <p class="page-kicker">Projeto 03 — Estudo de caso</p>
       <h1 class="page-title">The Oceanthief Run</h1>
       <p class="page-lede">
         Meu site de corrida, alimentado pelos meus próprios dados do Strava. Cada treino
@@ -62,7 +62,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
         <a href="#automacao" class="btn">Como ele se atualiza</a>
-        <a href="#privacidade" class="btn btn--ghost">A questão da privacidade</a>
+        <a href="#historia" class="btn btn--ghost">O ano em pontos</a>
       </div>
     </header>
 
@@ -77,7 +77,7 @@
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Escala</p>
-        <p class="case-meta-val">~9 mil linhas · 5 páginas · 3 idiomas</p>
+        <p class="case-meta-val">~15 mil linhas · 6 páginas · 3 idiomas</p>
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Stack</p>
@@ -90,17 +90,17 @@
   <section class="wrap" aria-label="Números do site de corrida, lidos ao vivo">
     <div class="proof">
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="atividades">937</span></div>
+        <div class="proof-value"><span data-oc="atividades">941</span></div>
         <p class="proof-label">Atividades sincronizadas
           <span class="proof-note">Desde abr/2024 · todos os esportes</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="km">3.722</span><span class="unit">km</span></div>
+        <div class="proof-value"><span data-oc="km">3.736</span><span class="unit">km</span></div>
         <p class="proof-label">Distância somada
           <span class="proof-note">Corrida, caminhada e o resto</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="ultimo">24 de nov</span></div>
+        <div class="proof-value"><span data-oc="ultimo">27 de nov</span></div>
         <p class="proof-label">Último treino registrado
           <span class="proof-note">Vindo do relógio, via Strava</span></p>
       </div>
@@ -111,7 +111,7 @@
       </div>
     </div>
     <p style="margin-top:0.75rem;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:0.06em;color:var(--ink-3);">
-      <span data-oc="fonte">Números de 24/11/2026.</span>
+      <span data-oc="fonte">Números de 27/11/2026.</span>
     </p>
   </section>
 
@@ -150,14 +150,14 @@
         <p class="section-label">02 — O produto</p>
         <h2 class="section-title">Do resumo da carreira ao quilômetro a quilômetro</h2>
         <p class="section-sub">
-          Início, Provas, Evolução, a página de cada treino e o plano da maratona — em
-          português, inglês e espanhol, com tema claro e escuro e km ou milhas.
+          Início, Provas, Evolução, O ano em pontos, a página de cada treino e o plano da
+          maratona — em português, inglês e espanhol, com tema claro e escuro e km ou milhas.
         </p>
       </div>
 
       <figure class="shot reveal">
         <img src="../imagens/oceanthief-run/home.jpg" loading="lazy" width="1400" height="1000"
-             alt="Abertura do The Oceanthief Run: o título do site entre duas fotos de corrida, a contagem regressiva para a New Balance 42K Porto Alegre e a faixa com 937 atividades, 3.722 quilômetros, 464 horas e 21.375 metros de subida."/>
+             alt="Abertura do The Oceanthief Run: o título do site entre duas fotos de corrida, a contagem regressiva para a New Balance 42K Porto Alegre e a faixa com 941 atividades, 3.736 quilômetros, 466 horas e 21.382 metros de subida."/>
         <figcaption>Início — contagem regressiva para a próxima prova e os totais da carreira</figcaption>
       </figure>
 
@@ -169,8 +169,8 @@
         </figure>
         <figure class="shot">
           <img src="../imagens/oceanthief-run/treino.jpg" loading="lazy" width="1400" height="1000"
-               alt="Página de um treino de prova: distância, tempo, ritmo, subida, frequência cardíaca, cadência e potência no topo; o mapa do percurso à esquerda e as parciais por quilômetro à direita."/>
-          <figcaption>Treino — números, percurso com as pontas escondidas e parciais</figcaption>
+               alt="Página de um treino de prova: o botão Compartilhar abaixo do título; distância, tempo, ritmo, subida, frequência cardíaca, cadência e potência; o mapa do percurso à esquerda e as parciais por quilômetro à direita."/>
+          <figcaption>Treino — números, percurso, parciais e o botão Compartilhar</figcaption>
         </figure>
       </div>
 
@@ -202,11 +202,157 @@
     </div>
   </section>
 
-  <!-- ═══════════════ AUTOMAÇÃO ═══════════════ -->
-  <section class="section" id="automacao">
+  <!-- ═══════════════ O ANO EM PONTOS ═══════════════ -->
+  <section class="section section--tint" id="historia">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">03 — Automação</p>
+        <p class="section-label">03 — Contar o ano</p>
+        <h2 class="section-title">Cada quilômetro, um ponto</h2>
+        <p class="section-sub">
+          Uma página que conta o ano com a rolagem: os mesmos pontos, um por quilômetro
+          corrido, mudam de lugar em sete capítulos.
+        </p>
+      </div>
+
+      <div class="shot-grid reveal">
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/pontos-montes.jpg" loading="lazy" width="1400" height="1000"
+               alt="Capítulo Quilômetros da página O ano em pontos: centenas de pontos laranja agrupados em montes de tamanhos diferentes, onde cada monte fica perto do trecho em que aqueles quilômetros foram corridos; abaixo, um monte separado com os 233 km sem mapa."/>
+          <figcaption>Capítulo 2 — cada km perto de onde foi corrido; monte maior, trecho mais repetido</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/pontos-ritmo.jpg" loading="lazy" width="1400" height="1000"
+               alt="Capítulo Ritmo: cada quilômetro de 2026 é um ponto na altura do seu ritmo, de janeiro a novembro, com uma linha cheia para a mediana de 4 semanas e uma linha tracejada no ritmo da meta da maratona, 4:44 por km."/>
+          <figcaption>Capítulo 6 — cada km na altura do seu ritmo, com a mediana de 4 semanas e a meta</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          A ideia veio de uma visualização de eleição, <em>Land doesn't vote, people do</em>,
+          de Karim Douieb, e das versões animadas de David Zumbach e Caio Yamamoto Lellis.
+          Um mapa de rotas tem o mesmo defeito de um mapa eleitoral pintado por área: o
+          trecho que corri dezenas de vezes aparece com o mesmo traço de um trecho feito uma
+          vez só. Trocando a linha por <strong>um ponto por quilômetro</strong>, a repetição
+          vira volume.
+        </p>
+        <ol>
+          <li><strong>Rotas</strong> — todas as corridas do ano, uma por cima da outra.</li>
+          <li><strong>Quilômetros</strong> — cada km vira um ponto, num monte perto de onde
+            foi corrido. Esteira e treino sem GPS formam um monte à parte.</li>
+          <li><strong>Meta</strong> — em ordem de data, os pontos enchem a meta do ano; no
+            ano corrente, anéis mostram onde ele fecha no ritmo das últimas 8 semanas.</li>
+          <li><strong>Semanas</strong> — uma coluna por semana: semanas sem corrida, a maior
+            sequência, a média e a comparação com o ano anterior.</li>
+          <li><strong>Horários</strong> — uma coluna por hora de saída, e o dia que mais rende.</li>
+          <li><strong>Ritmo</strong> — cada ponto na altura do ritmo daquele km, com a mediana
+            de 4 semanas e o ritmo da meta da maratona.</li>
+          <li><strong>Previsão</strong> — só no ano corrente: linhas de 42 pontos, cada uma no
+            ritmo de uma previsão de Riegel, numa corrida contra a meta.</li>
+        </ol>
+
+        <h3>Os pontos saem do mesmo pipeline</h3>
+        <p>
+          O sincronizador passou a gerar um arquivo com um ponto por quilômetro inteiro de
+          cada ano, posto sobre a rota e com o ritmo daquele km (a parcial do Strava). Antes
+          de publicar, conferi que a contagem de pontos batia com os quilômetros inteiros de
+          2024, 2025 e 2026. A previsão de Riegel saiu da página Evolução para um arquivo só,
+          usado pelas duas páginas: <strong>a mesma conta, o mesmo número</strong>, nos dois
+          lugares.
+        </p>
+
+        <h3>Canvas, e uma saída para quem não vê a animação</h3>
+        <p>
+          São cerca de 1.300 pontos por ano, desenhados num <code>canvas</code> que fica
+          parado enquanto os capítulos passam ao lado (no celular, por baixo). Com "reduzir
+          movimento" ligado no sistema, cada capítulo aparece pronto, sem animação. E os
+          números de cada mês também saem numa tabela, para quem não vê o desenho.
+        </p>
+
+        <h3>A mesma história, em vídeo</h3>
+        <p>
+          Para o LinkedIn e o Instagram, a animação também sai como MP4 — em 4:5, 9:16 ou
+          quadrado, nos três idiomas. Um script em Node grava quadro a quadro no Chrome sem
+          janela: o relógio da página só anda quando o script pede, então cada quadro sai
+          igual, seja qual for a velocidade do computador, e o ffmpeg junta tudo no fim. O
+          script só usa o que já vem com o Node.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPARTILHAR ═══════════════ -->
+  <section class="section" id="compartilhar">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — Do site para o story</p>
+        <h2 class="section-title">Cada treino vira uma figura</h2>
+        <p class="section-sub">
+          Um botão em cada treino e outro na seção de constância transformam os números em
+          imagens prontas para pôr por cima de uma foto.
+        </p>
+      </div>
+
+      <div class="shot-grid reveal">
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/figuras.jpg" loading="lazy" width="1400" height="1000"
+               alt="Janela Compartilhar de um treino de prova: seis figuras com fundo transparente, mostrado como xadrez, em letras condensadas brancas e verde-limão (resumo, distância em destaque, resumo técnico, parciais, ritmo por km e altimetria com FC), cada uma com os botões Baixar, Copiar e Compartilhar."/>
+          <figcaption>Figuras do treino — PNG de fundo transparente (o xadrez indica a transparência)</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../imagens/oceanthief-run/resumos.jpg" loading="lazy" width="1400" height="1000"
+               alt="Janela de resumo do mês, com três modelos em formato de story sobre fundo café: o duelo de outubro contra novembro, a curva acumulada de quilômetros do mês contra a do mês anterior e o desenho de cada treino de novembro."/>
+          <figcaption>Resumos do mês — duelo, curva acumulada e o desenho de cada treino</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          Na página de cada corrida e caminhada, o botão <strong>Compartilhar</strong> desenha
+          <strong>23 figuras</strong> de 1080 px de largura e fundo transparente, inspiradas nas
+          artes da Coros: resumo, parciais, ritmo por km, altimetria e FC, zonas, rota com
+          marcos, melhores esforços, a comparação com a edição anterior da prova, splits no
+          estilo das placas de transmissão de atletismo e outras. Cada figura só aparece quando
+          o treino tem o dado de que ela precisa. Dá para baixar, copiar (no iPhone, é só colar
+          no story) ou abrir a folha de compartilhar do celular. A foto escolhida para a prévia
+          não sai do navegador.
+        </p>
+        <p>
+          Na página inicial, <strong>Compartilhar resumo</strong> monta oito modelos do mês ou
+          do ano no tamanho do story (1080 × 1920), calculados na hora com os treinos que já
+          estão no site. As comparações seguem uma regra só: o mês contra o anterior, o ano
+          contra o anterior, e um período que ainda não acabou contra os mesmos dias do outro —
+          1 a 27 de novembro contra 1 a 27 de outubro. <strong>Nada de projeção</strong>: a
+          imagem mostra só o que aconteceu.
+        </p>
+
+        <h3>Rótulos que não encostam na rota</h3>
+        <p>
+          Nas figuras com mapa, rótulos como "km 4" ou "largada e chegada" não podem cobrir o
+          desenho. Escrevi um posicionador para isso: ele amostra a linha da rota a cada 6 px,
+          mede a largura de cada rótulo e testa oito direções em distâncias crescentes, ficando
+          com o lugar mais perto que não encosta na rota, em outro rótulo nem em outro ponto.
+          Rótulo que acaba longe ganha uma linha fina até o seu ponto. Conferi em ida e volta,
+          em voltas num campus, numa meia maratona e num longão de 30 km.
+        </p>
+
+        <h3>Aprovar antes de publicar</h3>
+        <p>
+          Figura ou modelo novo entra no ar escondido: só aparece com
+          <code>?figuras=novas</code> ou <code>?resumos=novos</code> no endereço. Assim dá para
+          ver a novidade no site de verdade, com dados de verdade, antes de liberar para todo
+          mundo. Nove das figuras atuais passaram por esse caminho; duas propostas não foram
+          aprovadas e saíram do código sem nunca terem sido liberadas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AUTOMAÇÃO ═══════════════ -->
+  <section class="section section--tint" id="automacao">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Automação</p>
         <h2 class="section-title">Do relógio ao site em cerca de um minuto</h2>
       </div>
 
@@ -246,7 +392,7 @@
           aviso é do atleta certo, responde na hora — o Strava desiste se a resposta passar
           de 2 segundos — e só depois pede ao GitHub para rodar a atualização. Nas rodadas
           disparadas por treino, o caminho inteiro — baixar, gerar, versionar e publicar —
-          levou <strong>de 39 a 75 segundos</strong>.
+          levou <strong>de 39 a 76 segundos</strong>.
         </p>
         <p>
           Avisos podem se perder. Por isso a mesma automação roda também em três horários
@@ -278,10 +424,11 @@ concurrency:
         <h3>Os dados moram no git</h3>
         <p>
           Não existe banco de dados. O script em Python gera arquivos JSON — um resumo de
-          todas as atividades, as rotas, as séries mensais e um arquivo por treino — e faz
-          commit deles no repositório. O site só lê esses arquivos. O resultado: cada
-          atualização fica no histórico, dá para ver exatamente o que mudou em cada rodada,
-          e o site inteiro é estático, hospedado de graça e sem nada para administrar.
+          todas as atividades, as rotas, as séries mensais, os pontos de cada ano e um arquivo
+          por treino — e faz commit deles no repositório. O site só lê esses arquivos. O
+          resultado: cada atualização fica no histórico, dá para ver exatamente o que mudou em
+          cada rodada, e o site inteiro é estático, hospedado de graça e sem nada para
+          administrar.
         </p>
 
         <h3>Cache do navegador sem etapa de build</h3>
@@ -290,7 +437,8 @@ concurrency:
           correção publicada podia levar esse tempo para aparecer para quem já tinha
           visitado o site. Sem bundler para resolver isso, a própria automação, ao montar a
           pasta publicada, acrescenta a cada arquivo uma etiqueta com o hash do código
-          (<code>site.css?v=…</code>). Mudou o código, muda a etiqueta, e o navegador busca a
+          (<code>site.css?v=…</code>) — inclusive nos módulos que só carregam quando alguém abre
+          a janela de compartilhar. Mudou o código, muda a etiqueta, e o navegador busca a
           versão nova. O código no repositório continua sem etiqueta nenhuma.
         </p>
       </div>
@@ -301,7 +449,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">04 — Engenharia de dados</p>
+        <p class="section-label">06 — Engenharia de dados</p>
         <h2 class="section-title">Um pipeline que respeita os limites da fonte</h2>
       </div>
 
@@ -318,14 +466,24 @@ concurrency:
           <strong>Cada série é pedida uma única vez.</strong>
         </p>
 
-        <h3>2. Só a biblioteca padrão do Python</h3>
+        <h3>2. Dado novo sem pedido a mais</h3>
         <p>
-          O sincronizador tem cerca de 850 linhas e nenhuma dependência: HTTP, OAuth, JSON e
-          as contas de geometria saem da biblioteca padrão. Na prática, a automação não tem
+          As figuras pediam dados que o site não guardava: esforço relativo, potência,
+          energia, temperatura, cadência ao longo do treino. Antes de gastar orçamento, olhei o
+          que já chegava. A lista de atividades trazia quase tudo, sem nenhuma chamada extra;
+          as séries passaram a guardar também tempo, cadência e potência, na mesma chamada de
+          sempre. Só as séries antigas dos treinos feitos com relógio precisam ser baixadas de
+          novo, e isso acontece aos poucos, dentro do orçamento de cada rodada.
+        </p>
+
+        <h3>3. Só a biblioteca padrão do Python</h3>
+        <p>
+          O sincronizador tem quase mil linhas e nenhuma dependência: HTTP, OAuth, JSON e as
+          contas de geometria saem da biblioteca padrão. Na prática, a automação não tem
           <code>pip install</code> para quebrar nem versão de pacote para envelhecer.
         </p>
 
-        <h3>3. Números que fecham</h3>
+        <h3>4. Números que fecham</h3>
         <p>
           Um detalhe que só aparece com uso real: o resumo da semana mostrava "2 km" para
           uma caminhada de 1,55 km. Arredondar parece inofensivo até alguém comparar com o
@@ -342,10 +500,12 @@ concurrency:
   <section class="section section--tint" id="privacidade">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">05 — Privacidade</p>
-        <h2 class="section-title">Publicar o mapa sem publicar o endereço</h2>
+        <p class="section-label">07 — Privacidade</p>
+        <h2 class="section-title">Quanto esconder é configuração, não código</h2>
         <p class="section-sub">
           Um site público com as rotas de alguém é, sem cuidado, um mapa até a porta de casa.
+          Construí a proteção, medi o que ela custava e deixei a decisão num arquivo de
+          configuração.
         </p>
       </div>
 
@@ -371,11 +531,24 @@ concurrency:
           <p class="versus-value">1 km</p>
           <p class="versus-note">
             de raio em volta do lugar de onde mais saem treinos, encontrado pelo próprio
-            script. Nada dentro dela é publicado, e o centro da zona fica
-            <strong>deslocado do lugar real numa direção secreta</strong>: o buraco no mapa
-            não aponta para o endereço.
+            script, com o centro <strong>deslocado do lugar real numa direção
+            secreta</strong>, e pontas cortadas entre 400 e 600 m, num valor diferente para
+            cada treino.
           </p>
         </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>O preço de esconder</h3>
+        <p>
+          A proteção funcionava, mas tinha um custo que só apareceu nos números: com a zona e
+          os cortes ligados, <strong>277 rotas</strong> chegavam ao mapa. Em 24/11/2026 decidi
+          publicar as rotas inteiras, como vêm do Strava — hoje são <strong>680</strong>. O
+          mecanismo não saiu do código: corte, variação, raio, número de zonas automáticas e
+          lugares extras são campos de um arquivo de configuração, e um comando refaz todos os
+          arquivos a partir do cache, sem falar com o Strava. Quando uma rota sai cortada, a
+          página do treino avisa.
+        </p>
       </div>
 
       <div class="limits reveal" style="margin-top:2.5rem;">
@@ -385,7 +558,8 @@ concurrency:
             <p class="callout-title">Permissão mínima</p>
             <p class="callout-text">
               O site pede ao Strava só <code>activity:read</code>, nunca
-              <code>read_all</code>. Treinos marcados como "Só eu" <strong>nem chegam ao
+              <code>read_all</code>. Treinos marcados como "Só eu" e os trechos dentro das
+              zonas de privacidade criadas no próprio Strava <strong>nem chegam ao
               pipeline</strong> — não existe o que vazar.
             </p>
           </div>
@@ -394,11 +568,11 @@ concurrency:
         <div class="callout">
           <span class="callout-mark">2</span>
           <div class="callout-body">
-            <p class="callout-title">Pontas que variam por treino</p>
+            <p class="callout-title">Uma decisão, não uma reescrita</p>
             <p class="callout-text">
-              Além da zona, o começo e o fim de cada rota são cortados entre 400 e 600 m, num
-              valor diferente para cada treino. Um corte sempre igual alinha as pontas num
-              anel em volta da origem; variando, o anel some.
+              Voltar a esconder é mudar a configuração e rodar o sincronizador em modo
+              offline. A auditoria e o mecanismo continuam valendo para quem quiser usar o
+              projeto com outra escolha.
             </p>
           </div>
         </div>
@@ -406,12 +580,11 @@ concurrency:
         <div class="callout">
           <span class="callout-mark">3</span>
           <div class="callout-body">
-            <p class="callout-title">O dado completo não sai do computador</p>
+            <p class="callout-title">Segredos fora do código</p>
             <p class="callout-text">
-              As rotas sem corte ficam numa pasta que o git ignora. As chaves do Strava e o
-              token do GitHub vivem como segredos do Actions e do Worker — o token,
-              <strong>restrito a um único repositório</strong> e só com permissão de escrever
-              conteúdo.
+              As chaves do Strava e o token do GitHub vivem como segredos do Actions e do
+              Worker — o token, <strong>restrito a um único repositório</strong> e só com
+              permissão de escrever conteúdo.
             </p>
           </div>
         </div>
@@ -421,8 +594,9 @@ concurrency:
           <div class="callout-body">
             <p class="callout-title">Precisão só onde ela serve</p>
             <p class="callout-text">
-              O mapa geral e a lista de cidades usam coordenadas arredondadas. O que serve
-              para dizer "treinei em Juiz de Fora" não precisa servir para dizer em que rua.
+              A lista de cidades e os pontos do mapa geral usam coordenadas arredondadas. O
+              que serve para dizer "treinei em Juiz de Fora" não precisa servir para dizer em
+              que rua.
             </p>
           </div>
         </div>
@@ -434,7 +608,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">06 — Interface</p>
+        <p class="section-label">08 — Interface</p>
         <h2 class="section-title">Feito à mão, em três idiomas</h2>
       </div>
 
@@ -442,8 +616,9 @@ concurrency:
         <ul>
           <li>
             <strong>HTML, CSS e JavaScript puros</strong>, em módulos ES, sem npm e sem
-            build. Os gráficos de barras, linhas e degraus são SVG próprio; os mapas usam
-            Leaflet com o OpenStreetMap; os globos da abertura, d3-geo.
+            build. Os gráficos de barras, linhas e degraus são SVG próprio; a história do ano
+            e as figuras de compartilhar são desenhadas em canvas; os mapas usam Leaflet com o
+            OpenStreetMap; os globos da abertura, d3-geo.
           </li>
           <li>
             <strong>Três idiomas com um verificador.</strong> Todo texto da interface passa
@@ -452,9 +627,10 @@ concurrency:
             <code>{n}</code> que sumiu numa delas.
           </li>
           <li>
-            <strong>Cores validadas, não escolhidas no olho.</strong> As cores dos esportes e
-            das fases do plano passaram por um validador de contraste e de distinção entre
-            si, nos dois temas.
+            <strong>Cores validadas, não escolhidas no olho.</strong> As cores dos esportes,
+            das fases do plano e dos pontos da história passaram por um validador de contraste
+            e de distinção entre si, nos dois temas. Laranja contra vermelho, por exemplo,
+            reprovou — as provas ganharam outra cor.
           </li>
           <li>
             <strong>Tipografia testada com o conteúdo real.</strong> A primeira fonte
@@ -476,38 +652,67 @@ concurrency:
   <section class="section section--tint">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">07 — Em produção</p>
-        <h2 class="section-title">A primeira semana no ar</h2>
+        <p class="section-label">09 — Em produção</p>
+        <h2 class="section-title">A primeira semana no ar, e a correção</h2>
         <p class="section-sub">
-          Medido no histórico do GitHub Actions, de 16 a 24/11/2026.
+          Medido no histórico do GitHub Actions, de 16/11 a 27/11/2026.
         </p>
       </div>
 
       <div class="data-table-wrap reveal">
         <table class="data-table">
-          <caption class="visually-hidden">Rodadas da automação na primeira semana</caption>
+          <caption class="visually-hidden">Rodadas da automação antes e depois da correção do envio</caption>
           <thead>
-            <tr><th scope="col">Item</th><th scope="col">Resultado</th></tr>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">1ª semana (16 a 24/11)</th>
+              <th scope="col" class="num">Depois da correção (24 a 27/11)</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Rodadas da automação</td><td class="num">52</td></tr>
-            <tr><td>Disparadas por um treino (aviso do Strava)</td><td class="num">18</td></tr>
-            <tr><td>Duração de uma rodada disparada por treino</td><td class="num">39 a 75 s</td></tr>
-            <tr><td>Rodadas concluídas</td><td class="num">48 / 52</td></tr>
-            <tr><td>Atividades com detalhe completo</td><td class="num">810 / 937</td></tr>
+            <tr><td>Rodadas da automação</td><td class="num">52</td><td class="num">23</td></tr>
+            <tr><td>Disparadas por um treino (aviso do Strava)</td><td class="num">18</td><td class="num">4</td></tr>
+            <tr><td>Duração de uma rodada disparada por treino</td><td class="num">39 a 75 s</td><td class="num">50 a 76 s</td></tr>
+            <tr><td>Rodadas concluídas</td><td class="num">48 / 52</td><td class="num">23 / 23</td></tr>
+            <tr><td>Atividades com detalhe completo</td><td class="num">810 / 937</td><td class="num">814 / 941</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="prose" style="margin-top:2rem;">
         <p>
-          As quatro falhas ensinaram algo. Três foram o GitHub Pages recusando a publicação
-          logo depois de receber o pacote do site — um problema intermitente do lado do
-          GitHub. A automação agora espera 20 segundos e tenta de novo. A quarta foi uma
-          corrida entre o robô e eu: publiquei código no mesmo minuto em que ele tentava
-          salvar dados novos, e o envio dele foi recusado. Nada se perdeu — a rodada
-          seguinte pôs tudo em dia —, mas é o próximo ponto a blindar.
+          As quatro falhas da primeira semana ensinaram algo. Três foram o GitHub Pages
+          recusando a publicação logo depois de receber o pacote do site — um problema
+          intermitente do lado do GitHub. A automação agora espera 20 segundos e tenta de novo.
         </p>
+        <p>
+          A quarta foi uma corrida entre duas rodadas. O Strava mandou dois avisos com 8
+          segundos de diferença; a segunda rodada esperou na fila, começou do commit em que
+          tinha sido disparada — sem os dados que a primeira acabara de guardar — e o envio
+          dela foi recusado. O mesmo aconteceria com um commit de código chegando no meio de
+          uma rodada. Nada se perdeu, mas a correção entrou no dia seguinte: a rodada sempre
+          começa da ponta da <code>main</code> e, se a <code>main</code> mudar no caminho, traz o
+          que chegou e tenta de novo. Testei numa cópia local, com código chegando no meio da
+          rodada e duas rodadas mexendo no mesmo arquivo. Nos três dias seguintes, com 13
+          publicações de código no período, foram 23 rodadas e nenhuma falha.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2rem;">
+        <div class="code-head">
+          <span>.github/workflows/atualizar.yml</span>
+          <span>guardar os dados</span>
+        </div>
+<pre><code><span class="c"># a main mudou durante a rodada? traz o que chegou e tenta de novo</span>
+for tentativa in 1 2 3 4 5; do
+  if git push; then
+    exit 0
+  fi
+  sleep $((tentativa * 3))
+  <span class="c"># no rebase, "theirs" é o commit do robô: em conflito, valem os dados novos</span>
+  git pull --rebase -X theirs origin main
+done
+exit 1</code></pre>
       </div>
     </div>
   </section>
@@ -516,7 +721,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">08 — Limitações</p>
+        <p class="section-label">10 — Limitações</p>
         <h2 class="section-title">O que os dados não sustentam</h2>
       </div>
 
@@ -528,7 +733,8 @@ concurrency:
             <p class="callout-text">
               Foi quando passei a correr com um relógio com sensor. Antes disso não há o que
               mostrar, então <strong>comparações de esforço só valem a partir dessa
-              data</strong> — dois anos de corrida ficam de fora delas.
+              data</strong> — dois anos de corrida ficam de fora delas, e das figuras que
+              dependem desses dados.
             </p>
           </div>
         </div>
@@ -539,7 +745,7 @@ concurrency:
             <p class="callout-title">79 corridas antigas não têm detalhe</p>
             <p class="callout-text">
               Foram lançadas à mão no Strava, sem GPS nem parciais. Entram nos totais, mas
-              <strong>não nos recordes por trecho</strong>.
+              <strong>não nos recordes por trecho</strong> nem no mapa.
             </p>
           </div>
         </div>
@@ -575,7 +781,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">09 — Stack</p>
+        <p class="section-label">11 — Stack</p>
         <h2 class="section-title">Ferramentas</h2>
       </div>
 
@@ -591,13 +797,13 @@ concurrency:
           <h3>Automação</h3>
           <ul class="skill-list">
             <li class="is-core">GitHub Actions</li><li>Cloudflare Workers</li>
-            <li>Webhooks</li><li>GitHub Pages</li>
+            <li>Webhooks</li><li>GitHub Pages</li><li>Node e ffmpeg (vídeo)</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Interface</h3>
           <ul class="skill-list">
-            <li class="is-core">JavaScript</li><li>CSS</li><li>SVG</li>
+            <li class="is-core">JavaScript</li><li>CSS</li><li>SVG</li><li>Canvas</li>
             <li>Leaflet</li><li>d3-geo</li>
           </ul>
         </div>
@@ -605,7 +811,7 @@ concurrency:
           <h3>Qualidade</h3>
           <ul class="skill-list">
             <li>Auditoria de privacidade</li><li>Verificador de traduções</li>
-            <li>Testes de layout via CDP</li>
+            <li>Testes de layout via CDP</li><li>Novidades escondidas até a aprovação</li>
           </ul>
         </div>
       </div>
@@ -628,9 +834,9 @@ concurrency:
       </div>
 
       <div class="btn-row" style="margin-top:3rem;">
-        <a href="football-intel.html" class="btn btn--primary">
+        <a href="chicago-marathon-analytics.html" class="btn btn--primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-          Projeto 01: Football Intel
+          Projeto 01: Chicago Marathon Analytics
         </a>
         <a href="../projetos.html" class="btn">Todos os projetos</a>
         <a href="../index.html#contato" class="btn btn--ghost">Entrar em contato</a>
@@ -645,7 +851,7 @@ concurrency:
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The Oceanthief Run — Estudo de caso",
-  "description": "Site de corrida alimentado pelos dados do Strava e atualizado a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, privacidade por projeto.",
+  "description": "Site de corrida alimentado pelos dados do Strava e atualizado a cada treino: sincronização incremental em Python, webhook via Cloudflare Worker, GitHub Actions e Pages, uma história animada do ano e figuras de cada treino para compartilhar.",
   "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
   "inLanguage": "pt-BR",
   "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/projetos/oceanthief-run.html",

@@ -22,13 +22,11 @@ index.html                                  Home (hero, prova, projeto, posicion
                                             stack, experiência, foco, contato)
 projetos.html                               Trabalho — índice de projetos
 dados.html                                  Dados abertos — os 13 datasets do Kaggle
-projetos/football-intel.html                Estudo de caso — em desenvolvimento
-projetos/chicago-marathon-analytics.html    Estudo de caso — concluído
-projetos/i-got-it.html                      Estudo de caso — produto no ar
-projetos/oceanthief-run.html                Estudo de caso — site de corrida no ar
-imagens/football-intel/                     Capturas reais do dashboard
+projetos/chicago-marathon-analytics.html    Estudo de caso — concluído (Projeto 01)
+projetos/i-got-it.html                      Estudo de caso — produto no ar (Projeto 02)
+projetos/oceanthief-run.html                Estudo de caso — site de corrida no ar (Projeto 03)
 imagens/i-got-it/                           Capturas do app em produção
-imagens/oceanthief-run/                     Capturas do site de corrida (24/11/2026)
+imagens/oceanthief-run/                     Capturas do site de corrida (24 e 27/11/2026)
 experiencia.html                            Linha do tempo profissional + formação
 about.html                                  Sobre — narrativa de evolução
 estante.html                                Aprendizado (livros) — fora da nav principal
@@ -42,7 +40,6 @@ scripts/gerar_pdf.py                        Gera os dois PDFs do currículo
 
 en/                                         Versão em inglês
   index.html · about.html · cv.html · dados.html
-  projetos/football-intel.html
   projetos/chicago-marathon-analytics.html
   projetos/i-got-it.html
   projetos/oceanthief-run.html
@@ -121,42 +118,21 @@ Os volumes por dataset (registros, partidas, edições) saem do `subtitle` e da 
 de cada um. A data da última conferência aparece no rodapé da própria página, em pt e en —
 atualize-a junto com os números.
 
-## Números do Football Intel
-
-Os números citados no site (partidas, cartões, árbitros, percentuais de quarentena e
-variância) vêm de `output/DIAGNOSTICO.md` do projeto, e as duas estatísticas do bloco
-de validação são recalculadas sobre `output/data.json`. **Quando a base crescer, os
-dois precisam ser atualizados juntos** — em `projetos/football-intel.html`,
-`en/projetos/football-intel.html`, `index.html`, `en/index.html`, `projetos.html`,
-`cv.html` e `en/cv.html`. As capturas em `imagens/football-intel/` também mostram os
-totais no cabeçalho do dashboard e envelhecem junto.
-
 ## Números do The Oceanthief Run
 
 O site de corrida (https://oceanthief.github.io/oceanthief-run/) se atualiza sozinho a
 cada treino. Por isso os números dele aqui **não são fixos**: `js/oceanthief-ao-vivo.js`
 lê o `data/site.json` publicado por ele e preenche os elementos marcados com
 `data-oc="atividades|km|horas|ultimo|atualizado|fonte"` — no estudo de caso, em
-`projetos.html`, `index.html` e `en/index.html`. O valor escrito no HTML só aparece se a
-leitura falhar; pode ficar como está.
+`projetos.html`, `index.html` e `en/index.html` (no cartão do projeto e na faixa de
+números do topo). O valor escrito no HTML só aparece se a leitura falhar; pode ficar
+como está.
 
 Se o site de corrida ganhar domínio próprio, troque `URL_DADOS` no topo do script e os
-links "Abrir o site" (busque por `oceanthief-run/`). O que é fixo e envelhece: a tabela
-"A primeira semana no ar" (medida em 24/11/2026, com data na própria página) e as
-capturas em `imagens/oceanthief-run/`.
-
-## Demo ao vivo do Football Intel
-
-O dashboard é um arquivo HTML autocontido (~2 MB) gerado por `python build.py` no
-repositório do projeto. Para publicá-lo como demo navegável:
-
-1. Copie `football-intel/output/dashboard.html` para `demos/football-intel.html`.
-2. Descomente os blocos marcados `DEMO AO VIVO` em quatro arquivos:
-   `projetos/football-intel.html`, `en/projetos/football-intel.html`,
-   `index.html` e `projetos.html`.
-
-Os botões e os caminhos relativos já estão escritos e corretos — basta remover os
-comentários. Considere antes se a base de dados pode ser publicada.
+links "Abrir o site" (busque por `oceanthief-run/`). O que é fixo e envelhece, com data
+na própria página: a tabela "A primeira semana no ar" (16 a 24/11/2026), o balanço
+depois da correção do robô (até 27/11/2026), as contagens de rotas (277 e 680), de
+figuras (23) e de resumos (8), e as capturas em `imagens/oceanthief-run/`.
 
 ## Publicação
 

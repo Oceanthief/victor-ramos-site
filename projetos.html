@@ -5,7 +5,7 @@
 <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Trabalho — Projetos de dados de Victor Ramos</title>
-<meta name="description" content="Projetos de Data Analytics e engenharia de dados: Football Intel (9.051 partidas, motor estatístico próprio) e Chicago Marathon Analytics (931.958 registros, star schema)."/>
+<meta name="description" content="Projetos de Data Analytics e engenharia de dados: Chicago Marathon Analytics (931.958 registros, star schema), I Got It e The Oceanthief Run, um site de corrida que se atualiza sozinho a cada treino."/>
 <meta name="author" content="Victor Ramos Alves de Matos"/>
 <meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
@@ -13,13 +13,13 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="Victor Ramos"/>
 <meta property="og:title" content="Trabalho — Projetos de dados de Victor Ramos"/>
-<meta property="og:description" content="Football Intel e Chicago Marathon Analytics: pipelines completos, do dado bruto ao produto."/>
+<meta property="og:description" content="Chicago Marathon Analytics, I Got It e The Oceanthief Run: do dado bruto ao produto no ar."/>
 <meta property="og:url" content="https://oceanthief.github.io/victor-ramos-site/projetos.html"/>
 <meta property="og:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
 <meta property="og:locale" content="pt_BR"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Trabalho — Projetos de dados de Victor Ramos"/>
-<meta name="twitter:description" content="Football Intel e Chicago Marathon Analytics: pipelines completos, do dado bruto ao produto."/>
+<meta name="twitter:description" content="Chicago Marathon Analytics, I Got It e The Oceanthief Run: do dado bruto ao produto no ar."/>
 <meta name="twitter:image" content="https://oceanthief.github.io/victor-ramos-site/fotos/foto.jpg"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23111111'/><text x='50' y='72' font-size='62' font-family='Inter,sans-serif' font-weight='600' fill='%23F5F4EF' text-anchor='middle'>V</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -36,7 +36,7 @@
       <p class="page-kicker">Trabalho</p>
       <h1 class="page-title">Projetos</h1>
       <p class="page-lede">
-        O que eu construí, por que construí e o que aprendeu no caminho. Priorizo
+        O que eu construí, por que construí e o que aprendi no caminho. Priorizo
         projetos que exigem o ciclo completo — do dado bruto à decisão — em vez de
         exercícios isolados de ferramenta.
       </p>
@@ -51,76 +51,10 @@
         <p class="section-label">Em destaque</p>
       </div>
 
-      <!-- ───── PROJETO 01 — FOOTBALL INTEL ───── -->
+      <!-- ───── PROJETO 01 — CHICAGO MARATHON ───── -->
       <article class="project-feature reveal">
         <div>
-          <p class="project-index">PROJETO 01 · EM ANDAMENTO</p>
-          <h2 class="project-name">
-            <a href="projetos/football-intel.html">Football Intel</a>
-          </h2>
-          <p class="project-tagline">
-            Plataforma de inteligência esportiva construída do zero sobre 9.051 partidas de
-            13 competições. Pipeline em Python que audita e trata a base, motor estatístico
-            próprio no navegador — Welch, intervalo de Wilson, correção de Benjamini-Hochberg
-            e encolhimento bayesiano — e um dashboard de 17 telas que roda offline, sem
-            servidor e sem nenhuma dependência externa.
-          </p>
-
-          <div class="project-metrics">
-            <div>
-              <div class="project-metric-value">9.051</div>
-              <div class="project-metric-label">Partidas</div>
-            </div>
-            <div>
-              <div class="project-metric-value">42.547</div>
-              <div class="project-metric-label">Cartões</div>
-            </div>
-            <div>
-              <div class="project-metric-value">522</div>
-              <div class="project-metric-label">Árbitros</div>
-            </div>
-            <div>
-              <div class="project-metric-value">0</div>
-              <div class="project-metric-label">Dependências</div>
-            </div>
-          </div>
-
-          <div class="stack-row">
-            <span class="chip chip--accent">Python</span>
-            <span class="chip chip--accent">pandas</span>
-            <span class="chip chip--accent">JavaScript</span>
-            <span class="chip">Estatística aplicada</span>
-            <span class="chip">ETL</span>
-            <span class="chip">SVG</span>
-            <span class="chip">Design system</span>
-          </div>
-
-          <p style="margin-bottom:1.5rem;">
-            <span class="status-tag status-tag--live">Em desenvolvimento ativo</span>
-          </p>
-
-          <div class="btn-row">
-            <a href="projetos/football-intel.html" class="btn btn--primary">
-              Ver estudo de caso
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
-            <!-- DEMO AO VIVO: ver instruções em projetos/football-intel.html
-            <a href="demos/football-intel.html" class="btn" target="_blank" rel="noopener">Abrir o dashboard</a>
-            -->
-          </div>
-        </div>
-
-        <figure class="shot">
-          <img src="imagens/football-intel/home.png" loading="lazy" width="1400" height="1000"
-               alt="Tela inicial do Football Intel, com barra de filtros, cartões de indicadores e o painel de insight do dia."/>
-          <figcaption>Início — decisão rápida sobre o recorte ativo</figcaption>
-        </figure>
-      </article>
-
-      <!-- ───── PROJETO 02 — CHICAGO MARATHON ───── -->
-      <article class="project-feature reveal">
-        <div>
-          <p class="project-index">PROJETO 02</p>
+          <p class="project-index">PROJETO 01</p>
           <h2 class="project-name">
             <a href="projetos/chicago-marathon-analytics.html">Chicago Marathon Analytics</a>
           </h2>
@@ -202,10 +136,10 @@
         </figure>
       </article>
 
-      <!-- ───── PROJETO 03 — I GOT IT ───── -->
+      <!-- ───── PROJETO 02 — I GOT IT ───── -->
       <article class="project-feature reveal">
         <div>
-          <p class="project-index">PROJETO 03 · NO AR</p>
+          <p class="project-index">PROJETO 02 · NO AR</p>
           <h2 class="project-name">
             <a href="projetos/i-got-it.html">I Got It</a>
           </h2>
@@ -261,23 +195,24 @@
         </figure>
       </article>
 
-      <!-- ───── PROJETO 04 — THE OCEANTHIEF RUN ───── -->
+      <!-- ───── PROJETO 03 — THE OCEANTHIEF RUN ───── -->
       <article class="project-feature reveal">
         <div>
-          <p class="project-index">PROJETO 04 · NO AR</p>
+          <p class="project-index">PROJETO 03 · NO AR</p>
           <h2 class="project-name">
             <a href="projetos/oceanthief-run.html">The Oceanthief Run</a>
           </h2>
           <p class="project-tagline">
             Meu site de corrida, alimentado pelos meus dados do Strava e atualizado sozinho
             cerca de um minuto depois de cada treino: webhook do Strava via Cloudflare Worker,
-            sincronização incremental em Python no GitHub Actions, dados versionados no git e
-            uma zona de privacidade que esconde de onde eu saio para correr.
+            sincronização incremental em Python no GitHub Actions e dados versionados no git.
+            Em cima disso, uma história animada do ano, um ponto por quilômetro, e 23 figuras
+            de cada treino prontas para o story.
           </p>
 
           <div class="project-metrics">
             <div>
-              <div class="project-metric-value" data-oc="atividades">937</div>
+              <div class="project-metric-value" data-oc="atividades">941</div>
               <div class="project-metric-label">Atividades</div>
             </div>
             <div>
@@ -338,7 +273,7 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 05</p>
+            <p class="project-index" style="margin:0;">PROJETO 04</p>
             <span class="status-tag status-tag--live">Código aberto</span>
           </div>
           <h3>Ranking de corridas de Juiz de Fora</h3>
@@ -376,7 +311,7 @@
 
         <article class="project-card">
           <div class="project-card-top">
-            <p class="project-index" style="margin:0;">PROJETO 06</p>
+            <p class="project-index" style="margin:0;">PROJETO 05</p>
             <span class="status-tag status-tag--live">Em uso</span>
           </div>
           <h3>Automações contábeis</h3>
@@ -422,7 +357,7 @@
           <p class="repo-bar-title">Código e dados abertos</p>
           <p class="repo-bar-sub">
             <strong>13 datasets publicados</strong> no Kaggle, com mais de 1 milhão de
-            registros tratados — as bases de futebol são a matéria-prima do Football Intel.
+            registros tratados, de futebol a maratonas.
           </p>
         </div>
         <div class="btn-row">

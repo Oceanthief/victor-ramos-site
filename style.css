@@ -876,6 +876,7 @@ a.project-card:hover {
   color: var(--ink-2);
 }
 .data-table tbody tr:last-child td { border-bottom: none; }
+.data-table th.num { text-align: right; }
 .data-table td.num { font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: var(--fs-xs); text-align: right; color: var(--ink); }
 .data-table td.strong { color: var(--ink); font-weight: 500; }
 

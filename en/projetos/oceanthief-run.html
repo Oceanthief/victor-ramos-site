@@ -5,7 +5,7 @@
 <script>!function(){try{var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")}catch(e){}}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>The Oceanthief Run — Case study · Victor Ramos</title>
-<meta name="description" content="A running site fed by my own Strava data that updates itself after every workout: incremental Python sync, a Strava webhook through a Cloudflare Worker, GitHub Actions and Pages, privacy by design and three languages, with no server and no build step."/>
+<meta name="description" content="A running site fed by my own Strava data that updates itself after every workout: incremental Python sync, a Strava webhook through a Cloudflare Worker, GitHub Actions and Pages, an animated story of the year and shareable graphics for every workout, with no server and no build step."/>
 <meta name="author" content="Victor Ramos Alves de Matos"/>
 <meta name="theme-color" content="#F5F4EF" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)"/>
@@ -44,7 +44,7 @@
 
     <!-- HERO -->
     <header class="page-hero">
-      <p class="page-kicker">Project 04 — Case study</p>
+      <p class="page-kicker">Project 03 — Case study</p>
       <h1 class="page-title">The Oceanthief Run</h1>
       <p class="page-lede">
         My running website, fed by my own Strava data. Every workout I log shows up on the
@@ -62,7 +62,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
         </a>
         <a href="#automation" class="btn">How it updates itself</a>
-        <a href="#privacy" class="btn btn--ghost">The privacy question</a>
+        <a href="#story" class="btn btn--ghost">The year in dots</a>
       </div>
     </header>
 
@@ -77,7 +77,7 @@
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Scale</p>
-        <p class="case-meta-val">~9k lines · 5 pages · 3 languages</p>
+        <p class="case-meta-val">~15k lines · 6 pages · 3 languages</p>
       </div>
       <div class="case-meta-item">
         <p class="case-meta-key">Stack</p>
@@ -90,17 +90,17 @@
   <section class="wrap" aria-label="Running site figures, read live">
     <div class="proof">
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="atividades">937</span></div>
+        <div class="proof-value"><span data-oc="atividades">941</span></div>
         <p class="proof-label">Activities synced
           <span class="proof-note">Since Apr 2024 · every sport</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="km">3,722</span><span class="unit">km</span></div>
+        <div class="proof-value"><span data-oc="km">3,736</span><span class="unit">km</span></div>
         <p class="proof-label">Total distance
           <span class="proof-note">Running, walking and the rest</span></p>
       </div>
       <div class="proof-item">
-        <div class="proof-value"><span data-oc="ultimo">Nov 24</span></div>
+        <div class="proof-value"><span data-oc="ultimo">Nov 27</span></div>
         <p class="proof-label">Latest workout logged
           <span class="proof-note">From the watch, via Strava</span></p>
       </div>
@@ -111,7 +111,7 @@
       </div>
     </div>
     <p style="margin-top:0.75rem;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:0.06em;color:var(--ink-3);">
-      <span data-oc="fonte">Figures as of 24 Nov 2026.</span>
+      <span data-oc="fonte">Figures as of 27 Nov 2026.</span>
     </p>
   </section>
 
@@ -150,14 +150,15 @@
         <p class="section-label">02 — The product</p>
         <h2 class="section-title">From career totals to kilometre splits</h2>
         <p class="section-sub">
-          Home, Races, Progress, a page for every workout and the marathon plan — in
-          Portuguese, English and Spanish, with light and dark themes and km or miles.
+          Home, Races, Progress, The year in dots, a page for every workout and the marathon
+          plan — in Portuguese, English and Spanish, with light and dark themes and km or
+          miles.
         </p>
       </div>
 
       <figure class="shot reveal">
         <img src="../../imagens/oceanthief-run/home.jpg" loading="lazy" width="1400" height="1000"
-             alt="The Oceanthief Run opening screen: the site title between two running photos, a countdown to the New Balance 42K Porto Alegre and a strip with 937 activities, 3,722 kilometres, 464 hours and 21,375 metres of climbing."/>
+             alt="The Oceanthief Run opening screen: the site title between two running photos, a countdown to the New Balance 42K Porto Alegre and a strip with 941 activities, 3,736 kilometres, 466 hours and 21,382 metres of climbing."/>
         <figcaption>Home — countdown to the next race and career totals (shown in Portuguese)</figcaption>
       </figure>
 
@@ -169,8 +170,8 @@
         </figure>
         <figure class="shot">
           <img src="../../imagens/oceanthief-run/treino.jpg" loading="lazy" width="1400" height="1000"
-               alt="A race workout page: distance, time, pace, climbing, heart rate, cadence and power at the top; the route map on the left and per-kilometre splits on the right."/>
-          <figcaption>Workout — figures, route with hidden endpoints, and splits</figcaption>
+               alt="A race workout page: the Share button under the title; distance, time, pace, climbing, heart rate, cadence and power; the route map on the left and per-kilometre splits on the right."/>
+          <figcaption>Workout — figures, route, splits and the Share button</figcaption>
         </figure>
       </div>
 
@@ -201,11 +202,158 @@
     </div>
   </section>
 
-  <!-- AUTOMATION -->
-  <section class="section" id="automation">
+  <!-- THE YEAR IN DOTS -->
+  <section class="section section--tint" id="story">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">03 — Automation</p>
+        <p class="section-label">03 — Telling the year</p>
+        <h2 class="section-title">Every kilometre, one dot</h2>
+        <p class="section-sub">
+          A page that tells the year as you scroll: the same dots, one per kilometre run,
+          move to a new place in each of seven chapters.
+        </p>
+      </div>
+
+      <div class="shot-grid reveal">
+        <figure class="shot">
+          <img src="../../imagens/oceanthief-run/pontos-montes.jpg" loading="lazy" width="1400" height="1000"
+               alt="Kilometres chapter of The year in dots: hundreds of orange dots gathered into heaps of different sizes, each heap near the stretch where those kilometres were run; below, a separate heap with the 233 km that have no map."/>
+          <figcaption>Chapter 2 — each km near where it was run; a bigger heap, a more repeated stretch (shown in Portuguese)</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../../imagens/oceanthief-run/pontos-ritmo.jpg" loading="lazy" width="1400" height="1000"
+               alt="Pace chapter: every kilometre of 2026 is a dot placed at the height of its pace, January to November, with a solid line for the 4-week median and a dashed line at the marathon goal pace, 4:44 per km."/>
+          <figcaption>Chapter 6 — each km at the height of its pace, with the 4-week median and the goal</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          The idea came from an election visualisation, <em>Land doesn't vote, people do</em>,
+          by Karim Douieb, and the animated versions by David Zumbach and Caio Yamamoto Lellis.
+          A route map has the same flaw as an election map coloured by area: the stretch I
+          ran dozens of times gets the same line as one I ran once. Swap the line for
+          <strong>one dot per kilometre</strong> and repetition turns into volume.
+        </p>
+        <ol>
+          <li><strong>Routes</strong> — every run of the year, one on top of the other.</li>
+          <li><strong>Kilometres</strong> — each km becomes a dot, in a heap near where it
+            was run. Treadmill and GPS-less runs form a heap of their own.</li>
+          <li><strong>Goal</strong> — in date order, the dots fill the year's goal; in the
+            current year, rings show where it ends at the pace of the last 8 weeks.</li>
+          <li><strong>Weeks</strong> — one column per week: weeks without a run, the longest
+            streak, the average and the comparison with the previous year.</li>
+          <li><strong>Start times</strong> — one column per start hour, and the most
+            productive day.</li>
+          <li><strong>Pace</strong> — each dot at the height of that km's pace, with the
+            4-week median and the marathon goal pace.</li>
+          <li><strong>Prediction</strong> — current year only: rows of 42 dots, each at the
+            pace of a Riegel prediction, racing against the goal.</li>
+        </ol>
+
+        <h3>The dots come from the same pipeline</h3>
+        <p>
+          The sync script now writes a file with one dot per whole kilometre of each year,
+          placed on the route and carrying that km's pace (the Strava split). Before
+          publishing, I checked that the dot count matched the whole kilometres of 2024, 2025
+          and 2026. The Riegel prediction moved out of the Progress page into a single file
+          used by both pages: <strong>one calculation, one number</strong>, in both places.
+        </p>
+
+        <h3>Canvas, and a way in for those who don't see the animation</h3>
+        <p>
+          That is about 1,300 dots a year, drawn on a <code>canvas</code> that stays put while
+          the chapters scroll past beside it (below it, on a phone). With "reduce motion"
+          switched on in the system, each chapter appears already in place, without
+          animation. And each month's figures also come out as a table, for anyone who can't
+          see the drawing.
+        </p>
+
+        <h3>The same story, on video</h3>
+        <p>
+          For LinkedIn and Instagram, the animation also comes out as an MP4 — in 4:5, 9:16 or
+          square, in all three languages. A Node script records it frame by frame in headless
+          Chrome: the page clock only moves when the script says so, so every frame comes out
+          the same whatever the computer's speed, and ffmpeg stitches them together at the
+          end. The script uses only what ships with Node.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARING -->
+  <section class="section" id="sharing">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">04 — From the site to a story post</p>
+        <h2 class="section-title">Every workout becomes a graphic</h2>
+        <p class="section-sub">
+          One button on each workout and another in the consistency section turn the
+          figures into images ready to lay over a photo.
+        </p>
+      </div>
+
+      <div class="shot-grid reveal">
+        <figure class="shot">
+          <img src="../../imagens/oceanthief-run/figuras.jpg" loading="lazy" width="1400" height="1000"
+               alt="Share window for a race workout: six graphics with a transparent background, shown as a checkerboard, in white and lime condensed type (summary, distance highlight, technical summary, splits, pace per km, and elevation with heart rate), each with Download, Copy and Share buttons."/>
+          <figcaption>Workout graphics — transparent PNGs (the checkerboard marks the transparency)</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="../../imagens/oceanthief-run/resumos.jpg" loading="lazy" width="1400" height="1000"
+               alt="Monthly summary window, with three story-format templates on a coffee-coloured background: October against November, the month's cumulative kilometres against the previous month's, and the shape of every November workout."/>
+          <figcaption>Monthly summaries — head-to-head, cumulative curve and every workout's shape</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <p>
+          On every run and walk page, the <strong>Share</strong> button draws <strong>23
+          graphics</strong>, 1080 px wide with a transparent background, inspired by Coros's
+          artwork: summary, splits, pace per km, elevation and heart rate, zones, route with
+          markers, best efforts, a comparison with the previous edition of the race,
+          track-broadcast-style splits and more. Each graphic only appears when the workout
+          has the data it needs. You can download it, copy it (on an iPhone, just paste it
+          into a story) or open the phone's share sheet. A photo chosen for the preview never
+          leaves the browser.
+        </p>
+        <p>
+          On the home page, <strong>Share summary</strong> builds eight month or year templates
+          in story size (1080 × 1920), computed on the spot from the workouts already on the
+          site. Comparisons follow one rule: the month against the previous one, the year
+          against the previous one, and a period still in progress against the same days of
+          the other — 1–27 November against 1–27 October. <strong>No projections</strong>: the
+          image shows only what happened.
+        </p>
+
+        <h3>Labels that stay off the route</h3>
+        <p>
+          On the graphics with a map, labels such as "km 4" or "start and finish" must not
+          cover the drawing. I wrote a placer for that: it samples the route line every 6 px,
+          measures each label's width and tries eight directions at growing distances,
+          keeping the closest spot that touches neither the route, another label nor another
+          point. A label that ends up far away gets a thin line back to its point. I checked
+          it on an out-and-back, on laps around a campus, on a half marathon and on a 30 km
+          long run.
+        </p>
+
+        <h3>Approve before publishing</h3>
+        <p>
+          A new graphic or template goes live hidden: it only shows up with
+          <code>?figuras=novas</code> or <code>?resumos=novos</code> in the address. That way a
+          new piece can be seen on the real site, with real data, before it is released to
+          everyone. Nine of the current graphics came through that path; two proposals were
+          not approved and left the code without ever being released.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTOMATION -->
+  <section class="section section--tint" id="automation">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-label">05 — Automation</p>
         <h2 class="section-title">From watch to website in about a minute</h2>
       </div>
 
@@ -245,7 +393,7 @@
           event belongs to the right athlete, replies immediately — Strava gives up if the
           reply takes more than 2 seconds — and only then asks GitHub to run the update. On
           the runs triggered by a workout, the whole path — download, generate, commit and
-          publish — took <strong>39 to 75 seconds</strong>.
+          publish — took <strong>39 to 76 seconds</strong>.
         </p>
         <p>
           Events can get lost. So the same automation also runs at three fixed times a day
@@ -277,10 +425,10 @@ concurrency:
         <h3>The data lives in git</h3>
         <p>
           There is no database. The Python script generates JSON files — a summary of every
-          activity, the routes, the monthly series and one file per workout — and commits
-          them to the repository. The site only reads those files. The upshot: every update
-          is in the history, you can see exactly what changed on each run, and the whole
-          site is static, hosted for free with nothing to administer.
+          activity, the routes, the monthly series, each year's dots and one file per workout
+          — and commits them to the repository. The site only reads those files. The upshot:
+          every update is in the history, you can see exactly what changed on each run, and
+          the whole site is static, hosted for free with nothing to administer.
         </p>
 
         <h3>Browser caching without a build step</h3>
@@ -288,9 +436,9 @@ concurrency:
           GitHub Pages tells browsers to keep CSS and JavaScript for 10 minutes, so a
           published fix could take that long to reach returning visitors. With no bundler
           to handle it, the automation itself, while assembling the published folder,
-          appends a code hash to each file (<code>site.css?v=…</code>). New code, new tag,
-          and the browser fetches the new version. The code in the repository stays
-          untagged.
+          appends a code hash to each file (<code>site.css?v=…</code>) — including the modules
+          that only load when someone opens the share window. New code, new tag, and the
+          browser fetches the new version. The code in the repository stays untagged.
         </p>
       </div>
     </div>
@@ -300,7 +448,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">04 — Data engineering</p>
+        <p class="section-label">06 — Data engineering</p>
         <h2 class="section-title">A pipeline that respects its source's limits</h2>
       </div>
 
@@ -317,14 +465,25 @@ concurrency:
           once.</strong>
         </p>
 
-        <h3>2. Python standard library only</h3>
+        <h3>2. New data without new requests</h3>
         <p>
-          The sync script is about 850 lines with no dependencies: HTTP, OAuth, JSON and
-          the geometry all come from the standard library. In practice the automation has
-          no <code>pip install</code> to break and no package version to go stale.
+          The graphics needed data the site did not keep: relative effort, power, energy,
+          temperature, cadence along the workout. Before spending any budget, I looked at
+          what was already arriving. The activity list carried almost all of it, at no extra
+          cost; the streams now also keep time, cadence and power, in the same request as
+          always. Only the older streams of watch-recorded workouts need downloading again,
+          and that happens bit by bit, within each run's budget.
         </p>
 
-        <h3>3. Numbers that add up</h3>
+        <h3>3. Python standard library only</h3>
+        <p>
+          The sync script is close to a thousand lines with no dependencies: HTTP, OAuth,
+          JSON and the geometry all come from the standard library. In practice the
+          automation has no <code>pip install</code> to break and no package version to go
+          stale.
+        </p>
+
+        <h3>4. Numbers that add up</h3>
         <p>
           A detail that only shows up with real use: the weekly summary showed "2 km" for a
           1.55 km walk. Rounding looks harmless until someone compares it with Strava itself.
@@ -341,10 +500,11 @@ concurrency:
   <section class="section section--tint" id="privacy">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">05 — Privacy</p>
-        <h2 class="section-title">Publishing the map without publishing the address</h2>
+        <p class="section-label">07 — Privacy</p>
+        <h2 class="section-title">How much to hide is configuration, not code</h2>
         <p class="section-sub">
-          A public site with someone's routes is, without care, a map to their front door.
+          A public site with someone's routes is, without care, a map to their front door. I
+          built the protection, measured what it cost and left the decision in a config file.
         </p>
       </div>
 
@@ -369,12 +529,25 @@ concurrency:
           <p class="versus-key">Automatic privacy zone</p>
           <p class="versus-value">1 km</p>
           <p class="versus-note">
-            radius around the place most workouts start from, found by the script itself.
-            Nothing inside it is published, and the zone's centre is
-            <strong>shifted from the real spot in a secret direction</strong>: the hole in
-            the map does not point at the address.
+            radius around the place most workouts start from, found by the script itself,
+            with its centre <strong>shifted from the real spot in a secret
+            direction</strong>, plus endpoints trimmed by 400 to 600 m, a different amount
+            for every workout.
           </p>
         </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem;">
+        <h3>The price of hiding</h3>
+        <p>
+          The protection worked, but it had a cost that only showed in the numbers: with the
+          zone and the trims on, <strong>277 routes</strong> made it to the map. On 24 Nov 2026
+          I decided to publish routes whole, as they come from Strava — there are now
+          <strong>680</strong>. The mechanism did not leave the code: trim, variation, radius,
+          number of automatic zones and extra places are fields in a config file, and one
+          command rebuilds every file from the cache without talking to Strava. When a route
+          is trimmed, the workout page says so.
+        </p>
       </div>
 
       <div class="limits reveal" style="margin-top:2.5rem;">
@@ -384,7 +557,8 @@ concurrency:
             <p class="callout-title">Least privilege</p>
             <p class="callout-text">
               The site asks Strava only for <code>activity:read</code>, never
-              <code>read_all</code>. Workouts set to "Only you" <strong>never reach the
+              <code>read_all</code>. Workouts set to "Only you" and the stretches inside
+              privacy zones created in Strava itself <strong>never reach the
               pipeline</strong> — there is nothing to leak.
             </p>
           </div>
@@ -393,11 +567,11 @@ concurrency:
         <div class="callout">
           <span class="callout-mark">2</span>
           <div class="callout-body">
-            <p class="callout-title">Endpoints that vary per workout</p>
+            <p class="callout-title">A decision, not a rewrite</p>
             <p class="callout-text">
-              On top of the zone, the start and end of each route are trimmed by 400 to 600 m,
-              a different amount for every workout. A constant trim lines the endpoints up in
-              a ring around the origin; varying it makes the ring disappear.
+              Hiding again means changing the config and running the sync script offline.
+              The audit and the mechanism still hold for anyone who uses the project with a
+              different choice.
             </p>
           </div>
         </div>
@@ -405,12 +579,11 @@ concurrency:
         <div class="callout">
           <span class="callout-mark">3</span>
           <div class="callout-body">
-            <p class="callout-title">The full data never leaves my computer</p>
+            <p class="callout-title">Secrets out of the code</p>
             <p class="callout-text">
-              Untrimmed routes live in a folder git ignores. The Strava keys and the GitHub
-              token are stored as Actions and Worker secrets — the token
-              <strong>scoped to a single repository</strong> and allowed only to write
-              contents.
+              The Strava keys and the GitHub token are stored as Actions and Worker secrets —
+              the token <strong>scoped to a single repository</strong> and allowed only to
+              write contents.
             </p>
           </div>
         </div>
@@ -420,8 +593,8 @@ concurrency:
           <div class="callout-body">
             <p class="callout-title">Precision only where it serves</p>
             <p class="callout-text">
-              The overview map and the city list use rounded coordinates. What is enough to
-              say "I trained in Juiz de Fora" does not need to say which street.
+              The city list and the points on the overview map use rounded coordinates. What
+              is enough to say "I trained in Juiz de Fora" does not need to say which street.
             </p>
           </div>
         </div>
@@ -433,7 +606,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">06 — Interface</p>
+        <p class="section-label">08 — Interface</p>
         <h2 class="section-title">Hand-built, in three languages</h2>
       </div>
 
@@ -441,8 +614,9 @@ concurrency:
         <ul>
           <li>
             <strong>Plain HTML, CSS and JavaScript</strong>, as ES modules, with no npm and
-            no build. Bar, line and step charts are custom SVG; maps use Leaflet with
-            OpenStreetMap; the opening globes use d3-geo.
+            no build. Bar, line and step charts are custom SVG; the year story and the share
+            graphics are drawn on canvas; maps use Leaflet with OpenStreetMap; the opening
+            globes use d3-geo.
           </li>
           <li>
             <strong>Three languages with a checker.</strong> Every interface string goes
@@ -451,9 +625,10 @@ concurrency:
             <code>{n}</code> dropped from one of them.
           </li>
           <li>
-            <strong>Colours validated, not picked by eye.</strong> The sport and training
-            phase colours went through a validator for contrast and mutual distinctness, in
-            both themes.
+            <strong>Colours validated, not picked by eye.</strong> The sport, training phase
+            and story dot colours went through a validator for contrast and mutual
+            distinctness, in both themes. Orange against red, for example, failed — races
+            got a different colour.
           </li>
           <li>
             <strong>Type tested with real content.</strong> The first font drew the
@@ -475,38 +650,67 @@ concurrency:
   <section class="section section--tint">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">07 — In production</p>
-        <h2 class="section-title">The first week live</h2>
+        <p class="section-label">09 — In production</p>
+        <h2 class="section-title">The first week live, and the fix</h2>
         <p class="section-sub">
-          Measured from the GitHub Actions history, 16–24 Nov 2026.
+          Measured from the GitHub Actions history, 16–27 Nov 2026.
         </p>
       </div>
 
       <div class="data-table-wrap reveal">
         <table class="data-table">
-          <caption class="visually-hidden">Automation runs in the first week</caption>
+          <caption class="visually-hidden">Automation runs before and after the push fix</caption>
           <thead>
-            <tr><th scope="col">Item</th><th scope="col">Result</th></tr>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">First week (16–24 Nov)</th>
+              <th scope="col" class="num">After the fix (24–27 Nov)</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>Automation runs</td><td class="num">52</td></tr>
-            <tr><td>Triggered by a workout (Strava event)</td><td class="num">18</td></tr>
-            <tr><td>Duration of a workout-triggered run</td><td class="num">39–75 s</td></tr>
-            <tr><td>Runs completed</td><td class="num">48 / 52</td></tr>
-            <tr><td>Activities with full detail</td><td class="num">810 / 937</td></tr>
+            <tr><td>Automation runs</td><td class="num">52</td><td class="num">23</td></tr>
+            <tr><td>Triggered by a workout (Strava event)</td><td class="num">18</td><td class="num">4</td></tr>
+            <tr><td>Duration of a workout-triggered run</td><td class="num">39–75 s</td><td class="num">50–76 s</td></tr>
+            <tr><td>Runs completed</td><td class="num">48 / 52</td><td class="num">23 / 23</td></tr>
+            <tr><td>Activities with full detail</td><td class="num">810 / 937</td><td class="num">814 / 941</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="prose" style="margin-top:2rem;">
         <p>
-          The four failures each taught something. Three were GitHub Pages rejecting the
-          deployment right after receiving the site package — an intermittent problem on
-          GitHub's side. The automation now waits 20 seconds and tries again. The fourth was
-          a race between the bot and me: I pushed code in the same minute it was trying to
-          save new data, and its push was rejected. Nothing was lost — the next run caught
-          up — but it is the next thing to harden.
+          The four failures of the first week each taught something. Three were GitHub Pages
+          rejecting the deployment right after receiving the site package — an intermittent
+          problem on GitHub's side. The automation now waits 20 seconds and tries again.
         </p>
+        <p>
+          The fourth was a race between two runs. Strava sent two events 8 seconds apart;
+          the second run waited in the queue, started from the commit that had triggered it —
+          without the data the first had just saved — and its push was rejected. A code
+          commit landing mid-run would have done the same. Nothing was lost, but the fix went
+          in the next day: a run always starts from the tip of <code>main</code> and, if
+          <code>main</code> moves along the way, pulls in what arrived and tries again. I
+          tested it on a local copy, with code landing mid-run and two runs touching the same
+          file. Over the following three days, with 13 code pushes in the period, there were
+          23 runs and no failures.
+        </p>
+      </div>
+
+      <div class="code-block reveal" style="margin-top:2rem;">
+        <div class="code-head">
+          <span>.github/workflows/atualizar.yml</span>
+          <span>saving the data</span>
+        </div>
+<pre><code><span class="c"># did main move during the run? pull in what arrived and try again</span>
+for tentativa in 1 2 3 4 5; do
+  if git push; then
+    exit 0
+  fi
+  sleep $((tentativa * 3))
+  <span class="c"># in a rebase, "theirs" is the bot's commit: on conflict, the new data wins</span>
+  git pull --rebase -X theirs origin main
+done
+exit 1</code></pre>
       </div>
     </div>
   </section>
@@ -515,7 +719,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">08 — Limitations</p>
+        <p class="section-label">10 — Limitations</p>
         <h2 class="section-title">What the data cannot support</h2>
       </div>
 
@@ -527,7 +731,8 @@ concurrency:
             <p class="callout-text">
               That is when I started running with a sensor watch. There is nothing to show
               before it, so <strong>effort comparisons only hold from that date</strong> —
-              two years of running are left out of them.
+              two years of running are left out of them, and out of the graphics that depend
+              on that data.
             </p>
           </div>
         </div>
@@ -538,7 +743,7 @@ concurrency:
             <p class="callout-title">79 older runs have no detail</p>
             <p class="callout-text">
               They were entered by hand in Strava, with no GPS or splits. They count towards
-              totals but <strong>not towards segment records</strong>.
+              totals but <strong>not towards segment records</strong> or the map.
             </p>
           </div>
         </div>
@@ -574,7 +779,7 @@ concurrency:
   <section class="section">
     <div class="wrap">
       <div class="section-head">
-        <p class="section-label">09 — Stack</p>
+        <p class="section-label">11 — Stack</p>
         <h2 class="section-title">Tools</h2>
       </div>
 
@@ -590,13 +795,13 @@ concurrency:
           <h3>Automation</h3>
           <ul class="skill-list">
             <li class="is-core">GitHub Actions</li><li>Cloudflare Workers</li>
-            <li>Webhooks</li><li>GitHub Pages</li>
+            <li>Webhooks</li><li>GitHub Pages</li><li>Node and ffmpeg (video)</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Interface</h3>
           <ul class="skill-list">
-            <li class="is-core">JavaScript</li><li>CSS</li><li>SVG</li>
+            <li class="is-core">JavaScript</li><li>CSS</li><li>SVG</li><li>Canvas</li>
             <li>Leaflet</li><li>d3-geo</li>
           </ul>
         </div>
@@ -604,7 +809,7 @@ concurrency:
           <h3>Quality</h3>
           <ul class="skill-list">
             <li>Privacy audit</li><li>Translation checker</li>
-            <li>Layout tests via CDP</li>
+            <li>Layout tests via CDP</li><li>New features hidden until approved</li>
           </ul>
         </div>
       </div>
@@ -627,9 +832,9 @@ concurrency:
       </div>
 
       <div class="btn-row" style="margin-top:3rem;">
-        <a href="football-intel.html" class="btn btn--primary">
+        <a href="chicago-marathon-analytics.html" class="btn btn--primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-          Project 01: Football Intel
+          Project 01: Chicago Marathon Analytics
         </a>
         <a href="../index.html#work" class="btn">All projects</a>
         <a href="../index.html#contact" class="btn btn--ghost">Get in touch</a>
@@ -644,7 +849,7 @@ concurrency:
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "The Oceanthief Run — Case study",
-  "description": "A running site fed by Strava data that updates itself after every workout: incremental Python sync, a webhook through a Cloudflare Worker, GitHub Actions and Pages, privacy by design.",
+  "description": "A running site fed by Strava data that updates itself after every workout: incremental Python sync, a webhook through a Cloudflare Worker, GitHub Actions and Pages, an animated story of the year and shareable graphics for every workout.",
   "author": { "@type": "Person", "name": "Victor Ramos Alves de Matos" },
   "inLanguage": "en",
   "mainEntityOfPage": "https://oceanthief.github.io/victor-ramos-site/en/projetos/oceanthief-run.html",
